@@ -6,10 +6,10 @@ import org.springframework.web.servlet.ModelAndView;
 //scan 할때 Controller를 보고 인식
 @Controller // anotation helloController 클래스 Controller를 클래스로 정
 public class HelloController {
-	private String viewHello = "jsp/Rental/hello";
-	private String viewResCheck = "jsp/Rental/ResCheck";
-	private String viewHome = "index";
-	private String viewResRegister = "jsp/Rental/ResRegister" ;
+	private String viewHello = "Rental/hello";
+	private String viewResCheck = "/Rental/ResCheck";
+	private String viewHome = "/Rental/Home";
+	private String viewResRegister = "/Rental/ResRegister" ;
 	
 	public String getViewResCheck(){
 		return this.viewResCheck;
