@@ -11,172 +11,131 @@
     <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
 
-    <link href="src/css/bootstrap.min.css" rel="stylesheet">
-    <link href="src/css/style.css" rel="stylesheet">
+    <link href="layoutit/src/css/bootstrap.min.css" rel="stylesheet">
+    <link href="layoutit/src/css/style.css" rel="stylesheet">
 
   </head>
+  
+    <style>
+ 	 	span {color:skyblue;}
+  
+ 	</style>
+ 	
   <body>
 
-    <div class="container-fluid">
+ <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4">
 		</div>
 		<div class="col-md-4">
 			<div class="page-header">
-				<h1>
-					LayoutIt! <small>Interface Builder for Bootstrap</small>
-				</h1>
+				
+				<br>
+					<h1><a class="nav-link active" href="home.do"> <span>시설</span> 대관 관리 시스템</a></h1> 
+				<br>
+				<br>
+				
 			</div>
 		</div>
-		<div class="col-md-4">
+	<div class="col-md-4">
 			<ul class="nav">
 				<li class="nav-item">
-					<a class="nav-link active" href="#">Home</a>
+					<a class="nav-link active" href="#">INTRODUCTION</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Profile</a>
+					<a class="nav-link" href="#">LOGIN</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link disabled" href="#">Messages</a>
-				</li>
-				<li class="nav-item dropdown ml-md-auto">
-					 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Dropdown link</a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-						 <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
-						<div class="dropdown-divider">
-						</div> <a class="dropdown-item" href="#">Separated link</a>
-					</div>
+					<a class="nav-link" href="#">SIGN IN</a>
 				</li>
 			</ul>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-6">
-			<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+			<nav class="navbar navbar-toggleable-md">
 				 
 				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="navbar-toggler-icon"></span>
-				</button> <a class="navbar-brand" href="#">Brand</a>
+				</button> <a class="navbar-brand" href="#">소개</a>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="navbar-nav">
 						<li class="nav-item active">
-							 <a class="nav-link" href="#">Link <span class="sr-only">(current)</span></a>
+							 <a class="nav-link" href="ResCheck.do">시설 예약조회</a>
 						</li>
-						<li class="nav-item">
-							 <a class="nav-link" href="#">Link</a>
-						</li>
-						<li class="nav-item dropdown">
-							 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Dropdown link</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-								 <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
-								<div class="dropdown-divider">
-								</div> <a class="dropdown-item" href="#">Separated link</a>
-							</div>
-						</li>
-					</ul>
-					<form class="form-inline">
-						<input class="form-control mr-sm-2" type="text"> 
-						<button class="btn btn-primary my-2 my-sm-0" type="submit">
-							Search
-						</button>
-					</form>
-					<ul class="navbar-nav ml-md-auto">
 						<li class="nav-item active">
-							 <a class="nav-link" href="#">Link <span class="sr-only">(current)</span></a>
+							 <a class="nav-link" href="#">시설 예약등록</a>
 						</li>
-						<li class="nav-item dropdown">
-							 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Dropdown link</a>
-							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-								 <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
-								<div class="dropdown-divider">
-								</div> <a class="dropdown-item" href="#">Separated link</a>
-							</div>
+						<li class="nav-item active">
+							 <a class="nav-link" href="#">시설 예약수정</a>
 						</li>
 					</ul>
+	
 				</div>
 			</nav>
 		</div>
 		<div class="col-md-6">
 			<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-				 
-				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="navbar-toggler-icon"></span>
-				</button> <a class="navbar-brand" href="#">Brand</a>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="navbar-nav">
-						<li class="nav-item active">
-							 <a class="nav-link" href="#">Link <span class="sr-only">(current)</span></a>
-						</li>
-						<li class="nav-item">
-							 <a class="nav-link" href="#">Link</a>
-						</li>
-						<li class="nav-item dropdown">
-							 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Dropdown link</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-								 <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
-								<div class="dropdown-divider">
-								</div> <a class="dropdown-item" href="#">Separated link</a>
-							</div>
-						</li>
-					</ul>
 					<form class="form-inline">
 						<input class="form-control mr-sm-2" type="text"> 
 						<button class="btn btn-primary my-2 my-sm-0" type="submit">
 							Search
 						</button>
 					</form>
-					<ul class="navbar-nav ml-md-auto">
-						<li class="nav-item active">
-							 <a class="nav-link" href="#">Link <span class="sr-only">(current)</span></a>
-						</li>
-						<li class="nav-item dropdown">
-							 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Dropdown link</a>
-							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-								 <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
-								<div class="dropdown-divider">
-								</div> <a class="dropdown-item" href="#">Separated link</a>
-							</div>
-						</li>
-					</ul>
 				</div>
 			</nav>
 		</div>
 	</div>
+	
+	<!-- 기본프레임 --> 
+	
 	<div class="row">
 		<div class="col-md-12">
+			<hr>
+		<br>
+		<br>
+		<br>
 			<h3 class="text-center">
-				h3. Lorem ipsum dolor sit amet.
+				공공시설 예약 현황 
 			</h3>
+			<br>
 			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th>
-							#
+							예약번호
 						</th>
 						<th>
-							Product
+							시설이름
 						</th>
 						<th>
-							Payment Taken
+							예약접수날짜
 						</th>
 						<th>
-							Status
+							시설사용기간 
+						</th>
+						<th>
+							대관료
 						</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					<tr class="table-active">
 						<td>
-							1
+							0000-0001
 						</td>
 						<td>
-							TB - Monthly
+							청주 예술의 전당
 						</td>
 						<td>
-							01/04/2012
+							2018.3.16
 						</td>
 						<td>
-							Default
+							2018.3.24 ~ 2018.3.28
+						</td>
+						<td>
+							30000
 						</td>
 					</tr>
 					<tr class="table-active">
@@ -192,8 +151,11 @@
 						<td>
 							Approved
 						</td>
+						<td>
+							Approved
+						</td>
 					</tr>
-					<tr class="table-success">
+					<tr class="table-active">
 						<td>
 							2
 						</td>
@@ -206,8 +168,11 @@
 						<td>
 							Declined
 						</td>
+						<td>
+							Declined
+						</td>
 					</tr>
-					<tr class="table-warning">
+					<tr class="table-active">
 						<td>
 							3
 						</td>
@@ -220,8 +185,11 @@
 						<td>
 							Pending
 						</td>
+						<td>
+							Pending
+						</td>
 					</tr>
-					<tr class="table-danger">
+					<tr class="table-active">
 						<td>
 							4
 						</td>
@@ -234,15 +202,51 @@
 						<td>
 							Call in to confirm
 						</td>
+						<td>
+							Call in to confirm
+						</td>
 					</tr>
 				</tbody>
 			</table>
+			<div class="row">
+				<div class="col-md-4">
+				</div>
+				<div class="col-md-4">
+					<nav>
+						<ul class="pagination">
+							<li class="page-item">
+								<a class="page-link" href="#">Previous</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="#">1</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="#">2</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="#">3</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="#">4</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="#">5</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="#">Next</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div class="col-md-4">
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 
-    <script src="src/js/jquery.min.js"></script>
-    <script src="src/js/bootstrap.min.js"></script>
-    <script src="src/js/scripts.js"></script>
+    <script src="layoutit/srcsrc/js/jquery.min.js"></script>
+    <script src="layoutit/srcsrc/js/bootstrap.min.js"></script>
+    <script src="layoutit/src/js/scripts.js"></script>
   </body>
 </html>

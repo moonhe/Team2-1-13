@@ -1,5 +1,6 @@
 
 <!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -64,7 +65,7 @@
 							 <a class="nav-link" href="ResCheck.do">시설 예약조회</a>
 						</li>
 						<li class="nav-item active">
-							 <a class="nav-link" href="#">시설 예약등록</a>
+							 <a class="nav-link" href="ResRegister.do">시설 예약등록</a>
 						</li>
 						<li class="nav-item active">
 							 <a class="nav-link" href="#">시설 예약수정</a>

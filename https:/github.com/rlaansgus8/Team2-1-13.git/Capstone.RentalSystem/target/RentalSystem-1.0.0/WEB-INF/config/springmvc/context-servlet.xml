@@ -11,7 +11,7 @@
 	<context:component-scan base-package="Rental.mvc"/> <!--자바 밑에 Rental.mvc 밑에 클래스들을 읽어서 객체로 만들어줌    -->
 	
 	<!--  set view resolver -->
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/" p:suffix=".jsp" />
 
 
 </beans> 

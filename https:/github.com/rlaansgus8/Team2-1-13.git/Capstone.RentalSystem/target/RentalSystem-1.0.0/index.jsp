@@ -15,7 +15,7 @@
 
   </head>
   <style>
-  span {color:skyblue;}
+	  span{color:skyblue;}
   
   </style>
   <body>
@@ -61,7 +61,7 @@
 							 <a class="nav-link" href="ResCheck.do">시설 예약조회</a>
 						</li>
 						<li class="nav-item active">
-							 <a class="nav-link" href="#">시설 예약등록</a>
+							 <a class="nav-link" href="ResRegister.do">시설 예약등록</a>
 						</li>
 						<li class="nav-item active">
 							 <a class="nav-link" href="#">시설 예약수정</a>
