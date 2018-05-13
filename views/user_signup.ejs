@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>ChungBuk University Major Books!</title>
+  <link href="/public/bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/public/bootstrap/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="/public/bootstrap/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+  <link href="/public/bootstrap/css/freelancer.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="/">BILLY SHARE!</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login"> 로그인 및 회원가입</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search">스터디룸 찾아보기</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/BookBuy.jsp">스터디룸 예약하기</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">마이페이지</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/contactDev.jsp">개발자 문의</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<br><br>
+    <section class="portfolio bg-third ">
+      <div class="container">
+      </div>
+      <div class="container">
+          <img class="img-fluid mb-5 d-block mx-auto" src="/public/bootstrap/img/profile.png" alt="">
+        <div class="row">
+
+          <div class="col-md-3 mb-5 mb-lg-0">
+          </div>
+
+          <div class="col-md-6 mb-5 mb-lg-0">
+            <h2 class="text-uppercase mb-0 text-center">회원가입</h1>
+              <hr>
+            <!-- 인증 처리 후 메시지가 있으면 메시지 표시 -->
+            <% if (message.length > 0) { %>
+              <div class="alert alert-danger"><%= message %></div>
+              <% } %>
+
+              <form action="/signup" method="post" >
+                <div class="form-group">
+                  <h5 class="text-uppercase mb-0">이메일</h5>
+                  <input type="text" class="form-control" name="email" placeholder="abc@email.com">
+                </div>
+                <div class="form-group">
+                  <h5 class="text-uppercase mb-0">비밀번호</h5>
+                  <input type="password" class="form-control" name="password" placeholder="8자리 이상">
+                </div>
+                <div class="form-group">
+                  <h5 class="text-uppercase mb-0">별명</h5>
+                  <input type="text" class="form-control" name="name" placeholder="example">
+                </div>
+                <div class="form-group">
+                  <h5 class="text-uppercase mb-0">전화번호</h5>
+                  <input type="text" class="form-control" name="name" placeholder="010-1234-5678">
+                </div>
+                <center>
+                  <button type="submit" class="btn btn-primary btn-block" >Sign Up</button>
+                </center>
+                <hr>
+                <p>이미 계정이 있으신가요? <a class="text-uppercase mb-0" href="/user/login">로그인하기</a></p>
+                <p><a class="text-uppercase mb-0" href="/">홈으로</a></p>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <div class="copyright py-4 text-center text-white">
+        <div class="container">
+          <small>Copyright &copy; Your Website 2018</small>
+        </div>
+      </div>
+
+      <script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
+      <script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+      <script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+      <script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
+      <script src="/public/bootstrap/js/contact_me.js"></script>
+      <script src="/public/bootstrap/js/freelancer.min.js"></script>
+
+    </body>
+
+    </html>

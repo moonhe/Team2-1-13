@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>The Bak-one Website Template | Home :: w3layouts</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" type="text/css" href="public/css/imgeffect.css" />
+  <link href="/public/layoutit/src/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/public/css/bootstrap.css" rel="stylesheet">
+  <link href="/public/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/public/layoutit/src/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="public/css/style.css">
+  <link href="/public/assets/css/bootstrap.css" rel="stylesheet" />
+  <link href="/public/assets/css/font-awesome.css" rel="stylesheet" />
+  <link href="/public/assets/css/custom.css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+  <link href="/public/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <div class="header_bg">
+    <div class="wrap">
+      <div class="header">
+        <div class="logo">
+          <!--<a href="/"><img src="public/images/logo.png" alt="" /></a>-->
+          <h1>스터디룸<br>대여 시스템</h1>
+        </div>
+        <div class="nav">
+          <ul>
+            <li><a href="/" class="scroll">Home</a></li>
+            <li class="active"><a href="" class="scroll">Guest</a></li>
+            <li><a href="/login" class="scroll">SignIn</a></li>
+            <li><a href="/signup" class="scroll">SignUp</a></li>
+            <div class="clear"> </div>
+          </ul>
+        </div>
+        <div class="clear"> </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+		<div class="container">
+
+			<div class="col-sm-6 col-sm-offset-3">
+
+			    <h1><span class="fa fa-sign-in"></span> 회원가입</h1>
+
+			    <!-- 인증 처리 후 메시지가 있으면 메시지 표시 -->
+			    <% if (message.length > 0) { %>
+			        <div class="alert alert-danger"><%= message %></div>
+			    <% } %>
+
+			    <form action="/signup" method="post" >
+			        <div class="form-group">
+			            <label>이메일</label>
+			            <input type="text" class="form-control" name="email">
+			        </div>
+			        <div class="form-group">
+			            <label>비밀번호</label>
+			            <input type="password" class="form-control" name="password">
+			        </div>
+			        <div class="form-group">
+			            <label>별명</label>
+			            <input type="text" class="form-control" name="name">
+			        </div>
+
+			        <button type="submit" class="btn btn-warning btn-lg">회원가입</button>
+			    </form>
+
+			    <hr>
+
+			    <p>이미 계정이 있으신가요? <a href="/login">로그인하기</a></p>
+			    <p><a href="/">홈으로</a>.</p>
+
+			</div>
+
+		</div>
+
+	</body>
+</html>

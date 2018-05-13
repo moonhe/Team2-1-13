@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>ChungBuk University Major Books!</title>
+  <link href="/public/bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="/public/bootstrap/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="/public/bootstrap/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+  <link href="/public/bootstrap/css/freelancer.css" rel="stylesheet">
+
+
+  <style>
+  h6 {
+    display: block;
+    font-size: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+
+  h5 {
+    display: block;
+    font-size: 1.4em;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+  </style>
+</head>
+
+<body id="page-top">
+
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="/admin/home">BILLY SHARE!</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/register"> 스터디룸 등록 </a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/BookSearch.jsp">예약현황 확인</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/BookBuy.jsp">반납목록 확인</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">예약통계 확인</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/contactDev.jsp">문의내용 확인</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/logout">로그아웃</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <br><br>
+  <section class="portfolio bg-third ">
+    <div class="container">
+    </div>
+    <div class="container">
+      <img class="img-fluid mb-5 d-block mx-auto" src="/public/bootstrap/img/profile.png" alt="">
+      <div class="row">
+        <div class="col-md-2 mb-5 mb-lg-0">
+        </div>
+        <div class="col-md-8 mb-5 mb-lg-0">
+          <h2 class="text-uppercase mb-0 text-center">스터디룸 등록</h1>
+            <hr>
+
+
+            <div class="row">
+              <div class="col-lg-3 col-sm-4">
+                <h5 class="text-uppercase mb-2 text-center">스터디룸 이름</h5>
+              </div>
+              <div class="col-lg-9 col-sm-8">
+                <input type="text" class="form-control" name="email" placeholder="ex) 충북대학교 프리젠테이션룸1">
+              </div>
+            </div>
+
+            <hr>
+            <div class="row">
+              <div class="col-lg-3 col-sm-4">
+                <h5 class="text-uppercase mb-2 text-center">스터디룸 위치</h5>
+              </div>
+              <div class="col-lg-6 col-sm-5 mb-4">
+                <input type="text" name="" class="form-control postcodify_postcode5" value="" / placeholder="ex) 우편번호">
+              </div>
+              <div class="col-lg-3 col-sm-3">
+                <button type="button" class ="btn btn-primary btn-block" id="postcodify_search_button">주소 검색</button><br />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-3 col-sm-4 ">
+                <h5 class="text-uppercase mb-2 text-center"></h5>
+              </div>
+              <div class="col-lg-9 col-sm-8">
+                <input type="text" name="" class="form-control postcodify_address" placeholder="ex) 도로명주소" /><br />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-3 col-sm-4">
+                <h5 class="text-uppercase mb-2 text-center"></h5>
+              </div>
+              <div class="col-lg-9 col-sm-8">
+                <input type="text" name="" class="form-control postcodify_details" value=""  placeholder="ex) 상세주소"/><br />
+              </div>
+            </div>
+            <hr>
+
+
+            <div class="row">
+              <div class="col-lg-3 col-sm-4">
+                <h5 class="text-uppercase mb-2 text-center">전화 번호</h5>
+              </div>
+              <div class="col-lg-9 col-sm-8">
+                <input type="text" class="form-control" name="phoneNumber" placeholder="ex) 043-222-1234">
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+              <div class="col-lg-3 col-sm-4">
+                <h5 class="text-uppercase mb-2 text-center">최대 인원</h5>
+              </div>
+              <div class="col-lg-9 col-sm-8">
+                  <select class="form-control" id="exampleSelect1">
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                  </select>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+              <div class="col-lg-3 col-sm-4">
+                <h5 class="text-center ">소개 글</h5>
+              </div>
+              <div class="col-lg-9 col-sm-8 ">
+                <textarea class="form-control" rows="5" id="comment"></textarea>
+              </div>
+            </div>
+            <hr>
+
+
+            <div class="row">
+              <div class="col-lg-3 col-sm-4">
+                <h5 class="text-center ">운영 시간</h5>
+              </div>
+              <div class="col-lg-4 col-sm-4">
+                <center><strong><h6>시작 시간</h6></strong></center>
+                <input type="time" class="form-control" name="opentime" placeholder="ex) 7:00">
+              </div>
+              <div class="col-lg-4 col-sm-4">
+                <center><strong><h6>종료 시간</h6></strong></center>
+                <input type="time" class="form-control" name="opentime" placeholder="ex) 23:00 ">
+              </div>
+            </div>
+            <hr>
+
+
+
+            <div class="row">
+              <div class="col-lg-3 col-xs-4">
+                <h5 class="text-uppercase mb-4 text-center">편의 시설</h5>
+              </div>
+              <div class="col-xs-4">
+                <div class="checkbox checkbox-info checkbox-circle">
+                  <input id="checkbox1" type="checkbox" >
+                  <label for="checkbox1">무선 인터넷</label>
+                </div>
+                <div class="checkbox checkbox-info checkbox-circle">
+                  <input id="checkbox2" type="checkbox" >
+                  <label for="checkbox2">프린터기</label>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="checkbox checkbox-info checkbox-circle">
+                  <input id="checkbox3" type="checkbox" >
+                  <label for="checkbox3">화이트보드</label>
+                </div>
+                <div class="checkbox checkbox-info checkbox-circle">
+                  <input id="checkbox4" type="checkbox" >
+                  <label for="checkbox4">프로젝터</label>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="checkbox checkbox-info checkbox-circle">
+                  <input id="checkbox5" type="checkbox" >
+                  <label for="checkbox5">냉난방 시설</label>
+                </div>
+                <div class="checkbox checkbox-info checkbox-circle">
+                  <input id="checkbox6" type="checkbox" >
+                  <label for="checkbox6">멀티탭</label>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="checkbox checkbox-info checkbox-circle">
+                  <input id="checkbox7" type="checkbox" >
+                  <label for="checkbox7">HDMI케이블</label>
+                </div>
+                <div class="checkbox checkbox-info checkbox-circle">
+                  <input id="checkbox8" type="checkbox" >
+                  <label for="checkbox8">데스크탑</label>
+                </div>
+              </div>
+            </div>
+            <hr>
+
+
+
+
+            <div class="row">
+              <div class="col-lg-3 col-sm-4">
+                <h5 class="text-uppercase mb-2 text-center">이미지 등록</h5>
+              </div>
+              <div class="col-lg-3 col-sm-4">
+                <input type="file" name="profile_pt" id="profile_pt" onchange="previewImage(this,'View_area')">
+              </div>
+              <div class="col-lg-4 col-sm-6 offset-2">
+                <div id='View_area' style='position:relative; width: 170px; height: 170px; color: black;  border: 0px solid green ; dispaly: inline; '>
+                </div>
+              </div>
+            </div>
+            <hr>
+
+
+            <div class="row">
+              <div class="col-lg-3 col-sm-4">
+                <h5 class="text-uppercase mb-2 text-center"></h5>
+              </div>
+              <div class="col-lg-4 col-sm-4">
+                <button type="submit" class="btn btn-primary btn-block">등록 완료</button>
+              </div>
+              <div class="col-lg-4 col-sm-4">
+                <button type="reset" class="btn btn-primary btn-block" >작성 내용 취소</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="copyright py-4 text-center text-white">
+  <div class="container">
+    <small>Copyright &copy; Your Website 2018</small>
+  </div>
+</div>
+
+
+<script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
+<script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
+<script src="/public/bootstrap/js/contact_me.js"></script>
+<script src="/public/bootstrap/js/imageUpload.js"></script>
+<script src="/public/bootstrap/js/freelancer.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+
+</body>
+
+</html>
