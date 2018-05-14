@@ -50,9 +50,14 @@ module.exports = function(router, passport) {
         res.render('user_signup.ejs', {message: req.flash('signupMessage')});
     });
 
+    // 시설조회 화면
     router.route('/user/search').get(function(req, res) {
-        // console.log('/시설조회 패스 요청됨.');
-        res.render('user_search.ejs', {message: req.flash('searchMessage')});
+      var database = req.app.get('database');
+      database.StudyModel.find(function(err, users){
+        if(err) return res.status(500).send({error:'database find failure'});
+        res.json(users);
+      })
+        console.log('/find 패스 요청됨.');
     });
 
     // 프로필 화면

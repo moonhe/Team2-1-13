@@ -11,7 +11,6 @@
 var local_login = require('./passport/local_login');
 var local_signup = require('./passport/local_signup');
 var admin_login = require('./passport/admin_login');
-var admin_register = require('./passport/admin_register');
 module.exports = function (app, passport) {
 	console.log('config/passport 호출됨.');
 
@@ -41,6 +40,5 @@ module.exports = function (app, passport) {
 	passport.use('local-login', local_login);
 	passport.use('local-signup', local_signup);
 	passport.use('admin-login', admin_login);
-	passport.use('admin-register', admin_register);
 
 };

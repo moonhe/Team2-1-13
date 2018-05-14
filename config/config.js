@@ -6,6 +6,7 @@ module.exports = {
         {file:'./user_schema', collection:'users6', schemaName:'UserSchema', modelName:'UserModel'}
 				,{file:'./admin_schema', collection:'admin', schemaName:'AdminSchema', modelName:'AdminModel'}
         ,{file:'./post_schema', collection:'post', schemaName:'PostSchema', modelName:'PostModel'}
+				,{file:'./studyroom_schema', collection:'studyroom', schemaName:'StudySchema', modelName:'StudyModel'}
 	],
 	route_info: [
         {file:'./post', path:'/process/addpost', method:'addpost', type:'post'}
