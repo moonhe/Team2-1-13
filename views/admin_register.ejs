@@ -223,84 +223,65 @@
                 </div>
               </div>
               <hr>
-
-
-
+              <div class="row">
+                <div class="col-lg-3 col-sm-4">
+                  <h5 class="text-uppercase mb-2 text-center">이미지 등록</h5>
+                </div>
+                <div class="col-lg-3 col-sm-4">
+                  <input type="file" name="uploadfile" id="exampleInputFile" onchange="previewImage(this,'View_area')">
+                </div>
+                <div class="col-lg-4 col-sm-6 offset-2">
+                  <div id='View_area' style='position:relative; width: 170px; height: 170px; color: black;  border: 0px solid green ; dispaly: inline; '>
+                      <img id="prev_View_area" src="/public/bootstrap/img/image.png" style='position:relative; width: 170px; height: 170px; color: black;  border: 0px solid green ; dispaly: inline; '>
+                  </div>
+                </div>
+              </div>
+              <hr>
 
               <div class="row">
-                <!-- <div class="col">
-                <h1>이미지 업로드</h1>
-                <br>
-                <br>
+                <div class="col-lg-3 col-sm-4">
+                  <h5 class="text-uppercase mb-2 text-center"></h5>
+                </div>
+                <div class="col-lg-4 col-sm-4">
+                  <button type="submit" class="btn btn-primary btn-block">등록 완료</button>
+                </div>
+                <div class="col-lg-4 col-sm-4">
+                  <button type="reset" class="btn btn-primary btn-block" >작성 내용 취소</button>
+                </div>
               </div>
-              <div class="col">
-              <div class="form-group">
-              <input type="file" name="uploadfile" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+
+
+              <div class ="row">
+                <div class="col-lg-12 col-sm-12">
+                  <a href="/room/info" >스터디룸 정보</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col">
-          <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-        </div> -->
+        </div>
+      </section>
+    </form>
 
-        <div class="col-lg-3 col-sm-4">
-          <h5 class="text-uppercase mb-2 text-center">이미지 등록</h5>
-        </div>
-        <div class="col-lg-3 col-sm-4">
-          <input type="file" name="uploadfile" id="exampleInputFile" onchange="previewImage(this,'View_area')">
-        </div>
-        <div class="col-lg-4 col-sm-6 offset-2">
-          <div id='View_area' style='position:relative; width: 170px; height: 170px; color: black;  border: 0px solid green ; dispaly: inline; '>
-          </div>
-        </div>
-      </div>
-      <hr>
-
-      <div class="row">
-        <div class="col-lg-3 col-sm-4">
-          <h5 class="text-uppercase mb-2 text-center"></h5>
-        </div>
-        <div class="col-lg-4 col-sm-4">
-          <button type="submit" class="btn btn-primary btn-block">등록 완료</button>
-        </div>
-        <div class="col-lg-4 col-sm-4">
-          <button type="reset" class="btn btn-primary btn-block" >작성 내용 취소</button>
-        </div>
-
-
-
-        <div class ="row">
-          <div class="col-lg-12 col-sm-12">
-            <a href="/room/info" >스터디룸 정보</button>
-          </div>
-        </div>
+    <div class="copyright py-4 text-center text-white">
+      <div class="container">
+        <small>Copyright &copy; Your Website 2018</small>
       </div>
     </div>
-  </div>
-</div>
-</div>
-</div>
-</section>
-</form>
-
-<div class="copyright py-4 text-center text-white">
-  <div class="container">
-    <small>Copyright &copy; Your Website 2018</small>
-  </div>
-</div>
 
 
-<script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
-<script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-<script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
-<script src="/public/bootstrap/js/contact_me.js"></script>
-<script src="/public/bootstrap/js/imageUpload.js"></script>
-<script src="/public/bootstrap/js/freelancer.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+    <script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
+    <script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
+    <script src="/public/bootstrap/js/contact_me.js"></script>
+    <script src="/public/bootstrap/js/imageUpload.js"></script>
+    <script src="/public/bootstrap/js/freelancer.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+    <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 
-</body>
+  </body>
 
-</html>
+  </html>

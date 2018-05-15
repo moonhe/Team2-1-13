@@ -19,7 +19,9 @@ var _storage = multer.diskStorage({
   }
 });
 
-var upload = multer({storage: _storage});
+var upload = multer({
+  storage: _storage
+});
 
 module.exports = function(router, passport) {
   console.log('admin_passport 호출됨.');
@@ -103,11 +105,11 @@ module.exports = function(router, passport) {
 
 
 
-// 스터디룸 조회
-router.route('/room/info').get(function(req, res) {
-  console.log('/room/info 패스 요청됨.');
-  res.render('room_info.ejs', {message: req.flash('registerMessage')});
-});
+  // 스터디룸 조회
+  router.route('/room/info').get(function(req, res) {
+    console.log('/room/info 패스 요청됨.');
+    res.render('room_info.ejs', {message: req.flash('registerMessage')});
+  });
 
 
 
@@ -216,14 +218,22 @@ router.post('/admin/register' , upload.single('uploadfile'), function(req, res){
   });
 
   post.savePost(function(err, result) {
-      if (err) {
-        console.error('응답 웹문서 생성 중 에러 발생 : ' + err.stack);
-        res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-        res.write('<script>alert("모든 값을 입력해주세요")</script>');
-        res.write('<script>window.location.href="/admin/register"</script>');
-        res.end();
-        return;
-      }
+    if (!req.file.originalname.match(/\.(jpg|jpeg|png|gif)$/)){
+      res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+      res.write('<<script>alert("jpg png gif 파일만 가능합니다")</script>');
+      res.write('<script>window.location.href="/admin/register"</script>');
+      res.end();
+    }
+
+    if (err) {
+
+      console.error('응답 웹문서 생성 중 에러 발생 : ' + err.stack);
+      res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+      res.write('<script>alert("모든 값을 입력해주세요")</script>');
+      res.write('<script>window.location.href="/admin/register"</script>');
+      res.end();
+      return;
+    }
 
 
     console.log("시설 데이터 추가함.");
