@@ -8,6 +8,19 @@
 var Entities = require('html-entities').AllHtmlEntities;
 
 
+var multer = require('multer');
+
+var _storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    cb(null, 'uploads/');
+  },
+  filename: function(req, file, cb){
+    cb(null, file.originalname);
+  }
+});
+
+var upload = multer({storage: _storage});
+
 module.exports = function(router, passport) {
   console.log('admin_passport 호출됨.');
 
@@ -86,6 +99,22 @@ module.exports = function(router, passport) {
     failureFlash : true
   }));
 
+
+
+
+
+// 스터디룸 조회
+router.route('/room/info').get(function(req, res) {
+  console.log('/room/info 패스 요청됨.');
+  res.render('room_info.ejs', {message: req.flash('registerMessage')});
+});
+
+
+
+
+
+
+
   //관리자 등록 화면
   router.route('/admin/register').get(function(req, res) {
     console.log('/register 패스 요청됨.');
@@ -126,21 +155,9 @@ router.route('/admin/registSuccess').get(function(req, res) {
 
 
 
-var multer = require('multer');
-
-var _storage = multer.diskStorage({
-  destination: function(req, file, cb){
-    cb(null, 'uploads/');
-  },
-  filename: function(req, file, cb){
-    cb(null, file.originalname);
-  }
-});
-
-var upload = multer({storage: _storage});
 
 //등록
-router.route('/admin/register').post(upload.single('uploadfile'), function(req, res){
+router.post('/admin/register' , upload.single('uploadfile'), function(req, res){
   console.log('admin_passport 모듈 안에 있는 /admin/register 호출됨.');
 
   var paramfacilityname = req.body.facilityname || req.query.facilityname;
@@ -151,7 +168,7 @@ router.route('/admin/register').post(upload.single('uploadfile'), function(req, 
   var parampeople = req.body.people || req.query.people;
   var paramconve = req.body.conve || req.query.conve;
   var paramtime = req.body.time || req.query.time;
-  var paramimagefiles = req.body.imagefiles || req.query.imagefiles;
+  var paramimagefiles = req.file.path || req.query.file.path;
   var paramintro = req.body.intro || req.query.intro;
 
   console.log('요청 파라미터 : ' + paramfacilityname + ', ' + parampostcode +  ', ' + paramroadnameaddress + ', ' + paramaddress +  ', ' +
@@ -199,7 +216,6 @@ router.route('/admin/register').post(upload.single('uploadfile'), function(req, 
   });
 
   post.savePost(function(err, result) {
-    if (err) {
       if (err) {
         console.error('응답 웹문서 생성 중 에러 발생 : ' + err.stack);
         res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
@@ -208,7 +224,6 @@ router.route('/admin/register').post(upload.single('uploadfile'), function(req, 
         res.end();
         return;
       }
-    }
 
 
     console.log("시설 데이터 추가함.");
