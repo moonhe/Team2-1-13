@@ -78,6 +78,12 @@ SchemaObj.createSchema = function (mongoose) {
       remove: function (id, callback){
          this.deleteOne({ _id: id })
          .exec(callback);
+      },
+      findByUsername: function(paramusername, callback){
+        this.findOne({ username: paramusername })
+           .populate('writer', 'name provider email')
+           .populate('comments.writer')
+           .exec(callback);
       }
    }
 

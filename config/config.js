@@ -17,7 +17,9 @@ module.exports = {
 		,{file:'./revpost', path:'/admin/revlist/:id', method:'showrevpost', type:'get'}
 		,{file:'./revpost', path:'/admin/deleteuser/:id', method:'delrevpost', type:'get'}
 		,{file:'./revpost', path:'/admin/revlist', method:'revpost', type:'post'}
-		,{file:'./revpost', path:'/admin/revlist', method:'revpost', type:'get'}
+		,{file:'./revpost', path:'/admin/revlist/', method:'revpost', type:'get'}
+		,{file:'./revpost', path:'/admin/searchrevpost', method:'searchrevpost', type:'post'}
+	  ,{file:'./revpost', path:'/admin/searchrevpost/:username', method:'searchrevpost', type:'get'}
 	]
 
 }
