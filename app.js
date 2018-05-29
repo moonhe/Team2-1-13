@@ -18,7 +18,7 @@ var expressSession = require('express-session');
 var passport = require('passport');
 var flash = require('connect-flash');
 
-
+ //assaasa
 // 모듈로 분리한 설정 파일 불러오기ÇÇ
 var config = require('./config/config');
 
