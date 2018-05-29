@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>ChungBuk University Major Books!</title>
+  <link href="/public/bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="/public/bootstrap/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="/public/bootstrap/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+  <link href="/public/bootstrap/css/freelancer.css" rel="stylesheet">
+
+  <style>
+  h6 {
+    display: block;
+    font-size: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  h5 {
+    display: block;
+    font-size: 1.4em;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    color:#2C3E50;
+  }
+  </style>
+</head>
+
+<%
+var curID = posts._doc._id;
+var curStarttime = posts._doc.starttime;
+var curEndtime = posts._doc.endtime;
+var curFacilityname = posts._doc.facilityname;
+var curUsername = posts._doc.username;
+var curPhone = posts._doc.phone;
+var curEmail = posts._doc.email;
+%>
+
+<body id="page-top">
+
+
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="/admin/home">BILLY SHARE!</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login"> 로그인 및 회원가입</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search?page=0&perPage=10">스터디룸 찾아보기</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/BookBuy.jsp">스터디룸 예약하기</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">마이페이지</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/contactDev.jsp">개발자 문의</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <br><br>
+  <form action="/admin/register" method="post" enctype="multipart/form-data">
+    <section class="PORTZFOLIO bg-third ">
+      <div class="container">
+      </div>
+      <div class="container">
+        <img class="img-fluid mb-5 d-block mx-auto" src="/public/bootstrap/img/file.png" alt="">
+        <div class="row">
+          <div class="col-md-1 mb-5 mb-lg-0">
+          </div>
+          <div class="col-md-9 mb-5 mb-lg-0">
+            <h2 class="text-uppercase mb-0 text-center">예약현황</h1>
+              <hr>
+              <div class="row">
+                <div class="col-lg-8 col-sm-8">
+                  <div class ="row">
+                    <div class="col-lg-4 col-sm-4">
+                      <h5><center>스터디룸 이름</center></h5>
+                    </div>
+                    <div class="col-lg-6 col-sm-4">
+                      <h6><%= curFacilityname %></h6>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class ="row">
+                    <div class="col-lg-4 col-sm-4">
+                      <h5><center>사용자명</center></h5>
+                    </div>
+                    <div class="col-lg-6 col-sm-4">
+                      <h6><%= curUsername %></h6>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class ="row">
+                    <div class="col-lg-4 col-sm-4">
+                      <h5><center>전화번호</center></h5>
+                    </div>
+                    <div class="col-lg-6 col-sm-4">
+                      <h6><%= curPhone %></h6>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <hr>
+
+
+
+              <div class="row">
+                <div class="col-lg-3 col-sm-4">
+                  <h5><center>시작시간</center></h5>
+                </div>
+                <div class="col-lg-2 col-sm-2">
+                  <h6><center><%= curStarttime %></center></h6>
+                </div>
+                <div class="col-lg-3 col-sm-4">
+                  <h5><center>종료시간</center></h5>
+                </div>
+                <div class="col-lg-2 col-sm-2">
+                  <h6><center><%= curEndtime %></center></h6>
+                </div>
+              </div>
+              <hr>
+
+              <div class="row">
+                <div class="col-lg-3 col-sm-4">
+                  <h5><center>이메일</center></h5>
+                </div>
+                <div class="col-lg-8 col-sm-8">
+                  <h6><%= curEmail %></h6>
+              </div>
+            </div>
+                <hr>
+                <hr>
+
+                  <br>
+                  <br>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-sm-2">
+                      <h5 class="text-uppercase mb-2 text-center"></h5>
+                    </div>
+                    <div class="col-lg-3 col-sm-4">
+                      <button type="button" class="btn btn-primary btn-block" onclick="location.href='/admin/deleteuser/<%= curID %>'">삭제</button>
+                    </div>
+                    <div class="col-lg-3 col-sm-4">
+                      <button type="button" class="btn btn-primary btn-block" >돌아 가기</button>
+                    </div>
+                    <div class="col-lg-2 col-sm-2">
+                      <h5 class="text-uppercase mb-2 text-center"></h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </form>
+
+
+
+        <div class="copyright py-4 text-center text-white">
+          <div class="container">
+            <small>Copyright &copy; Your Website 2018</small>
+          </div>
+        </div>
+
+
+        <script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
+        <script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
+        <script src="/public/bootstrap/js/contact_me.js"></script>
+        <script src="/public/bootstrap/js/imageUpload.js"></script>
+        <script src="/public/bootstrap/js/freelancer.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+        <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+
+      </body>
+
+      </html>

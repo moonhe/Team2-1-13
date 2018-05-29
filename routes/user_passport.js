@@ -50,6 +50,11 @@ module.exports = function(router, passport) {
         res.render('user_signup.ejs', {message: req.flash('signupMessage')});
     });
 
+    router.route('/user/contactDev').get(function(req, res) {
+        console.log('/contactDev 패스 요청됨.');
+        res.render('user_contactDev.ejs', {message: req.flash('')});
+    });
+
     // 시설조회 화면
     router.route('/user/search').get(function(req, res) {
       var database = req.app.get('database');
@@ -71,7 +76,7 @@ module.exports = function(router, passport) {
         if (!req.user) {
         //if(!req.user[1].auth != 'auth'){
             console.log('사용자 인증 안된 상태임.');
-            res.redirect('/');
+            res.redirect('/user/login');
         } else {
             console.log('사용자 인증된 상태임.');
             console.log('/profile 패스 요청됨.');

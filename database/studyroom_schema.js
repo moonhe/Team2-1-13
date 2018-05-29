@@ -21,7 +21,8 @@ SchemaObj.createSchema = function (mongoose) {
 		number: { type: String, trim: true, 'default': '' },				//전화번호
 		people: { type: Number, trim: true, 'default': '' },					//인원수
 		conve: { type: String, trim: true, 'default': '' },				//편의시설
-		time: { type: String, trim: true, 'default': '' },				//시간
+		endtime: { type: String, trim: true, 'default': '' },				//시간
+		starttime: { type: String, trim: true, 'default': '' },				//시간
 		imagefiles: { type: String, trim: true, 'default': '' },		//이미지
 		intro: { type: String, trim: true, 'default': '' }			//소개
 	});
@@ -29,7 +30,7 @@ SchemaObj.createSchema = function (mongoose) {
 	// 필수 속성에 대한 'required' validation
 	StudySchema.path('facilityname').required(true, '글 제목을 입력하셔야 합니다.');
 	StudySchema.path('number').required(true, '글 제목을 입력하셔야 합니다.');
-//	StudySchema.path('imagefiles').required(true, '글 제목을 입력하셔야 합니다.');
+	StudySchema.path('imagefiles').required(true, '글 제목을 입력하셔야 합니다.');
 	// 스키마에 인스턴스 메소드 추가
 	StudySchema.methods = {
 		savePost: function (callback) {		// 글 저장
@@ -43,9 +44,62 @@ SchemaObj.createSchema = function (mongoose) {
 		}
 	};
 
+	StudySchema.methods = {
+		savePost: function (callback) {		// 글 저장
+			var self = this;
+
+			this.validate(function (err) {
+				if (err) return callback(err);
+
+				self.save(callback);
+			});
+		},
+		addComment: function (user, comment, callback) {		// 댓글 추가
+			this.comment.push({
+				contents: comment.contents,
+				writer: user._id
+			});
+
+			this.save(callback);
+		},
+		removeComment: function (id, callback) {		// 댓글 삭제
+			var index = utils.indexOf(this.comments, { id: id });
+			if (~index) {
+				this.comments.splice(index, 1);
+			} else {
+				return callback('ID [' + id + '] 를 가진 댓글 객체를 찾을 수 없습니다.');
+			}
+
+			this.save(callback);
+		}
+	}
+
+
+
+	StudySchema.statics = {
+		// ID로 글 찾기
+		load: function (id, callback) {
+			this.findOne({ _id: id })
+				.populate('writer', 'name provider email')
+				.populate('comments.writer')
+				.exec(callback);
+		},
+		list: function (options, callback) {
+			var criteria = options.criteria || {};
+
+			this.find(criteria)
+				.populate('writer', 'name provider email')
+				.sort({ 'created_at': -1 })
+				.limit(Number(options.perPage))
+				.skip(options.perPage * options.page)
+				.exec(callback);
+		}
+	}
+
 	StudySchema.static('findByNumber', function(paramnumber, callback) {
 		return this.find({address:paramnumber}, callback);
 	});
+
 	console.log('StudySchema 정의함.');
 
 	return StudySchema;

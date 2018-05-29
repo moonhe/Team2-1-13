@@ -23,7 +23,6 @@
     margin-bottom: 0.5em;
     margin-left: 0;
     margin-right: 0;
-    font-weight: bold;
   }
 
   h5 {
@@ -34,9 +33,25 @@
     margin-left: 0;
     margin-right: 0;
     font-weight: bold;
+    color:#2C3E50;
   }
   </style>
 </head>
+
+<%
+var curID = posts._doc._id;
+var curFacilityname = posts._doc.facilityname;
+var curAddress = posts._doc.address;
+var curPeople = posts._doc.people;
+var curImagedir = posts._doc.imagefiles;
+var curPostcode = posts._doc.postcode;
+var curRoadaddress = posts._doc.roadnameaddress;
+var curNumber = posts._doc.number;
+var curConve = posts._doc.conve;
+var curStartTime = posts._doc.starttime;
+var curEndTime = posts._doc.endtime;
+var curIntro = posts._doc.intro;
+%>
 
 <body id="page-top">
 
@@ -52,12 +67,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/register"> 스터디룸 등록 </a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/BookSearch.jsp">예약현황 확인</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/BookBuy.jsp">반납목록 확인</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">예약통계 확인</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/contactDev.jsp">문의내용 확인</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/logout">로그아웃</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login"> 로그인 및 회원가입</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search?page=0&perPage=10">스터디룸 찾아보기</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/BookBuy.jsp">스터디룸 예약하기</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">마이페이지</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/contactDev.jsp">개발자 문의</a></li>
         </ul>
       </div>
     </div>
@@ -67,88 +81,145 @@
   <form action="/admin/register" method="post" enctype="multipart/form-data">
     <section class="PORTZFOLIO bg-third ">
       <div class="container">
+      </div>
+      <div class="container">
         <img class="img-fluid mb-5 d-block mx-auto" src="/public/bootstrap/img/file.png" alt="">
         <div class="row">
-          <div class="col-md-2 mb-5 mb-lg-0">
+          <div class="col-md-1 mb-5 mb-lg-0">
           </div>
-          <div class="col-md-8 mb-5 mb-lg-0">
+          <div class="col-md-9 mb-5 mb-lg-0">
             <h2 class="text-uppercase mb-0 text-center">스터디룸 정보</h1>
               <hr>
               <div class="row">
-                <div class="col-lg-4 col-sm-4">
-                  <img id="prev_View_area" src="/public/bootstrap/img/image.png" style='position:relative; width: 200px; height: 200px; color: black;  border: 0px solid green ; dispaly: inline; '>
+                <div class="col-lg-3 col-sm-4">
+                  <img id="prev_View_area" src="/<%=curImagedir%>" style='position:relative; width: 200px; height: 200px; color: black;  border: 0px solid green ; dispaly: inline; '>
                 </div>
                 <div class="col-lg-8 col-sm-8">
                   <div class ="row">
                     <div class="col-lg-4 col-sm-4">
-                      <h5>스터디룸 이름</h5>
+                      <h5><center>스터디룸 이름</center></h5>
                     </div>
-                    <div class="col-lg-8 col-sm-4">
-                      <h6>충북대학교 프리젠테이션 1룸</h6>
+                    <div class="col-lg-6 col-sm-4">
+                      <h6><%= curFacilityname %></h6>
                     </div>
                   </div>
                   <hr>
                   <div class ="row">
                     <div class="col-lg-4 col-sm-4">
-                      <h5>스터디룸 위치</h5>
+                      <h5><center>스터디룸 위치</center></h5>
                     </div>
-                    <div class="col-lg-8 col-sm-4">
-                      <h6>충청북도 청주시 서원구 충대로1</h6>
-                      <h6>S1-4 204호</h6>
+                    <div class="col-lg-6 col-sm-4">
+                      <h6><%= curPostcode %></h6>
+                      <h6><%= curRoadaddress %></h6>
+                      <h6><%= curAddress %></h6>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class ="row">
+                    <div class="col-lg-4 col-sm-4">
+                      <h5><center>전화 번호</center></h5>
+                    </div>
+                    <div class="col-lg-6 col-sm-4">
+                      <h6><%= curNumber %></h6>
                     </div>
                   </div>
 
                 </div>
               </div>
-
               <hr>
 
-              <br>
-              <br>
+
 
               <div class="row">
-                <div class="col-lg-2 col-sm-2">
-                  <h5 class="text-uppercase mb-2 text-center"></h5>
-                </div>
-                <div class="col-lg-4 col-sm-4">
-                  <button type="button" class="btn btn-primary btn-block">예약 하기</button>
-                </div>
-                <div class="col-lg-4 col-sm-4">
-                  <button type="button" class="btn btn-primary btn-block" >돌아 가기</button>
+                <div class="col-lg-3 col-sm-4">
+                  <h5><center>개방시간</center></h5>
                 </div>
                 <div class="col-lg-2 col-sm-2">
-                  <h5 class="text-uppercase mb-2 text-center"></h5>
+                  <h6><center><%= curStartTime %></center></h6>
+                </div>
+                <div class="col-lg-3 col-sm-4">
+                  <h5><center>부터</center></h5>
+                </div>
+                <div class="col-lg-2 col-sm-2">
+                  <h6><center><%= curEndTime %></center></h6>
                 </div>
               </div>
+              <hr>
 
-
+              <div class="row">
+                <div class="col-lg-3 col-sm-4">
+                  <h5><center>시설 소개</center></h5>
+                </div>
+                <div class="col-lg-8 col-sm-8">
+                  <h6><%= curIntro %></h6>
+              </div>
             </div>
+                <hr>
+
+                <div class="row">
+                  <div class="col-lg-3 col-sm-4">
+                    <h5><center>편의 시설</center></h5>
+                  </div>
+                  <div class="col-lg-8 col-sm-8">
+                    <h6><center><%= curConve %></center></h6>
+                  </div>
+                </div>
+                <hr>
+
+              <div class="row">
+                <div class="col-lg-3 col-sm-4">
+                  <h5><center>최대 인원</center></h5>
+                </div>
+                <div class="col-lg-3 col-sm-2">
+                  <h6><center><%= curPeople %></center></h6>
+                </div>
+              </div>
+                <hr>
+
+                  <br>
+                  <br>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-sm-2">
+                      <h5 class="text-uppercase mb-2 text-center"></h5>
+                    </div>
+                    <div class="col-lg-3 col-sm-4">
+                      <button type="button" class="btn btn-primary btn-block" onclick="location.href='/room/reserve/<%=curID%>'">예약 하기</button>
+                    </div>
+                    <div class="col-lg-3 col-sm-4">
+                      <button type="button" class="btn btn-primary btn-block"onclick="location.href='/user/search?page=0&perPage=10'" >돌아 가기</button>
+                    </div>
+                    <div class="col-lg-2 col-sm-2">
+                      <h5 class="text-uppercase mb-2 text-center"></h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </form>
+
+
+
+        <div class="copyright py-4 text-center text-white">
+          <div class="container">
+            <small>Copyright &copy; Your Website 2018</small>
           </div>
         </div>
-      </section>
-    </form>
 
 
+        <script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
+        <script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
+        <script src="/public/bootstrap/js/contact_me.js"></script>
+        <script src="/public/bootstrap/js/imageUpload.js"></script>
+        <script src="/public/bootstrap/js/freelancer.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+        <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 
-    <div class="copyright py-4 text-center text-white">
-      <div class="container">
-        <small>Copyright &copy; Your Website 2018</small>
-      </div>
-    </div>
+      </body>
 
-
-    <script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
-    <script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
-    <script src="/public/bootstrap/js/contact_me.js"></script>
-    <script src="/public/bootstrap/js/imageUpload.js"></script>
-    <script src="/public/bootstrap/js/freelancer.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-    <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
-
-  </body>
-
-  </html>
+      </html>
