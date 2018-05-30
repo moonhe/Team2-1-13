@@ -10,7 +10,7 @@ var bodyParser = require('body-parser')
   , errorHandler = require('errorhandler');
 // 에러 핸들러 모듈 사용
 var expressErrorHandler = require('express-error-handler');
-//dsds
+
 // Session 미들웨어 불러오기
 var expressSession = require('express-session');
 
