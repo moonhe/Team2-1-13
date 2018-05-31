@@ -16,7 +16,9 @@ Schema.createSchema = function(mongoose) {
 				email: {type: String, 'default':''}
 	    , hashed_password: {type: String, 'default':''}
 	    , name: {type: String, index: 'hashed', 'default':''}
-			, phoneNum :{type: String, 'default':''}
+			, phone :{type: String, 'default':''}
+			, birth :{type: String, 'default':''}
+			, gender :{type: String, 'default':''}
 			, postcode :{type: String, trim: true, 'default':''}
 			, roadnameaddress :{type: String, trim: true, 'default':''}
 			, address :{type: String, trim: true, 'default':''}

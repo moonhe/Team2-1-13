@@ -20,7 +20,8 @@ module.exports = new LocalStrategy({
 				var paramPostcode = req.body.postcode || req.query.postcode;
 				var paramRoad = req.body.roadnameaddress || req.query.roadnameaddress;
 				var paramAdd = req.body.address || req.query.address;
-
+				var paramBirth = req.body.birth || req.query.birth;
+				var paramGender = req.body.gender || req.query.gender;
 
 		console.log('passport의 local-signup 호출됨 : ' + email + ', ' + password + ', ' + paramName + ', ' + paramPhone + ', ' + paramPostcode + ', ' + paramRoad + ', ' + paramAdd);
 
@@ -46,7 +47,10 @@ module.exports = new LocalStrategy({
 								'phone' : paramPhone,
 								'postcode' : paramPostcode,
 								'roadnameaddress' : paramRoad,
-								'address' : paramAdd});
+								'address' : paramAdd,
+								'birth' : paramBirth,
+								'gender' : paramGender
+							});
 
 		        	user.save(function(err) {
 		        		if (err) {
