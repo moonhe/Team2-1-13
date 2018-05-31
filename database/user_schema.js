@@ -16,13 +16,16 @@ Schema.createSchema = function(mongoose) {
 		email: {type: String, 'default':''}
 	    , hashed_password: {type: String, 'default':''}
 	    , name: {type: String, index: 'hashed', 'default':''}
+			, phoneNum :{type: String, 'default':''}
+			, postcode :{type: String, trim: true, 'default':''}
+			, roadnameaddress :{type: String, trim: true, 'default':''}
+			, address :{type: String, trim: true, 'default':''}
 	    , salt: {type:String}
 	    , created_at: {type: Date, index: {unique: false}, 'default': Date.now}
 	    , updated_at: {type: Date, index: {unique: false}, 'default': Date.now}
 	    , provider: {type: String, 'default':''}
 	    , authToken: {type: String, 'default':''}
 	    , linkedin: {}
-			, phoneNum :{type: String, 'default':''}
 	});
 
 	// password를 virtual 메소드로 정의 : MongoDB에 저장되지 않는 편리한 속성임. 특정 속성을 지정하고 set, get 메소드를 정의함
