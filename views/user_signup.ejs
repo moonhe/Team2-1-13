@@ -13,7 +13,9 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <link href="/public/bootstrap/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
-  <link href="/public/bootstrap/css/freelancer.min.css" rel="stylesheet">
+  <link href="/public/bootstrap/css/freelancer.css" rel="stylesheet">
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 </head>
 
@@ -39,6 +41,8 @@
       </div>
     </div>
   </nav>
+
+
 
   <br><br>
 
@@ -73,9 +77,55 @@
                   <h5 class="text-uppercase mb-0">이름</h5>
                   <input type="text" class="form-control" name="name" placeholder="example">
                 </div>
+
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h5 class="text-uppercase mb-0">생년월일</h5>
+
+                      <script>
+                      $(function() {
+                        $( "#datepicker" ).datepicker({
+                          dateFormat : 'mm/dd/yy',
+                          changeMonth : true,
+                          changeYear : true,
+                          yearRange: '-100y:c+nn',
+                          maxDate: '-1d'
+                        });
+                      });
+
+                      </script>
+                    </div>
+                    <div class="col-md-6">
+                      <h5 class="text-uppercase mb-0">성별</h5>
+                    </div>
+                  </div>
+
+                  <div class ="row">
+                    <div class="col-md-6">
+                      <input type="text" id="datepicker" class="form-control" placeholder="Choose" width="10">
+                    </div>
+                    <br>
+                    <div class="col-md-6">
+                      <select class="form-control">
+                        <option>남자</option>
+                        <option>여자</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
                 <div class="form-group">
                   <h5 class="text-uppercase mb-0">전화번호</h5>
+<<<<<<< HEAD
                   <input type="text" class="form-control" name="phoneNum" placeholder="010-1234-5678">
+=======
+                  <input type="text" class="form-control" name="phone" placeholder="010-1234-5678">
+>>>>>>> 51152124354838c1a5bbdd1cbca878fe9bbbfa24
                 </div>
 
                 <div class="form-group">
@@ -109,41 +159,42 @@
 
 
 
-                  <center>
-                    <button type="submit" class="btn btn-primary btn-block" >Sign Up</button>
-                  </center>
-                  <hr>
-                  <p>이미 계정이 있으신가요? <a class="text-uppercase mb-0" href="/user/login">로그인하기</a></p>
-                  <p><a class="text-uppercase mb-0" href="/">홈으로</a></p>
-                </form>
+                <center>
+                  <button type="submit" class="btn btn-primary btn-block" >Sign Up</button>
+                </center>
+                <hr>
+                <p>이미 계정이 있으신가요? <a class="text-uppercase mb-0" href="/user/login">로그인하기</a></p>
+                <p><a class="text-uppercase mb-0" href="/">홈으로</a></p>
+              </form>
 
-              </div>
             </div>
           </div>
-        </section>
-
-
-
-        <div class="copyright py-4 text-center text-white">
-          <div class="container">
-            <small>Copyright &copy; Your Website 2018</small>
-          </div>
         </div>
+      </section>
 
-        <script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
-        <script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
-        <script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-        <script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
-        <script src="/public/bootstrap/js/contact_me.js"></script>
-        <script src="/public/bootstrap/js/freelancer.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-        <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-        <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
-        <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 
-      </body>
 
-      </html>
+      <div class="copyright py-4 text-center text-white">
+        <div class="container">
+          <small>Copyright &copy; Your Website 2018</small>
+        </div>
+      </div>
+
+      <script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
+      <script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+      <script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+      <script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
+      <script src="/public/bootstrap/js/contact_me.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script src="/public/bootstrap/js/freelancer.min.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+      <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+      <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+      <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+      <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+
+    </body>
+
+    </html>

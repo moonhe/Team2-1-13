@@ -50,6 +50,7 @@ module.exports = function(router, passport) {
         res.render('user_signup.ejs', {message: req.flash('signupMessage')});
     });
 
+    //개발자 문의 화면
     router.route('/user/contactDev').get(function(req, res) {
         console.log('/contactDev 패스 요청됨.');
         res.render('user_contactDev.ejs', {message: req.flash('')});
