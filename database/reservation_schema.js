@@ -88,7 +88,13 @@ SchemaObj.createSchema = function (mongoose) {
            endtime: updateData['n_endtime'],
            phone: updateData['n_phone']
          }}).exec(callback);
-      }
+      },
+      findByUsername: function (paramUsername, callback) { //find? findOne?
+        this.find({ username: paramUsername['n_username'] })
+          .populate('writer', 'name provider email')
+          .populate('comments.writer')
+          .exec(callback);
+      },
    }
 
    console.log('ReservationSchema 정의함.');

@@ -26,7 +26,13 @@ var upload = multer({
 module.exports = function(router, passport) {
   console.log('admin_passport 호출됨.');
 
-
+//관리자 검색
+  router.route('/admin/revsearch').get(function(req, res) {
+    console.log('/admin/revsearch 패스 요청됨.');
+    res.render('admin_revsearch.ejs', {
+      message: req.flash('registerMessage')
+    });
+  });
 
   // 관리자 홈 화면
   router.route('/admin/home').get(function(req, res) {

@@ -20,6 +20,9 @@ module.exports = {
 		,{file:'./revpost', path:'/admin/revlist', method:'revpost', type:'get'}
 		,{file:'./revpost', path:'/admin/updateuser/:id', method:'updaterevget', type:'get'}
 		,{file:'./revpost', path:'/admin/updateuser', method:'updaterevpost', type:'post'}
+		,{file:'./revpost', path:'/admin/revsearch/', method:'searchrevget', type:'get'}
+		,{file:'./revpost', path:'/admin/revsearch', method:'searchrevpost', type:'post'}
+		,
 	]
 
 }
