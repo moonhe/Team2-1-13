@@ -169,55 +169,6 @@ var showrevpost = function(req, res) {
 
     // 데이터베이스 객체가 초기화된 경우
    if (database.db) {
-/*
-         //예약 삭제
-          database.ReservationModel.remove(paramId, function(err, results) {
-               if (err) {
-                      console.error('게시판 글 조회 중 에러 발생 : ' + err.stack);
-
-                      res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-                  res.write('<h2>게시판 글 조회 중 에러 발생</h2>');
-                      res.write('<p>' + err.stack + '</p>');
-                  res.end();
-
-                      return;
-                  }
-
-               if (results) {
-                  console.dir(results);
-
-                  res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-
-                  // 뷰 템플레이트를 이용하여 렌더링한 후 전송
-                  var context = {
-                     title: '예약 삭제 ',
-                     posts: results,
-                     Entities: Entities
-                  };
-
-                  req.app.render('admin_index', context, function(err, html) {
-                     if (err) {
-                              console.error('응답 웹문서 생성 중 에러 발생 : ' + err.stack);
-
-                              res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-                              res.write('<h2>응답 웹문서 생성 중 에러 발생</h2>');
-                              res.write('<p>' + err.stack + '</p>');
-                              res.end();
-
-                              return;
-                          }
-
-                     console.log('응답 웹문서 : ' + html);
-                     res.end(html);
-                  });
-
-               } else {
-                  res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-                  res.write('<h2>글 조회  실패</h2>');
-                  res.end();
-               }
-            });
-*/
 
       // 1. 글 리스트
       database.ReservationModel.load(paramId, function(err, results) {
@@ -346,11 +297,6 @@ var delrevpost = function(req, res) {
 
 
 var updaterevget = function(req, res) {
-
-
-}
-/*
-var updaterevpost = function(req, res) {
    console.log('post 모듈 안에 있는 updaterevpost 호출됨.');
 
     // URL 파라미터로 전달됨
@@ -365,7 +311,7 @@ var updaterevpost = function(req, res) {
    if (database.db) {
 
          //예약 삭제
-          database.ReservationModel.update(paramId, function(err, results) {
+          database.ReservationModel.load(paramId, function(err, results) {
                if (err) {
                       console.error('게시판 글 조회 중 에러 발생 : ' + err.stack);
 
@@ -389,7 +335,7 @@ var updaterevpost = function(req, res) {
                      Entities: Entities
                   };
 
-                  req.app.render('admin_index', context, function(err, html) {
+                  req.app.render('user_revupdate', context, function(err, html) {
                      if (err) {
                               console.error('응답 웹문서 생성 중 에러 발생 : ' + err.stack);
 
@@ -419,11 +365,116 @@ var updaterevpost = function(req, res) {
    }
 
 };
-*/
+
+var updaterevpost = function(req, res) {
+   console.log('post 모듈 안에 있는 updaterevpost 호출됨.');
+
+    // URL 파라미터로 전달됨
+    //var paramId = req.body.id || req.query.id || req.params.id;
+    var updateData = {
+      id: req.body.id,
+      n_facilityname: req.body.facilityname,
+      n_starttime: req.body.starttime,
+      n_endtime: req.body.endtime,
+      n_username: req.body.username,
+      n_phone: req.body.phone
+    };
+    console.log('요청 파라미터 : \n' +
+      updateData['id'] + '\n' +
+      updateData['n_facilityname'] + '\n' +
+      updateData['n_starttime'] + '\n' +
+      updateData['n_endtime'] + '\n' +
+      updateData['n_username'] + '\n' +
+      updateData['n_phone'] + '\n'
+    );
+
+
+   var database = req.app.get('database');
+
+    // 데이터베이스 객체가 초기화된 경우
+   if (database.db) {
+
+         //예약 수정
+          database.ReservationModel.update(updateData, function(err, results) {
+               if (err) {
+                      console.error('게시판 글 조회 중 에러 발생 : ' + err.stack);
+
+                      res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+                  res.write('<h2>게시판 글 조회 중 에러 발생</h2>');
+                      res.write('<p>' + err.stack + '</p>');
+                  res.end();
+
+                      return;
+                  }
+
+               if (results) {
+                  console.dir(results);
+                  database.ReservationModel.load(updateData['id'], function(err, results) {
+                     if (err) {
+                            console.error('게시판 글 조회 중 에러 발생 : ' + err.stack);
+
+                            res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+                        res.write('<h2>게시판 글 조회 중 에러 발생</h2>');
+                            res.write('<p>' + err.stack + '</p>');
+                        res.end();
+
+                            return;
+                        }
+
+                     if (results) {
+                        console.dir(results);
+
+                        res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+
+                        // 뷰 템플레이트를 이용하여 렌더링한 후 전송
+                        var context = {
+                           title: '글 조회 ',
+                           posts: results,
+                           Entities: Entities
+                        };
+
+                        req.app.render('rev_info', context, function(err, html) {
+                           if (err) {
+                                    console.error('응답 웹문서 생성 중 에러 발생 : ' + err.stack);
+
+                                    res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+                                    res.write('<h2>응답 웹문서 생성 중 에러 발생</h2>');
+                                    res.write('<p>' + err.stack + '</p>');
+                                    res.end();
+
+                                    return;
+                                }
+
+                           console.log('응답 웹문서 : ' + html);
+                           res.end(html);
+                        });
+
+                     } else {
+                        res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+                        res.write('<h2>글 조회  실패</h2>');
+                        res.end();
+                     }
+                  });
+               } else {
+                  res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+                  res.write('<h2>글 조회  실패</h2>');
+                  res.end();
+               }
+            });
+
+   } else {
+      res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+      res.write('<h2>데이터베이스 연결 실패</h2>');
+      res.end();
+   }
+
+};
+
 
 
 module.exports.revpost = revpost;
 module.exports.addpost = addpost;
 module.exports.showrevpost = showrevpost;
 module.exports.delrevpost = delrevpost;
-//module.exports.updaterevpost = updaterevpost;
+module.exports.updaterevget = updaterevget;
+module.exports.updaterevpost = updaterevpost;

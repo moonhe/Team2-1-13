@@ -78,6 +78,16 @@ SchemaObj.createSchema = function (mongoose) {
       remove: function (id, callback){
          this.deleteOne({ _id: id })
          .exec(callback);
+      },
+      update: function (updateData, callback){
+        this.updateOne({_id: updateData['id']}, {
+          $set:
+          {username: updateData['n_username'],
+           facilityname: updateData['n_facilityname'],
+           starttime: updateData['n_starttime'],
+           endtime: updateData['n_endtime'],
+           phone: updateData['n_phone']
+         }}).exec(callback);
       }
    }
 
