@@ -92,23 +92,46 @@
             </div>
             <hr>
 
-            <!-- var UserSchema = mongoose.Schema({
-                  email: {type: String, 'default':''}
-                , hashed_password: {type: String, 'default':''}
-                , name: {type: String, index: 'hashed', 'default':''}
-                , salt: {type:String}
-                , created_at: {type: Date, index: {unique: false}, 'default': Date.now}
-                , updated_at: {type: Date, index: {unique: false}, 'default': Date.now}
-                , provider: {type: String, 'default':''}
-                , authToken: {type: String, 'default':''}
-                , linkedin: {}
-                , phone :{type: String, trim: true, 'default':''}
-                , postcode: { type: String, trim: true, 'default': '' }     // 우편번호
-                ,	roadnameaddress: { type: String, trim: true, 'default': '' }	//도로명주소
-                ,	address: { type: String, trim: true, 'default': '' } 		//상세주소
-            }); -->
+            <div class="row">
+              <div class="col-md-2 mb-2 mb-lg-0">
+                <h5>생년월일</h5>
+              </div>
+              <div class="col-md-3 mb-2 mb-lg-0 alert1 alert1-info">
+                <%=user.birth%>
+              </div>
+              <div class="col-md-1 mb-2 mb-lg-0 ">
+                <h5>성 별</h5>
+              </div>
+              <div class="col-md-1 mb-2 mb-lg-0 alert1 alert1-info ">
+                <%=user.gender%>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-md-2 mb-5 mb-lg-0">
+                <h5>전화번호</h5>
+              </div>
+              <div class="col-md-7 mb-5 mb-lg-0 alert1 alert1-info">
+                <%=user.phone%>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-md-2 mb-5 mb-lg-0">
+                <h5>주소</h5>
+              </div>
+              <div class="col-md-7 mb-5 mb-lg-0 alert1 alert1-info ">
+                <%=user.roadnameaddress%> <%=user.address%>
+              </div>
+            </div>
+            <hr>
+
             <center>
+                <a href="/user/logout" class="btn btn-default btn-sm "><h3>정보수정</h3></a>
               <a href="/user/logout" class="btn btn-default btn-sm "><h3>로그아웃</h3></a>
+                <a href="/user/logout" class="btn btn-default btn-sm "><h3>회원탈퇴</h3></a>
             </center>
           </div>
         </div>
