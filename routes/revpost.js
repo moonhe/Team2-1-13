@@ -611,6 +611,15 @@ var searchrevpost = function(req, res) {
                          }
 
                       if (results) {
+                        var context = {
+                           title: '글 목록',
+                           posts: results,
+                           page: parseInt(paramPage),
+                           pageCount: Math.ceil(count / paramPerPage),
+                           perPage: paramPerPage,
+                           totalRecords: count,
+                           size: paramPerPage
+                        };
                          console.dir('검색 결과 문서들 출력: ');
                          console.dir(results);
                                req.app.render('admin_revsearch', context, function(err, html) {
