@@ -40,6 +40,8 @@
 
 <%
 var curFacilityname = posts._doc.facilityname;
+var curUsername = posts._doc.username;
+var curPhone = posts._doc.phone;
 %>
 
 <body id="page-top">
@@ -161,13 +163,13 @@ var curFacilityname = posts._doc.facilityname;
                 <h5 class="text-uppercase mb-2 text-center">예약자 이름</h5>
               </div>
               <div class="col-lg-2 col-sm4">
-                <input type="text" class="form-control" name="username" value="홍길동">
+                <input type="text" class="form-control" name="username" value="<%= curUsername%>">
               </div>
               <div class="col-lg-3 col-sm-4">
                 <h5 class="text-uppercase mb-2 text-center">예약자 전화번호</h5>
               </div>
               <div class="col-lg-2 col-sm4">
-                <input type="text" class="form-control" name="phone" value="010-7738-2273">
+                <input type="text" class="form-control" name="phone" value="<%=curPhone%>"">
               </div>
             </div>
             <hr>

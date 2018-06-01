@@ -91,7 +91,8 @@ var curIntro = posts._doc.intro;
             <h2 class="text-uppercase mb-0 text-center">스터디룸 정보</h1>
               <hr>
               <div class="row">
-                <div class="col-lg-3 col-sm-4">
+                <div class=" col-lg-3 col-sm-4">
+                  <br><br>
                   <img id="prev_View_area" src="/<%=curImagedir%>" style='position:relative; width: 200px; height: 200px; color: black;  border: 0px solid green ; dispaly: inline; '>
                 </div>
                 <div class="col-lg-8 col-sm-8">
@@ -99,7 +100,7 @@ var curIntro = posts._doc.intro;
                     <div class="col-lg-4 col-sm-4">
                       <h5><center>스터디룸 이름</center></h5>
                     </div>
-                    <div class="col-lg-6 col-sm-4">
+                      <div class="alert1 alert1-success col-lg-6 col-sm-4">
                       <h6><%= curFacilityname %></h6>
                     </div>
                   </div>
@@ -108,7 +109,7 @@ var curIntro = posts._doc.intro;
                     <div class="col-lg-4 col-sm-4">
                       <h5><center>스터디룸 위치</center></h5>
                     </div>
-                    <div class="col-lg-6 col-sm-4">
+                    <div class="alert1 alert1-success col-lg-6 col-sm-4">
                       <h6><%= curPostcode %></h6>
                       <h6><%= curRoadaddress %></h6>
                       <h6><%= curAddress %></h6>
@@ -119,7 +120,7 @@ var curIntro = posts._doc.intro;
                     <div class="col-lg-4 col-sm-4">
                       <h5><center>전화 번호</center></h5>
                     </div>
-                    <div class="col-lg-6 col-sm-4">
+                    <div class="alert1 alert1-success col-lg-6 col-sm-4">
                       <h6><%= curNumber %></h6>
                     </div>
                   </div>
@@ -134,13 +135,13 @@ var curIntro = posts._doc.intro;
                 <div class="col-lg-3 col-sm-4">
                   <h5><center>개방시간</center></h5>
                 </div>
-                <div class="col-lg-2 col-sm-2">
+                <div class="alert1 alert1-success col-lg-2 col-sm-2">
                   <h6><center><%= curStartTime %></center></h6>
                 </div>
                 <div class="col-lg-3 col-sm-4">
                   <h5><center>부터</center></h5>
                 </div>
-                <div class="col-lg-2 col-sm-2">
+                <div class="alert1 alert1-success col-lg-2 col-sm-2">
                   <h6><center><%= curEndTime %></center></h6>
                 </div>
               </div>
@@ -150,7 +151,7 @@ var curIntro = posts._doc.intro;
                 <div class="col-lg-3 col-sm-4">
                   <h5><center>시설 소개</center></h5>
                 </div>
-                <div class="col-lg-8 col-sm-8">
+                <div class="alert1 alert1-success col-lg-8 col-sm-8">
                   <h6><%= curIntro %></h6>
               </div>
             </div>
@@ -160,7 +161,7 @@ var curIntro = posts._doc.intro;
                   <div class="col-lg-3 col-sm-4">
                     <h5><center>편의 시설</center></h5>
                   </div>
-                  <div class="col-lg-8 col-sm-8">
+                  <div class="alert1 alert1-success col-lg-8 col-sm-8">
                     <h6><center><%= curConve %></center></h6>
                   </div>
                 </div>
@@ -170,7 +171,7 @@ var curIntro = posts._doc.intro;
                 <div class="col-lg-3 col-sm-4">
                   <h5><center>최대 인원</center></h5>
                 </div>
-                <div class="col-lg-3 col-sm-2">
+                <div class="alert1 alert1-success col-lg-8 col-sm-2">
                   <h6><center><%= curPeople %></center></h6>
                 </div>
               </div>
