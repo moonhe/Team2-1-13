@@ -228,8 +228,8 @@ var showpost = function(req, res) {
 var searchroomget = function(req, res) {
    console.log('roompost 모듈 안에 있는 searchroomget 호출됨!!!!');
     // URL 파라미터로 전달됨
-     var paramCon = req.body.con || req.query.con || req.params.con;
-
+  //var paramCon = req.body.con || req.query.con || req.params.con;
+    console.log('요청 파라미터 : ' + paramCon);
    var database = req.app.get('database');
 
     // 데이터베이스 객체가 초기화된 경우

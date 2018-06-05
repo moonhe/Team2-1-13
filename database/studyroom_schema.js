@@ -95,7 +95,7 @@ SchemaObj.createSchema = function (mongoose) {
 				.exec(callback);
 		},
 		findByFacilityname: function (paramFacilityname, callback) { //find? findOne?
-			this.find({ facilityname: paramFacilityname['paramFacilityname'] })
+			this.find({ facilityname: paramFacilityname['n_facilityname'] })
 				.populate('writer', 'name provider email')
 				.populate('comments.writer')
 				.exec(callback);
