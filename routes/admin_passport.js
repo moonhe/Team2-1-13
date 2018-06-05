@@ -132,6 +132,18 @@ module.exports = function(router, passport) {
   router.route('/room/reserve/:id').get(function(req, res) {
     console.log('/room/reserve 패스 요청됨.');
 
+    if (!req.user) {
+    //if(!req.user[1].auth != 'auth'){
+        console.log('사용자 인증 안된 상태임.');
+        res.writeHead('200', {
+          'Content-Type': 'text/html;charset=utf8'
+        });
+        res.write('<script>alert("로그인이 필요합니다")</script>');
+        res.write('<script>window.location.href="/user/login"</script>');
+        res.end();
+        return;
+      }
+else{
         // URL 파라미터로 전달됨
         var paramId = req.body.id || req.query.id || req.params.id;
 
@@ -183,6 +195,8 @@ module.exports = function(router, passport) {
           res.write('<h2>데이터베이스 연결 실패</h2>');
           res.end();
        }
+
+     }
   });
 
 
