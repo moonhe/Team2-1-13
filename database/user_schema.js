@@ -118,9 +118,29 @@ Schema.createSchema = function(mongoose) {
 	});
 
   UserSchema.statics = {
+		load: function (id, callback) {
+			this.findOne({ _id: id })
+
+			.populate('writer', 'name provider email')
+			.populate('comments.writer')
+			.exec(callback);
+		},
 		remove: function (id, callback){
 			this.deleteOne({ _id: id })
 			.exec(callback);
+		},
+		update: function (updateData, callback){
+			this.updateOne({_id: updateData['id']}, {
+				$set:
+				{
+				username: updateData['n_username'],
+				birth: updateData['n_birth'],
+				gender: updateData['n_gender'],
+				phone: updateData['n_phone'],
+				postcode: updateData['n_postcode'],
+				roadnameaddress: updateData['n_roadnameaddress'],
+				address: updateData['n_address']
+			}}).exec(callback);
 		}
 	};
 
