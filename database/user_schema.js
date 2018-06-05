@@ -117,6 +117,12 @@ Schema.createSchema = function(mongoose) {
 	      .exec(callback);
 	});
 
+  UserSchema.statics = {
+		remove: function (id, callback){
+			this.deleteOne({ _id: id })
+			.exec(callback);
+		}
+	};
 
 	// 모델을 위한 스키마 등록
 	mongoose.model('User', UserSchema);

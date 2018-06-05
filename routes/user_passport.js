@@ -1,9 +1,9 @@
 /**
- * 패스포트 라우팅 함수 정의
- *
- * @date 2016-11-10
- * @author Mike
- */
+* 패스포트 라우팅 함수 정의
+*
+* @date 2016-11-10
+* @author Mike
+*/
 
 module.exports = function(router, passport) {
     console.log('user_passport 호출됨.');
@@ -96,6 +96,41 @@ module.exports = function(router, passport) {
         console.log('/user/logout 패스 요청됨.');
         req.logout();
         res.redirect('/');
+    });
+
+    router.route('/user/delete').post(function(req, res){
+      console.log('/user/delete 패스 요청됨.');
+      // URL 파라미터로 전달됨
+      var paramId = req.body.id || req.query.id || req.params.id;
+
+      console.log('요청 파라미터 : ' + paramId);
+      var database = req.app.get('database');
+      // 데이터베이스 객체가 초기화된 경우
+     if (database.db) {
+
+       //예약 삭제
+        database.UserModel.remove(paramId, function(err, results) {
+             if (err) {
+                    console.error('사용자 삭제 중 에러 발생 : ' + err.stack);
+                    return;
+              }
+
+             if (results) {
+                console.dir(results);
+                // 뷰 템플레이트를 이용하여 렌더링한 후 전송
+                var context = {
+                   title: '사용자 삭제 ',
+                   posts: results,
+                   Entities: Entities
+                };
+             } else {}
+          });
+
+     } else {
+        //res.write('<h2>데이터베이스 연결 실패</h2>');
+     }
+      req.logout();
+      res.redirect('/');
     });
 
     // 로그인 인증

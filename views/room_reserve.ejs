@@ -40,6 +40,8 @@
 
 <%
 var curFacilityname = posts._doc.facilityname;
+var curUsername = posts._doc.username;
+var curPhone = posts._doc.phone;
 %>
 
 <body id="page-top">
@@ -57,8 +59,7 @@ var curFacilityname = posts._doc.facilityname;
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login"> 로그인 및 회원가입</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search?page=0&perPage=10">스터디룸 찾아보기</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/BookBuy.jsp">스터디룸 예약하기</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search?page=0&perPage=10">스터디룸 조회 및 예약</a></li>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">마이페이지</a></li>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/contactDev.jsp">개발자 문의</a></li>
         </ul>
@@ -161,13 +162,13 @@ var curFacilityname = posts._doc.facilityname;
                 <h5 class="text-uppercase mb-2 text-center">예약자 이름</h5>
               </div>
               <div class="col-lg-2 col-sm4">
-                <input type="text" class="form-control" name="username" value="홍길동">
+                <input type="text" class="form-control" name="username" value="<%=user_name%>" readonly>
               </div>
               <div class="col-lg-3 col-sm-4">
                 <h5 class="text-uppercase mb-2 text-center">예약자 전화번호</h5>
               </div>
               <div class="col-lg-2 col-sm4">
-                <input type="text" class="form-control" name="phone" value="010-7738-2273">
+                <input type="text" class="form-control" name="phone" value="<%=curPhone%>"">
               </div>
             </div>
             <hr>
