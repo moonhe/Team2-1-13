@@ -74,17 +74,17 @@ SchemaObj.createSchema = function (mongoose) {
 			var criteria = options.criteria || {};
 
 			this.find(criteria)
-				.populate('writer', 'name provider email')
-				.sort({ 'created_at': -1 })
-				.limit(Number(options.perPage))
-				.skip(options.perPage * options.page)
-				.exec(callback);
+			.populate('writer', 'name provider email')
+			.sort({ 'created_at': -1 })
+			.limit(Number(options.perPage))
+			.skip(options.perPage * options.page)
+			.exec(callback);
 		},
 		findByFacilityname: function (paramFacilityname, callback) { //find? findOne?
 			this.find({ facilityname: paramFacilityname['n_facilityname'] })
-				.populate('writer', 'name provider email')
-				.populate('comments.writer')
-				.exec(callback);
+			.populate('writer', 'name provider email')
+			.populate('comments.writer')
+			.exec(callback);
 		}
 	}
 
