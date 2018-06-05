@@ -19,7 +19,7 @@ var passport = require('passport');
 var flash = require('connect-flash');
 
 
-// 모듈로 분리한 설정 파일 불러오기ÇÇㄲ
+// 모듈로 분리한 설정 파일 불러오기ÇÇ
 var config = require('./config/config');
 
 // 모듈로 분리한 데이터베이스 파일 불러오기

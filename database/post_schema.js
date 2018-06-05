@@ -1,9 +1,9 @@
 /**
- * 게시판을 위한 데이터베이스 스키마를 정의하는 모듈
- *
- * @date 2016-11-10
- * @author Mike
- */
+* 게시판을 위한 데이터베이스 스키마를 정의하는 모듈
+*
+* @date 2016-11-10
+* @author Mike
+*/
 
 var utils = require('../utils/utils');
 
@@ -66,14 +66,15 @@ SchemaObj.createSchema = function (mongoose) {
 		// ID로 글 찾기
 		load: function (id, callback) {
 			this.findOne({ _id: id })
-				.populate('writer', 'name provider email')
-				.populate('comments.writer')
-				.exec(callback);
+			.populate('writer', 'name provider email')
+			.populate('comments.writer')
+			.exec(callback);
 		},
 		list: function (options, callback) {
 			var criteria = options.criteria || {};
 
 			this.find(criteria)
+<<<<<<< HEAD
 				.populate('writer', 'name provider email')
 				.sort({ 'created_at': -1 })
 				.limit(Number(options.perPage))
@@ -85,6 +86,13 @@ SchemaObj.createSchema = function (mongoose) {
 				.populate('writer', 'name provider email')
 				.populate('comments.writer')
 				.exec(callback);
+=======
+			.populate('writer', 'name provider email')
+			.sort({ 'created_at': -1 })
+			.limit(Number(options.perPage))
+			.skip(options.perPage * options.page)
+			.exec(callback);
+>>>>>>> 826cc87e34c0d478c78159f62f48ec92546955c6
 		}
 	}
 
