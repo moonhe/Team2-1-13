@@ -14,6 +14,8 @@ module.exports = {
 		,{file:'./post', path:'/user/search/:id', method:'showpost', type:'get'}
 		,{file:'./post', path:'/user/search', method:'listpost', type:'post'}
 		,{file:'./post', path:'/user/search', method:'listpost', type:'get'}
+		,{file:'./post', path:'/user/roomsearch', method:'searchroompost', type:'post'}
+		,{file:'./post', path:'/user/roomsearch', method:'searchroomget', type:'get'}
 		,{file:'./revpost', path:'/admin/revlist/:id', method:'showrevpost', type:'get'}
 		,{file:'./revpost', path:'/admin/deleteuser/:id', method:'delrevpost', type:'get'}
 		,{file:'./revpost', path:'/admin/revlist', method:'revpost', type:'post'}
