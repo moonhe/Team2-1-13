@@ -44,7 +44,7 @@
     </nav>
 
     <br><br>
-  <form action="/user/roomsearch" method="post">
+
     <section class="portfolio bg-third ">
       <div class="container">
       </div>
@@ -68,7 +68,7 @@
                     </select>
                 </div>
                 <div class="col-md-3m  mb-lg-0">
-                  <input type="text" class="form-control" placeholder="Search" name="con">
+                  <input type="text" class="form-control" placeholder="Search" name="paramCon">
 
                 </div>
                 <div class="col-md-1m  mb-lg-0">
@@ -108,7 +108,7 @@
 
                             %>
                             <tr>
-                              <td><a href="/user/list/<%=posts[i]._id %>"><%=curFacilityname %></a></td>
+                              <td><a href="/user/search/<%=posts[i]._id %>"><%=curFacilityname %></a></td>
                               <td> <%=curRoadaddress%>  <%=curAddress%> </td>
                               <td class="hidden-xs"><%=curPeople%></td>
                               <td><%=curStarttime%> 부터 <%=curEndtime%></td>
@@ -206,7 +206,7 @@
             </div>
           </div>
         </section>
-      </form>
+
 
 
         <div class="copyright py-4 text-center text-white">
