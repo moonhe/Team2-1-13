@@ -67,86 +67,119 @@
     <div class="container">
       <img class="img-fluid mb-5 d-block mx-auto" src="/public/bootstrap/img/userprofile.png" alt="">
       <div class="row">
-        <div class="col-md-2 mb-5 mb-lg-0">
-        </div>
-        <div class="col-md-7 mb-5 mb-lg-0">
+        <div class="col-md-12 mb-5 mb-lg-0">
           <h2 class="text-uppercase mb-0 text-center">사용자 프로필</h1>
-            <hr>
-            <div class="row">
-              <div class="col-md-2 mb-5 mb-lg-0">
-                <h5>아이디</h5>
+            <br>
+            <div class ="row">
+              <div class="col-md-7 mb-5 mb-lg-0">
+                <hr>
+                <div class="row">
+                  <div class="col-md-2 mb-5 mb-lg-0">
+                    <h5>아이디</h5>
+                  </div>
+                  <div class="col-md-7 mb-5 mb-lg-0 alert1 alert1-info">
+                    <%=user.email%>
+                  </div>
+                </div>
+
+                <hr>
+                <div class="row">
+                  <div class="col-md-2 mb-5 mb-lg-0">
+                    <h5>이름</h5>
+                  </div>
+                  <div class="col-md-7 mb-5 mb-lg-0 alert1 alert1-info">
+                    <%=user.name%>
+                  </div>
+                </div>
+                <hr>
+
+                <div class="row">
+                  <div class="col-md-2 mb-2 mb-lg-0">
+                    <h5>생년월일</h5>
+                  </div>
+                  <div class="col-md-3 mb-2 mb-lg-0 alert1 alert1-info">
+                    <%=user.birth%>
+                  </div>
+                  <div class="col-md-1 mb-2 mb-lg-0 ">
+                    <h5>성 별</h5>
+                  </div>
+                  <div class="col-md-1 mb-2 mb-lg-0 alert1 alert1-info ">
+                    <%=user.gender%>
+                  </div>
+                </div>
+                <hr>
+
+                <div class="row">
+                  <div class="col-md-2 mb-5 mb-lg-0">
+                    <h5>전화번호</h5>
+                  </div>
+                  <div class="col-md-7 mb-5 mb-lg-0 alert1 alert1-info">
+                    <%=user.phone%>
+                  </div>
+                </div>
+                <hr>
+
+                <div class="row">
+                  <div class="col-md-2 mb-5 mb-lg-0">
+                    <h5>주소</h5>
+                  </div>
+                  <div class="col-md-7 mb-5 mb-lg-0 alert1 alert1-info ">
+                    <%=user.roadnameaddress%> <%=user.address%>
+                  </div>
+                </div>
+                <hr>
               </div>
-              <div class="col-md-7 mb-5 mb-lg-0 alert1 alert1-info">
-                <%=user.email%>
+
+              <div class="col-md-4 mb-5 mb-lg-0">
+                <hr>
+                <div class="row">
+                  <div class="col-md-3 mb-5 mb-lg-0">
+                    <h5>고객등급</h5>
+                  </div>
+                  <div class="col-md-5 mb-5 mb-lg-0  alert1 alert1-info">
+                    하아앗
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-3 mb-5 mb-lg-0">
+                    <h5>패널티</h5>
+                  </div>
+                  <div class="col-md-5 mb-5 mb-lg-0  alert1 alert1-info">
+                    하아앗
+                  </div>
+                </div>
+                <hr>
+
+
+                <center>
+                  <br>
+                  <div class="col-md-6 mb-5 mb-lg-0">
+                    <a href="/user/logout" class="btn btn-primary btn-block ">정보수정</a>
+                  </div>
+                  <br>
+                    <div class="col-md-6 mb-5 mb-lg-0" >
+                  <a href="/user/logout" class="btn btn-primary btn-block">로그아웃</a>
+                </div>
+                  <br>
+                  <form action="/user/delete" method="post">
+                    <div class="col-md-7 mb-5 mb-lg-0">
+                    <input type="hidden" value="<%=user._id%>" name="id"/>
+                    <input type="submit" class="btn btn-primary btn-block " value="회원탈퇴"/>
+                    </div>
+                  </form>
+                </center>
               </div>
             </div>
 
-            <hr>
-            <div class="row">
-              <div class="col-md-2 mb-5 mb-lg-0">
-                <h5>이름</h5>
-              </div>
-              <div class="col-md-7 mb-5 mb-lg-0 alert1 alert1-info">
-                <%=user.name%>
-              </div>
-            </div>
-            <hr>
 
-            <div class="row">
-              <div class="col-md-2 mb-2 mb-lg-0">
-                <h5>생년월일</h5>
-              </div>
-              <div class="col-md-3 mb-2 mb-lg-0 alert1 alert1-info">
-                <%=user.birth%>
-              </div>
-              <div class="col-md-1 mb-2 mb-lg-0 ">
-                <h5>성 별</h5>
-              </div>
-              <div class="col-md-1 mb-2 mb-lg-0 alert1 alert1-info ">
-                <%=user.gender%>
-              </div>
-            </div>
-            <hr>
-
-            <div class="row">
-              <div class="col-md-2 mb-5 mb-lg-0">
-                <h5>전화번호</h5>
-              </div>
-              <div class="col-md-7 mb-5 mb-lg-0 alert1 alert1-info">
-                <%=user.phone%>
-              </div>
-            </div>
-            <hr>
-
-            <div class="row">
-              <div class="col-md-2 mb-5 mb-lg-0">
-                <h5>주소</h5>
-              </div>
-              <div class="col-md-7 mb-5 mb-lg-0 alert1 alert1-info ">
-                <%=user.roadnameaddress%> <%=user.address%>
-              </div>
-            </div>
-            <hr>
-
-            <center>
-              <a href="/user/logout" class="btn btn-default btn-sm "><h3>정보수정</h3></a>
-              <a href="/user/logout" class="btn btn-default btn-sm "><h3>로그아웃</h3></a>
-              <form action="/user/delete" method="post">
-                <input type="hidden" value="<%=user._id%>" name="id"/>
-                <input type="submit" class="btn btn-default btn-sm " value="회원탈퇴"/>
-                <!--<a href="/user/logout/<%=user._id%>" class="btn btn-default btn-sm "><h3>회원탈퇴</h3></a>-->
-              </form>
+          </div>
+          <br><br><br><br><br><br>
+          <div style='width:45%; float:left'>
+            <center><br><br>
+              <h5>예약목록</h5>
             </center>
-          </div>
-        </div>
-
-        <div = "row">
-          <div class="col-md-2 mb-5 mb-lg-0">
-          </div>
-
-    <div class="col-md-5 mb-5 mb-lg-0">
-          <table class="table table-hover">
-
+            <table style='width:100%' class="table table-hover" >
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -156,52 +189,93 @@
                 </tr>
               </thead>
 
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+
+          <div style='width:10%; float:left'>
+            <p style='width:100%'>
+            </p>
+          </div>
+
+          <div style='width:45%; float:left'>
+            <center><br><br>
+              <h5>반납목록</h5>
+            </center>
+            <table style='width:100%' class="table table-hover" >
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <br><br><br><br><br><br><br><br><br><br>
         </div>
       </div>
+    </section>
+
+
+
+
+
+
+
+    <div class="copyright py-4 text-center text-white">
+      <div class="container">
+        <small>Copyright &copy; Your Website 2018</small>
+      </div>
     </div>
-  </section>
 
+    <script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
+    <script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
+    <script src="/public/bootstrap/js/contact_me.js"></script>
+    <script src="/public/bootstrap/js/freelancer.min.js"></script>
 
+  </body>
 
-
-
-
-
-  <div class="copyright py-4 text-center text-white">
-    <div class="container">
-      <small>Copyright &copy; Your Website 2018</small>
-    </div>
-  </div>
-
-  <script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
-  <script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-  <script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
-  <script src="/public/bootstrap/js/contact_me.js"></script>
-  <script src="/public/bootstrap/js/freelancer.min.js"></script>
-
-</body>
-
-</html>
+  </html>
