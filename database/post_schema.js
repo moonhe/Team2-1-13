@@ -74,7 +74,6 @@ SchemaObj.createSchema = function (mongoose) {
 			var criteria = options.criteria || {};
 
 			this.find(criteria)
-<<<<<<< HEAD
 				.populate('writer', 'name provider email')
 				.sort({ 'created_at': -1 })
 				.limit(Number(options.perPage))
@@ -86,13 +85,6 @@ SchemaObj.createSchema = function (mongoose) {
 				.populate('writer', 'name provider email')
 				.populate('comments.writer')
 				.exec(callback);
-=======
-			.populate('writer', 'name provider email')
-			.sort({ 'created_at': -1 })
-			.limit(Number(options.perPage))
-			.skip(options.perPage * options.page)
-			.exec(callback);
->>>>>>> 826cc87e34c0d478c78159f62f48ec92546955c6
 		}
 	}
 
