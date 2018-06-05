@@ -13,7 +13,7 @@ SchemaObj.createSchema = function (mongoose) {
 
 	// 글 스키마 정의
 	var PostSchema = mongoose.Schema({
-		title: { type: String, trim: true, 'default': '' },		// 글 제목
+		title: { type: String, trim: true, 'defaault': '' },		// 글 제목
 		contents: { type: String, trim: true, 'default': '' },						// 글 내용
 		writer: { type: mongoose.Schema.ObjectId, ref: 'users6' },
 		createdDate: {type: Date, 'default': Date.now},							// 글쓴 사람
@@ -78,6 +78,12 @@ SchemaObj.createSchema = function (mongoose) {
 			.sort({ 'created_at': -1 })
 			.limit(Number(options.perPage))
 			.skip(options.perPage * options.page)
+			.exec(callback);
+		},
+		findByFacilityname: function (paramFacilityname, callback) { //find? findOne?
+			this.find({ facilityname: paramFacilityname['n_facilityname'] })
+			.populate('writer', 'name provider email')
+			.populate('comments.writer')
 			.exec(callback);
 		}
 	}

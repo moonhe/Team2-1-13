@@ -93,6 +93,12 @@ SchemaObj.createSchema = function (mongoose) {
 				.limit(Number(options.perPage))
 				.skip(options.perPage * options.page)
 				.exec(callback);
+		},
+		findByFacilityname: function (paramFacilityname, callback) { //find? findOne?
+			this.find({ facilityname: paramFacilityname['n_facilityname'] })
+				.populate('writer', 'name provider email')
+				.populate('comments.writer')
+				.exec(callback);
 		}
 	}
 

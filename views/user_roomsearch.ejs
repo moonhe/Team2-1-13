@@ -34,16 +34,17 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login"> 로그인 및 회원가입</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search?page=0&perPage=10">스터디룸 조회 및 예약</a></li>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search?page=0&perPage=10">스터디룸 찾아보기</a></li>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/BookBuy.jsp">스터디룸 예약하기</a></li>
             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">마이페이지</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/contactDev">개발자 문의</a></li>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/contactDev.jsp">개발자 문의</a></li>
           </ul>
         </div>
       </div>
     </nav>
 
     <br><br>
-  <form action="/user/roomsearch" method="post">
+
     <section class="portfolio bg-third ">
       <div class="container">
       </div>
@@ -67,7 +68,7 @@
                     </select>
                 </div>
                 <div class="col-md-3m  mb-lg-0">
-                  <input type="text" class="form-control" placeholder="Search" name="con">
+                  <input type="text" class="form-control" placeholder="Search" name="paramCon">
 
                 </div>
                 <div class="col-md-1m  mb-lg-0">
@@ -107,7 +108,7 @@
 
                             %>
                             <tr>
-                              <td><a href="/user/list/<%=posts[i]._id %>"><%=curFacilityname %></a></td>
+                              <td><a href="/user/search/<%=posts[i]._id %>"><%=curFacilityname %></a></td>
                               <td> <%=curRoadaddress%>  <%=curAddress%> </td>
                               <td class="hidden-xs"><%=curPeople%></td>
                               <td><%=curStarttime%> 부터 <%=curEndtime%></td>
@@ -120,7 +121,7 @@
 
 
 
-<center>
+
                         <div class="tiny ui basic buttons" style="margin:0 auto;">
                           <%
                           if (page > 0) {
@@ -194,8 +195,6 @@
                           %>
                         </div>
 
-                        </center>
-
 
 
 
@@ -207,7 +206,7 @@
             </div>
           </div>
         </section>
-      </form>
+
 
 
         <div class="copyright py-4 text-center text-white">
