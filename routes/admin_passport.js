@@ -449,7 +449,14 @@ post.savePost(function(err, result) {
 
 
   console.log("예약 데이터 추가함.");
-  return res.redirect('/admin/registSuccess');
+  return res.redirect('/user/reserveSuccess');
+});
+
+router.route('/user/reserveSuccess').get(function(req, res) {
+  console.log('/reserveSuccess 패스 요청됨.');
+  res.render('user_reserveSuccess.ejs', {
+    message: req.flash('registerMessage')
+  });
 });
 
 
