@@ -592,17 +592,13 @@ var searchrevpost = function(req, res) {
                 };
 
 
-                // 검색 조건 설정
+                // 예약 검색 조건 설정
                 var selcon = req.body.selcon;
-
-                // 검색 조건 비교
-                if(selcon){
                   var searchData = {
-                  n_inputcon: req.body.inputcon,
+                  n_inputcon: req.body.inputcon
                   };
                   console.log('선택된 검색 조건:' + selcon);
                   console.log('입력된 검색 조건 :' +searchData['n_inputcon']);
-                }
 
                 // 조건에 따른 검색 메소드 호출
                   if(selcon == "예약자 이름"){
@@ -643,7 +639,6 @@ var searchrevpost = function(req, res) {
                               res.end(html);
                            });
                   });
-
                  }
              });
        });

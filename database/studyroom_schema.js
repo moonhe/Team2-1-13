@@ -95,7 +95,26 @@ SchemaObj.createSchema = function (mongoose) {
 				.exec(callback);
 		},
 		findByFacilityname: function (paramFacilityname, callback) { //find? findOne?
-			this.find({ facilityname: paramFacilityname['n_facilityname'] })
+			this.find({ facilityname: {$regex : paramFacilityname['n_inputcon']} })
+				.populate('writer', 'name provider email')
+				.populate('comments.writer')
+				.exec(callback);
+		},
+		findByAddress: function (paramAddress, callback) { //find? findOne?
+			this.find({ roadnameaddress:{$regex : paramAddress['n_inputcon']} })
+				.populate('writer', 'name provider email')
+				.populate('comments.writer')
+				.exec(callback);
+		},
+		findByPeople: function (paramPeople, callback) { //find? findOne?
+	console.log('수용 인원 find 쿼리 호출됨');
+			this.find({ people: paramPeople['n_inputcon']  })
+				.populate('writer', 'name provider email')
+				.populate('comments.writer')
+				.exec(callback);
+		},
+		findByConve: function (paramConve, callback) { //find? findOne?
+			this.find({ conve : {$regex : paramConve['n_inputcon']} })
 				.populate('writer', 'name provider email')
 				.populate('comments.writer')
 				.exec(callback);
