@@ -223,6 +223,29 @@ else{
 
 
 
+
+  router.route('/admin/statistics').get(function(req, res) {
+    console.log('/statistics 패스 요청됨.');
+    if (!req.user || req.session.auth_admin != "1") {
+      console.log('사용자 인증 안된 상태임.');
+      res.render('admin_login.ejs', {
+        message: req.flash('loginMessage')
+      });
+    } else {
+      console.log('사용자 인증된 상태임.');
+      console.log('/statistics 패스 요청됨.');
+      console.dir(req.user);
+
+      res.render('admin_statistics.ejs', {
+        message: req.flash('registerMessage')
+      })
+    }
+  });
+
+
+
+
+
   //시설 예약 화면
   router.route('/room/reserve').get(function(req, res) {
     console.log('/room/reserve get 요청됨.');
