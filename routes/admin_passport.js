@@ -129,6 +129,7 @@ module.exports = function(router, passport) {
     });
   });
 
+// 스터디룸 예약
   router.route('/room/reserve/:id').get(function(req, res) {
     console.log('/room/reserve 패스 요청됨.');
 
@@ -383,7 +384,7 @@ router.post('/room/reserve', function(req, res){
   console.log('user_passport 모듈 안에 있는 /room/reserve호출됨.');
   var paramdate = req.body.date || req.query.date;
   var paramstarttime = req.body.starttime || req.query.starttime;
-  var paramendtime = req.body.endtime || req.query.endtime
+  var paramendtime = req.body.endtime || req.query.endtime;
   var paramfacilityname = req.body.facilityname || req.query.facilityname;
   var paramusername = req.body.username || req.query.username;
   var paramphone = req.body.phone || req.query.phone;
@@ -449,7 +450,14 @@ post.savePost(function(err, result) {
 
 
   console.log("예약 데이터 추가함.");
-  return res.redirect('/admin/registSuccess');
+  return res.redirect('/user/reserveSuccess');
+});
+
+router.route('/user/reserveSuccess').get(function(req, res) {
+  console.log('/reserveSuccess 패스 요청됨.');
+  res.render('user_reserveSuccess.ejs', {
+    message: req.flash('registerMessage')
+  });
 });
 
 

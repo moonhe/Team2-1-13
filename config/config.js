@@ -8,6 +8,7 @@ module.exports = {
 		,{file:'./post_schema', collection:'post', schemaName:'PostSchema', modelName:'PostModel'}
 		,{file:'./studyroom_schema', collection:'studyroom', schemaName:'StudySchema', modelName:'StudyModel'}
 		,{file:'./reservation_schema', collection:'reservation', schemaName:'ReservationSchema', modelName:'ReservationModel'}
+		,{file:'./contactDev_schema', collection: 'contactDev', schemaName:'ContactDevSchema', modelName:'ContactDevModel'}
 	],
 	route_info: [
 		{file:'./post', path:'/process/addpost', method:'addpost', type:'post'}
