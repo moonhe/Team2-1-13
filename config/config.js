@@ -20,10 +20,8 @@ module.exports = {
 		,{file:'./revpost', path:'/admin/deleteuser/:id', method:'delrevpost', type:'get'}
 		,{file:'./revpost', path:'/admin/revlist', method:'revpost', type:'post'}
 		,{file:'./revpost', path:'/admin/revlist', method:'revpost', type:'get'}
-
 		,{file:'./post', path:'/user/roomsearch', method:'searchroomget', type:'post'}
 		,{file:'./post', path:'/user/roomsearch', method:'searchroomget', type:'get'}
-
 		,{file:'./revpost', path:'/admin/updateuser/:id', method:'updaterevget', type:'get'}
 		,{file:'./revpost', path:'/admin/updateuser', method:'updaterevpost', type:'post'}
 		,{file:'./revpost', path:'/admin/revsearch/', method:'searchrevget', type:'get'}

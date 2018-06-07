@@ -62,6 +62,7 @@
 
 
               <form action="/user/update" method="post" >
+                  <input type="hidden" name="id" value="<%= user__id %>"/>
                 <div class="form-group">
                   <h5 class="text-uppercase mb-0">이메일</h5>
                   <input type="text" class="form-control" name="email" placeholder="abc@email.com" readonly>

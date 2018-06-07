@@ -133,7 +133,7 @@ Schema.createSchema = function(mongoose) {
 			this.updateOne({_id: updateData['id']}, {
 				$set:
 				{
-				username: updateData['n_username'],
+				name: updateData['n_username'],
 				birth: updateData['n_birth'],
 				gender: updateData['n_gender'],
 				phone: updateData['n_phone'],

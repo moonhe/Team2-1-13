@@ -175,9 +175,9 @@ module.exports = function(router, passport) {
 
                if (results) {
                   console.dir(results);
-
                   // 뷰 템플레이트를 이용하여 렌더링한 후 전송
                   session_obj = req.session;
+                  user__id = session_obj.auth__id;
                   user_name = session_obj.auth_name;
                   user_phone = session_obj.auth_phone;
                   user_birth = session_obj.auth_birth;
@@ -189,6 +189,7 @@ module.exports = function(router, passport) {
                      title: '사용자 수정 ',
                      posts: results,
                      //Entities: Entities,
+                     user__id : user__id,
                      user_name: user_name,
                      user_phone: user_phone,
                      user_birth: user_birth,
@@ -255,71 +256,10 @@ module.exports = function(router, passport) {
                             console.error('사용자 수정 중 에러 발생 : ' + err.stack);
                             return;
                       }
-
                      if (results) {
-                        console.dir(results);
-/*
-                        // 뷰 템플레이트를 이용하여 렌더링한 후 전송
-                        session_obj = req.session;
-                        user_name = session_obj.auth_name;
-                        user_phone = session_obj.auth_phone;
-                        user_birth = session_obj.auth_birth;
-                        user_gender = session_obj.auth_gender;
-                        user_postcode = session_obj.auth_postcode;
-                        user_roadnameaddress = session_obj.auth_roadnameaddress;
-                        user_address = session_obj.auth_address;
-                        var context = {
-                           title: '사용자 수정 ',
-                           posts: results,
-                           //Entities: Entities,
-                           user_name: user_name,
-                           user_phone: user_phone,
-                           user_birth: user_birth,
-                           user_gender: user_gender,
-                           user_postcode: user_postcode,
-                           user_roadnameaddress: user_roadnameaddress,
-                           user_address: user_address
-                        };
-*/
-
-                    database.ReservationModel.load(updateData['id'], function(err, results) {
-                       if (err) {
-                              console.error('게시판 글 조회 중 에러 발생 : ' + err.stack);
-
-                              res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-                          res.write('<h2>게시판 글 조회 중 에러 발생</h2>');
-                              res.write('<p>' + err.stack + '</p>');
-                          res.end();
-
-                              return;
-                          }
-
-                       if (results) {
                           console.dir(results);
-
-                          res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-
-      // 뷰 템플레이트를 이용하여 렌더링한 후 전송
-      var context = {
-         title: '회원 수정 ',
-         posts: results,
-         Entities: Entities
-      };
-
-
-                        /*
-                        if (!req.user) {
-                            console.log('사용자 인증 안된 상태임.');
-                            res.render('user_index.ejs', {login_success:false});
-                        } else {
-                            console.log('사용자 인증된 상태임.');
-                            res.render('user_updatesignup.ejs', context, {login_success:true});
-                        }
-                        */
-                        res.render('user_profile.ejs', context);
-                     } else {}
-                  });
-
+                          req.logout();
+                          res.redirect('/user/login');
              } else {
                 //res.write('<h2>데이터베이스 연결 실패</h2>');
              }
