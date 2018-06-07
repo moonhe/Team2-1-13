@@ -64,7 +64,7 @@
     .table textarea{height: 350px;}
     </style>
 
-    <form action="/room/reserve" method="post">
+    <form action="/user/contactDev" method="post">
       <div class="container">
         <div class="row">
           <div class="col-md-1">
@@ -78,8 +78,12 @@
               </thead>
               <tbody>
                 <tr>
+                  <td width="200px"><h6>작성자</h6></td>
+                  <td width="600px"><input type="text" name="writer" class="form-control" value="" maxlength="50" /></td>
+                </tr>
+                <tr>
                   <td><h6>문의 종류</h6></td>
-                  <td><select class="selectpicker form-control">
+                  <td><select class="selectpicker form-control" name="kind">
                     <option>예약문의</option>
                     <option>예약취소문의</option>
                     <option>반납문의</option>
@@ -90,11 +94,11 @@
               </tr>
               <tr>
                 <td width="200px"><h6>글제목</h6></td>
-                <td width="600px"><input type="text" class="form-control" placeholder="글 제목" name="bbsTitle" maxlength="50" /></td>
+                <td width="600px"><input type="text" class="form-control" name="title" placeholder="글 제목" name="bbsTitle" maxlength="50" /></td>
               </tr>
               <tr>
                 <td></td>
-                <td><textarea class="form-control" placeholder="글 내용" name="bbsContent" maxlength="2048"></textarea></td>
+                <td><textarea class="form-control" placeholder="글 내용" name="content" maxlength="2048"></textarea></td>
               </tr>
             </tbody>
           </table>

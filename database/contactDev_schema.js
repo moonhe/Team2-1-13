@@ -14,9 +14,10 @@ SchemaObj.createSchema = function (mongoose) {
   // 글 스키마 정의
 
   var ContactDevSchema = mongoose.Schema({
-    messageType: { type: String, trim: true, 'default': '' },      //시작 시간
-    endtime: { type: String, trim: true, 'default': '' },            //종료시간
-    facilityname: { type: String, trim: true, 'default': '' },      // 시설 이름
+    writer: { type: String, trim: true, 'default': '' },      //시작 시간
+    kind: { type: String, trim: true, 'default': '' },            //종료시간
+    title: { type: String, trim: true, 'default': '' },      // 시설 이름
+    content: { type: String, trim: true, 'default': '' }
   });
 
   // 필수 속성에 대한 'required' validation
@@ -24,7 +25,7 @@ SchemaObj.createSchema = function (mongoose) {
   // ReservationSchema.path('reservedate').required(true, '예약 날짜를 입력하셔야 합니다.');
   //   StudySchema.path('imagefiles').required(true, '글 제목을 입력하셔야 합니다.');
   // 스키마에 인스턴스 메소드 추가
-  ReservationSchema.methods = {
+  ContactDevSchema.methods = {
     savePost: function (callback) {      // 글 저장
       var self = this;
 
@@ -54,7 +55,7 @@ SchemaObj.createSchema = function (mongoose) {
     }
   }
 
-  ReservationSchema.statics = {
+  ContactDevSchema.statics = {
     // ID로 글 찾기
     load: function (id, callback) {
       this.findOne({ _id: id })
@@ -80,7 +81,7 @@ SchemaObj.createSchema = function (mongoose) {
 
   console.log('ReservationSchema 정의함.');
 
-  return ReservationSchema;
+  return ContactDevSchema;
 };
 
 // module.exports에 PostSchema 객체 직접 할당
