@@ -37,7 +37,14 @@ module.exports = new LocalStrategy({
 			console.log('계정과 비밀번호가 일치함.');
 			session_obj = req.session;
 			req.session.auth_admin = '0';
+			session_obj.auth__id = user._id;
 			session_obj.auth_name = user.name;
+			session_obj.auth_phone = user.phone;
+			session_obj.auth_birth = user.birth;
+			session_obj.auth_gender = user.gender;
+			session_obj.auth_postcode = user.postcode;
+			session_obj.auth_roadnameaddress = user.roadnameaddress;
+			session_obj.auth_address = user.address;
 			return done(null, user);  // 검증 콜백에서 두 번째 파라미터의 값을 user 객체로 넣어 인증 성공한 것으로 처리
 	    });
 

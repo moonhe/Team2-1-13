@@ -149,7 +149,6 @@ else{
 
         console.log('요청 파라미터 : ' + paramId);
 
-
        var database = req.app.get('database');
 
         // 데이터베이스 객체가 초기화된 경우
@@ -173,6 +172,7 @@ else{
                 //res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
                 session_obj = req.session;
                 user_name = session_obj.auth_name;
+                user_phone = session_obj.auth_phone;
                 //console.dir(req.session);
                 //console.log(user_name);
                 //console.log("@@@$@$@@$@$@$$$$$$$$$$$$$$$$$$$$$$$$$$");
@@ -181,7 +181,8 @@ else{
                    title: '글 조회 ',
                    posts: results,
                    Entities: Entities,
-                   user_name: user_name
+                   user_name: user_name,
+                   user_phone: user_phone
                 };
             res.render('room_reserve.ejs', context);
              } else {
@@ -198,11 +199,6 @@ else{
 
      }
   });
-
-
-
-
-
 
 
   //관리자 시설 등록 화면
@@ -226,7 +222,7 @@ else{
 
 
 
-  //관리자 예약 등록 화면
+  //시설 예약 화면
   router.route('/room/reserve').get(function(req, res) {
     console.log('/room/reserve get 요청됨.');
     if (!req.user || req.session.auth_admin != "1") {
@@ -261,7 +257,7 @@ else{
 }));
 */
 
-
+//예약 성공 화면
 router.route('/admin/registSuccess').get(function(req, res) {
   console.log('/registSuccess 패스 요청됨.');
   res.render('admin_registSuccess.ejs', {
@@ -381,7 +377,7 @@ router.post('/admin/register', upload.single('uploadfile'), function(req, res) {
 });
 
 
-// 예약 등록
+// 시설 예약
 
 router.post('/room/reserve', function(req, res){
   console.log('user_passport 모듈 안에 있는 /room/reserve호출됨.');
