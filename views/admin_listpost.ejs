@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <link href="/public/bootstrap/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
   <link href="/public/bootstrap/css/freelancer.min.css" rel="stylesheet">
-
+  <link href="/public/semantic.min.css" rel="stylesheet" >
 
 
 </head>
@@ -33,18 +33,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login"> 로그인 및 회원가입</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search?page=0&perPage=10">스터디룸 찾아보기</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/BookBuy.jsp">스터디룸 예약하기</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">마이페이지</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/contactDev.jsp">개발자 문의</a></li>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/register"> 스터디룸 등록 </a></li>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/revlist?page=0&perPage=10">예약현황 확인</a></li>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/BookBuy.jsp">반납목록 확인</a></li>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">예약통계 확인</a></li>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/contactDev.jsp">문의내용 확인</a></li>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/logout">로그아웃</a></li>
           </ul>
         </div>
       </div>
     </nav>
 
     <br><br>
-
+  <form action="/user/roomsearch" method="post">
     <section class="portfolio bg-third ">
       <div class="container">
       </div>
@@ -53,27 +54,27 @@
         <div class="row">
 
           <div class="col-md-12 mb-5 mb-lg-0">
-            <h2 class="text-uppercase mb-0 text-center">스터디룸 조회 결과</h1>
+            <h2 class="text-uppercase mb-0 text-center">스터디룸 조회</h1>
               <hr>
 
               <div class="row">
                   <div class="col-md-7 mb-4 mb-lg-0">
                   </div>
-                <!-- <div class="col-md-2 mb-4 mb-lg-0">
+                <div class="col-md-2 mb-4 mb-lg-0">
                     <select class="selectpicker form-control">
                       <option>예약자 이름</option>
                       <option>시설 이름</option>
                       <option>시설 주소</option>
                       <option>수용 인원</option>
                     </select>
-                </div> -->
-                <!-- <div class="col-md-3m  mb-lg-0">
-                  <input type="text" class="form-control" placeholder="Search" name="paramCon">
+                </div>
+                <div class="col-md-3m  mb-lg-0">
+                  <input type="text" class="form-control" placeholder="Search" name="con">
 
-                </div> -->
-                <!-- <div class="col-md-1m  mb-lg-0">
+                </div>
+                <div class="col-md-1m  mb-lg-0">
                   <button type="submit" class="btn btn-secondary btn-block">Submit</button>
-                </div> -->
+                </div>
               </div>
 
               <div class="container">
@@ -121,7 +122,7 @@
 
 
 
-
+<center>
                         <div class="tiny ui basic buttons" style="margin:0 auto;">
                           <%
                           if (page > 0) {
@@ -195,6 +196,8 @@
                           %>
                         </div>
 
+                        </center>
+
 
 
 
@@ -206,7 +209,7 @@
             </div>
           </div>
         </section>
-
+      </form>
 
 
         <div class="copyright py-4 text-center text-white">

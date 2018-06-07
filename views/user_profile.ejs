@@ -37,6 +37,7 @@
     font-weight: bold;
   }
   </style>
+
 </head>
 
 
@@ -155,38 +156,29 @@
                 <center>
                   <br>
                   <div class="col-md-6 mb-5 mb-lg-0">
-                    <a href="/user/logout" class="btn btn-primary btn-block ">정보수정</a>
+                    <form action="/user/update" method="get">
+                      <input type="hidden" value="<%=user._id%>" name="id"/>
+                      <input type="submit" class="btn btn-primary btn-block" value="회원수정"/>
+                    </form>
                   </div>
                   <br>
-                    <div class="col-md-6 mb-5 mb-lg-0" >
-                      <input type="submit" class="btn btn-primary btn-block " value="회원탈퇴"/>
-                  <a href="/user/logout" class="btn btn-primary btn-block">로그아웃</a>
-                </div>
+                  <div class="col-md-6 mb-5 mb-lg-0" >
+                    <form name="deleteInfo" action="/user/delete" method="post">
+                      <input type="hidden" value="<%=user._id%>" name="id"/>
+                      <input type="button" class="btn btn-primary btn-block" onclick="con_test()"value="회원탈퇴"/>
+                    </form>
+                  </div>
                   <br>
-                  <form action="/user/delete" method="post">
-                    <div class="col-md-7 mb-5 mb-lg-0">
+                  <div class="col-md-6 mb-5 mb-lg-0">
                     <input type="hidden" value="<%=user._id%>" name="id"/>
-                    <input type="submit" class="btn btn-primary btn-block " value="회원탈퇴"/>
-                    </div>
-                  </form>
+                    <button type="button" class="btn btn-primary btn-block" onclick="location.href='/user/logout' ">로그아웃</button>
+                    <!-- <a href="/user/logout" class="btn btn-primary btn-block">로그아웃</a> -->
+                  </div>
                 </center>
               </div>
             </div>
             <hr>
 
-            <center>
-              <form action="/user/update" method="get">
-                <input type="hidden" value="<%=user._id%>" name="id"/>
-                <input type="submit" class="btn btn-default btn-sm " value="회원수정"/>
-                <!--<a href="/user/logout/<%=user._id%>" class="btn btn-default btn-sm "><h3>회원수정</h3></a>-->
-              </form>
-              <a href="/user/logout" class="btn btn-default btn-sm "><h3>로그아웃</h3></a>
-              <form action="/user/delete" method="post">
-                <input type="hidden" value="<%=user._id%>" name="id"/>
-                <input type="submit" class="btn btn-default btn-sm " value="회원탈퇴"/>
-                <!--<a href="/user/logout/<%=user._id%>" class="btn btn-default btn-sm "><h3>회원탈퇴</h3></a>-->
-              </form>
-            </center>
           </div>
           <br><br><br><br><br><br>
           <div style='width:45%; float:left'>
@@ -273,7 +265,20 @@
 
 
 
+    <script>
+    function con_test(){
+      if(confirm("정말 탈퇴하시겠습니까?")){
+        form = document.deleteInfo;
+        form.submit();
 
+      }
+      else {
+        location.href = "/user/profile"
+      }
+    }
+
+
+    </script>
 
 
     <div class="copyright py-4 text-center text-white">

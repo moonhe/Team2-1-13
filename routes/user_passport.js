@@ -5,6 +5,8 @@
 * @author Mike
 */
 
+
+
 module.exports = function(router, passport) {
     console.log('user_passport 호출됨.');
 
@@ -34,6 +36,13 @@ module.exports = function(router, passport) {
          } else {
              console.log('사용자 인증된 상태임.');
              console.log('/user/profile 패스 요청됨.');
+             res.writeHead('200', {
+               'Content-Type': 'text/html;charset=utf8'
+             });
+             res.write('<script>alert("이미 로그인 중입니다!")</script>');
+             res.write('<script>window.location.href="/user/profile"</script>');
+             res.end();
+             return;
              console.dir(req.user);
 
              if (Array.isArray(req.user)) {
@@ -153,6 +162,8 @@ module.exports = function(router, passport) {
 //회원 삭제
     router.route('/user/delete').post(function(req, res){
       console.log('/user/delete 패스 요청됨.');
+
+
       // URL 파라미터로 전달됨
       var paramId = req.body.id || req.query.id || req.params.id;
 
@@ -183,14 +194,25 @@ module.exports = function(router, passport) {
         //res.write('<h2>데이터베이스 연결 실패</h2>');
      }
       req.logout();
-      res.redirect('/');
+      res.redirect('/user/DeleteSuccess');
     });
+
+
+    router.route('/user/deleteSuccess').get(function(req, res) {
+      console.log('/DeleteSuccess 패스 요청됨.');
+      res.render('user_deleteSuccess.ejs', {
+        message: req.flash('registerMessage')
+      });
+    });
+
+
 
 
 //회원 수정
       router.route('/user/update').get(function(req, res){
         console.log('/user/update 패스 요청됨.');
         // URL 파라미터로 전달됨
+
         var paramId = req.body.id || req.query.id || req.params.id;
 
         console.log('요청 파라미터 : ' + paramId);
