@@ -90,11 +90,17 @@ SchemaObj.createSchema = function (mongoose) {
       }}).exec(callback);
     },
     findByUsername: function (paramUsername, callback) { //find? findOne?
-      this.find({ username: paramUsername['n_username'] })
+      this.find({ username: {$regex : paramUsername['n_inputcon']} })
       .populate('writer', 'name provider email')
       .populate('comments.writer')
       .exec(callback);
     },
+    findByFacilityname: function (paramFacilityname, callback) { //find? findOne?
+      this.find({ facilityname: {$regex : paramFacilityname['n_inputcon']} })
+      .populate('writer', 'name provider email')
+      .populate('comments.writer')
+      .exec(callback);
+    }
   }
 
   console.log('ReservationSchema 정의함.');

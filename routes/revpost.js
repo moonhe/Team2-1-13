@@ -573,7 +573,6 @@ var searchrevpost = function(req, res) {
                  return;
              }
 
-          if (results) {
              console.dir(results);
 
              // 전체 문서 객체 수 확인
@@ -591,63 +590,57 @@ var searchrevpost = function(req, res) {
                    totalRecords: count,
                    size: paramPerPage
                 };
+
+
+                // 예약 검색 조건 설정
+                var selcon = req.body.selcon;
                   var searchData = {
-                  n_username: req.body.con
+                  n_inputcon: req.body.inputcon
                   };
-                  console.log('입력된 검색 조건 : \n' +searchData['n_username']);
+                  console.log('선택된 검색 조건:' + selcon);
+                  console.log('입력된 검색 조건 :' +searchData['n_inputcon']);
 
+                // 조건에 따른 검색 메소드 호출
+                  if(selcon == "예약자 이름"){
+                    // 예약자 이름으로 검색
+                    database.ReservationModel.findByUsername(searchData, function(err, results) {
+                           var context = {
+                              title: '예약 목록',
+                              posts: results,
+                              page: parseInt(paramPage),
+                              pageCount: Math.ceil(count / paramPerPage),
+                              perPage: paramPerPage,
+                              totalRecords: count,
+                              size: paramPerPage
+                           };
+                            console.dir('예약자 이름 검색 결과 출력: ');
+                            console.dir(results);
 
-                //예약 검색
-                 database.ReservationModel.findByUsername(searchData, function(err, results) {
-                      if (err) {
-                             console.error('게시판 글 조회 중 에러 발생 : ' + err.stack);
-
-                             res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-                         res.write('<h2>게시판 글 조회 중 에러 발생</h2>');
-                             res.write('<p>' + err.stack + '</p>');
-                         res.end();
-
-                             return;
-                         }
-
-                      if (results) {
-                        var context = {
-                           title: '글 목록',
-                           posts: results,
-                           page: parseInt(paramPage),
-                           pageCount: Math.ceil(count / paramPerPage),
-                           perPage: paramPerPage,
-                           totalRecords: count,
-                           size: paramPerPage
-                        };
-                         console.dir('검색 결과 문서들 출력: ');
-                         console.dir(results);
-                               req.app.render('admin_revsearch', context, function(err, html) {
-                                  if (err) {
-                                           console.error('응답 웹문서 생성 중 에러 발생 : ' + err.stack);
-
-                                           res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-                                           res.write('<h2>응답 웹문서 생성 중 에러 발생</h2>');
-                                           res.write('<p>' + err.stack + '</p>');
-                                           res.end();
-
-                                           return;
-                                       }
-                                  res.end(html);
-                               });
-                      } else {
-                         res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-                         res.write('<h2>글 조회  실패</h2>');
-                         res.end();
-                      }
+                            req.app.render('admin_revsearch', context, function(err, html) {
+                               res.end(html);
+                            });
                    });
-             });
+                 }
+                 else if(selcon == "시설 이름"){
+                   database.ReservationModel.findByFacilityname(searchData, function(err, results) {
+                          var context = {
+                             title: '예약 목록',
+                             posts: results,
+                             page: parseInt(paramPage),
+                             pageCount: Math.ceil(count / paramPerPage),
+                             perPage: paramPerPage,
+                             totalRecords: count,
+                             size: paramPerPage
+                          };
+                           console.dir('시설 이름 검색 결과 출력: ');
+                           console.dir(results);
 
-          } else {
-             res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-             res.write('<h2>글 목록 조회  실패</h2>');
-             res.end();
-          }
+                           req.app.render('admin_revsearch', context, function(err, html) {
+                              res.end(html);
+                           });
+                  });
+                 }
+             });
        });
     } else {
        res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
