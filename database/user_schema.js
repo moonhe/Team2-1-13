@@ -120,7 +120,12 @@ Schema.createSchema = function(mongoose) {
   UserSchema.statics = {
 		load: function (id, callback) {
 			this.findOne({ _id: id })
-
+			.populate('writer', 'name provider email')
+			.populate('comments.writer')
+			.exec(callback);
+		},
+		loadbyname: function (paramUsername, callback) {
+			this.findOne({ username: paramUsername })
 			.populate('writer', 'name provider email')
 			.populate('comments.writer')
 			.exec(callback);
