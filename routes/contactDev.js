@@ -1,5 +1,7 @@
+var Entities = require('html-entities').AllHtmlEntities;
+
 var contactlistpost = function(req, res) {
-   console.log('post 모듈 안에 있는 listpost 호출됨.');
+   console.log('post 모듈 안에 있는 contactlistpost 호출됨.');
 
     var paramPage = req.body.page || req.query.page;
     var paramPerPage = req.body.perPage || req.query.perPage;
@@ -20,9 +22,9 @@ var contactlistpost = function(req, res) {
          if (err) {
                 console.error('문의내역 조회 중 에러 발생 : ' + err.stack);
 
-                res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+            res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
             res.write('<h2>문의내역 조회 중 에러 발생</h2>');
-                res.write('<p>' + err.stack + '</p>');
+            res.write('<p>' + err.stack + '</p>');
             res.end();
 
                 return;
@@ -38,7 +40,7 @@ var contactlistpost = function(req, res) {
 
                // 뷰 템플레이트를 이용하여 렌더링한 후 전송
                var context = {
-                  title: '글 목록',
+                  title: '조회내역 목록',
                   posts: results,
                   page: parseInt(paramPage),
                   pageCount: Math.ceil(count / paramPerPage),
@@ -47,7 +49,7 @@ var contactlistpost = function(req, res) {
                   size: paramPerPage
                };
 
-               req.app.render('revpost', context, function(err, html) {
+               req.app.render('contactlistpost', context, function(err, html) {
                         if (err) {
                             console.error('응답 웹문서 생성 중 에러 발생 : ' + err.stack);
 
@@ -80,7 +82,7 @@ var contactlistpost = function(req, res) {
 
 
 var showcontactpost = function(req, res) {
-   console.log('post 모듈 안에 있는 showpost 호출됨.');
+   console.log('post 모듈 안에 있는 showcontactpost 호출됨.');
 
     // URL 파라미터로 전달됨
     var paramId = req.body.id || req.query.id || req.params.id;
@@ -94,12 +96,12 @@ var showcontactpost = function(req, res) {
    if (database.db) {
 
       // 1. 글 리스트
-      database.ReservationModel.load(paramId, function(err, results) {
+      database.ContactDevModel.load(paramId, function(err, results) {
          if (err) {
-                console.error('게시판 글 조회 중 에러 발생 : ' + err.stack);
+                console.error('내역조회 중 에러 발생 : ' + err.stack);
 
                 res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-            res.write('<h2>게시판 글 조회 중 에러 발생</h2>');
+            res.write('<h2>내역조회 중 에러 발생</h2>');
                 res.write('<p>' + err.stack + '</p>');
             res.end();
 
@@ -113,12 +115,12 @@ var showcontactpost = function(req, res) {
 
             // 뷰 템플레이트를 이용하여 렌더링한 후 전송
             var context = {
-               title: '글 조회 ',
+               title: '내역 조회 ',
                posts: results,
                Entities: Entities
             };
 
-            req.app.render('rev_info', context, function(err, html) {
+            req.app.render('con_info', context, function(err, html) {
                if (err) {
                         console.error('응답 웹문서 생성 중 에러 발생 : ' + err.stack);
 
@@ -147,3 +149,6 @@ var showcontactpost = function(req, res) {
    }
 
 };
+
+module.exports.contactlistpost = contactlistpost;
+module.exports.showcontactpost = showcontactpost;

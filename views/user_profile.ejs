@@ -40,7 +40,6 @@
 
 </head>
 
-
 <body id="page-top">
 
 
@@ -189,30 +188,21 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
+                  <th scope="col">시설명</th>
+                  <th scope="col">이름</th>
+                  <th scope="col">날짜</th>
                 </tr>
               </thead>
 
               <tbody>
+                <% for(i=0; i<posts.length; i++) { %>
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <th scope="row"><%=i+1%></th>
+                  <td><a href="/user/revlist/<%=posts[i]._id %>"><%=posts[i]._doc.facilityname%></a></td>
+                  <td><%=posts[i]._doc.username%></td>
+                  <td><%=posts[i]._doc.date%></td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
+                <% } %>
               </tbody>
             </table>
           </div>

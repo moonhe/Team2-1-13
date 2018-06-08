@@ -40,6 +40,7 @@
 
 <%
 var curID = posts._doc._id;
+var curDate = posts._doc.date;
 var curStarttime = posts._doc.starttime;
 var curEndtime = posts._doc.endtime;
 var curFacilityname = posts._doc.facilityname;
@@ -119,8 +120,15 @@ var curEmail = posts._doc.email;
               </div>
               <hr>
 
-
-
+              <div class="row">
+                <div class="col-lg-3 col-sm-4">
+                  <h5><center>날짜</center></h5>
+                </div>
+                <div class="col-lg-8 col-sm-8">
+                  <h6><%=curDate%></h6>
+              </div>
+            </div>
+            <hr>
               <div class="row">
                 <div class="col-lg-3 col-sm-4">
                   <h5><center>시작시간</center></h5>

@@ -42,7 +42,7 @@
     </nav>
 
     <br><br>
-  <form action="/user/roomsearch" method="post">
+  <form action="/user/search" method="post">
     <section class="portfolio bg-third ">
       <div class="container">
       </div>
@@ -114,88 +114,82 @@
                             <% } %>
                           </table>
                         </div>
-
                         <br>
 
-
-
-<center>
-                        <div class="tiny ui basic buttons" style="margin:0 auto;">
-                          <%
-                          if (page > 0) {
-                            %>
-                            <div class="ui icon button" onclick="listpost(0, <%=perPage %>)">
-                              <i class="backward icon"></i>
-                            </div>
-                            <div class="ui icon button" onclick="listpost(<%=(page-1) %>, <%=perPage %>)">
-                              <i class="left chevron icon"></i>
-                            </div>
+                        <center>
+                          <div class="tiny ui basic buttons" style="margin:0 auto;">
                             <%
-                          } else {
-                            %>
-                            <div class="ui disabled icon button">
-                              <i class="backward icon"></i>
-                            </div>
-                            <div class="ui disabled icon button">
-                              <i class="left chevron icon"></i>
-                            </div>
-                            <%
-                          }
-                          %>
-                          <%
-                          var initial = Math.floor(page / 10) * 10;
-                          console.log('initial : ' + initial);
-
-                          var max = pageCount - initial;
-                          if (max > 10) {
-                            max = initial + 10;
-                          } else {
-                            max = initial + max;
-                          }
-                          console.log('max : ' + max);
-
-                          for (var i = initial; i < max; i++) {
-                            if (i != page) {
+                            if (page > 0) {
                               %>
-                              <div class="ui button" onclick="listpost(<%=i %>, <%=perPage %>)">
-                                <%= i %>
+                              <div class="ui icon button" onclick="listpost(0, <%=perPage %>)">
+                                <i class="backward icon"></i>
+                              </div>
+                              <div class="ui icon button" onclick="listpost(<%=(page-1) %>, <%=perPage %>)">
+                                <i class="left chevron icon"></i>
                               </div>
                               <%
                             } else {
                               %>
-                              <div class="ui active basic button">
-                                <%= i %>
+                              <div class="ui disabled icon button">
+                                <i class="backward icon"></i>
+                              </div>
+                              <div class="ui disabled icon button">
+                                <i class="left chevron icon"></i>
                               </div>
                               <%
                             }
-                          }
-                          %>
-                          <%
-                          if ((page+1) < pageCount) {
                             %>
-                            <div class="ui icon button" onclick="listpost(<%=(page+1) %>, <%=perPage %>)">
-                              <i class="right chevron icon"></i>
-                            </div>
-                            <div class="ui icon button" onclick="listpost(<%=(pageCount-1) %>, <%=perPage %>)">
-                              <i class="forward icon"></i>
-                            </div>
                             <%
-                          } else {
-                            %>
-                            <div class="ui disabled icon button">
-                              <i class="right chevron icon"></i>
-                            </div>
-                            <div class="ui disabled icon button">
-                              <i class="forward icon"></i>
-                            </div>
-                            <%
-                          }
-                          %>
-                        </div>
+                            var initial = Math.floor(page / 10) * 10;
+                            console.log('initial : ' + initial);
 
+                            var max = pageCount - initial;
+                            if (max > 10) {
+                              max = initial + 10;
+                            } else {
+                              max = initial + max;
+                            }
+                            console.log('max : ' + max);
+
+                            for (var i = initial; i < max; i++) {
+                              if (i != page) {
+                                %>
+                                <div class="ui button" onclick="listpost(<%=i %>, <%=perPage %>)">
+                                  <%= i%>
+                                </div>
+                                <%
+                              } else {
+                                %>
+                                <div class="ui active basic button">
+                                  <%= i%>
+                                </div>
+                                <%
+                              }
+                            }
+                            %>
+                            <%
+                            if ((page+1) < pageCount) {
+                              %>
+                              <div class="ui icon button" onclick="listpost(<%=(page+1) %>, <%=perPage %>)">
+                                <i class="right chevron icon"></i>
+                              </div>
+                              <div class="ui icon button" onclick="listpost(<%=(pageCount-1) %>, <%=perPage %>)">
+                                <i class="forward icon"></i>
+                              </div>
+                              <%
+                            } else {
+                              %>
+                              <div class="ui disabled icon button">
+                                <i class="right chevron icon"></i>
+                              </div>
+                              <div class="ui disabled icon button">
+                                <i class="forward icon"></i>
+                              </div>
+                              <%
+                            }
+                            %>
+                          </div>
                         </center>
-
-
 
 
                       </div>
