@@ -42,170 +42,165 @@
     </nav>
 
     <br><br>
-    <form action="/user/roomsearch" method="post">
-      <section class="portfolio bg-third ">
-        <div class="container">
-        </div>
-        <div class="container">
-          <img class="img-fluid mb-5 d-block mx-auto" src="/public/bootstrap/img/profile.png" alt="">
-          <div class="row">
+  <form action="/user/search" method="post">
+    <section class="portfolio bg-third ">
+      <div class="container">
+      </div>
+      <div class="container">
+        <img class="img-fluid mb-5 d-block mx-auto" src="/public/bootstrap/img/profile.png" alt="">
+        <div class="row">
 
-            <div class="col-md-12 mb-5 mb-lg-0">
-              <h2 class="text-uppercase mb-0 text-center">스터디룸 조회</h1>
-                <hr>
+          <div class="col-md-12 mb-5 mb-lg-0">
+            <h2 class="text-uppercase mb-0 text-center">스터디룸 조회</h1>
+              <hr>
 
-                <div class="row">
-                  <div class="col-md-6 mb-4 mb-lg-0">
+              <div class="row">
+                  <div class="col-md-7 mb-4 mb-lg-0">
                   </div>
-                  <div class="col-md-2 mb-4 mb-lg-0">
+                <div class="col-md-2 mb-4 mb-lg-0">
                     <select class="selectpicker form-control" name = "selcon">
                       <option>시설 이름</option>
                       <option>시설 주소</option>
                       <option>수용 인원</option>
                       <option>편의 시설</option>
                     </select>
-                  </div>
-                  <div class="col-md-3m  mb-lg-0">
-                    <input type="text" class="form-control" placeholder="Search" name="inputcon">
-                  </div>
-                  <div class="col-md-1m  mb-lg-0">
-                    <button type="submit" class="btn btn-secondary btn-block">Submit</button>
-                  </div>
                 </div>
+                <div class="col-md-3m  mb-lg-0">
+                  <input type="text" class="form-control" placeholder="Search" name="inputcon">
 
-                <div class="container">
-                  <div class="row">
-                    <p></p>
-                    <p> </p>
+                </div>
+                <div class="col-md-1m  mb-lg-0">
+                  <button type="submit" class="btn btn-secondary btn-block">Submit</button>
+                </div>
+              </div>
 
-                    <div class="col-md-12 col-md-offset-1">
+              <div class="container">
+                <div class="row">
+                  <p></p>
+                  <p> </p>
 
-                      <div class="panel panel-default panel-table">
+                  <div class="col-md-12 col-md-offset-1">
 
-                        <div class="panel-body">
-                          <table class="table table-striped table-bordered table-list">
-                            <thead>
-                              <tr>
-                                <!-- <th><em class="fa fa-cog"></em></th> -->
-                                <th>시설이름</th>
-                                <th>주소</th>
-                                <th class="hidden-xs">수용인원</th>
-                                <th>운영시간</th>
-                              </tr>
-                            </thead>
-                            <%  var noStart = (pageCount - page) * perPage;
+                    <div class="panel panel-default panel-table">
 
-                            for (var i = 0; i < posts.length; i++) {
-                              var curEndtime = posts[i]._doc.endtime;
-                              var curStarttime = posts[i]._doc.starttime;
-                              var curFacilityname = posts[i]._doc.facilityname;
-                              var curRoadaddress = posts[i]._doc.roadnameaddress;
-                              var curAddress = posts[i]._doc.address;
-                              var curPeople = posts[i]._doc.people;
+                      <div class="panel-body">
+                        <table class="table table-striped table-bordered table-list">
+                          <thead>
+                            <tr>
+                              <!-- <th><em class="fa fa-cog"></em></th> -->
+                              <th>시설이름</th>
+                              <th>주소</th>
+                              <th class="hidden-xs">수용인원</th>
+                              <th>운영시간</th>
+                            </tr>
+                          </thead>
+                          <%  var noStart = (pageCount - page) * perPage;
 
-                              %>
-                              <tr>
-                                <td><a href="/user/search/<%=posts[i]._id %>"><%=curFacilityname %></a></td>
-                                <td> <%=curRoadaddress%>  <%=curAddress%> </td>
-                                <td class="hidden-xs"><%=curPeople%></td>
-                                <td><%=curStarttime%> 부터 <%=curEndtime%></td>
-                              </tr>
-                              <% } %>
-                            </table>
-                          </div>
+                          for (var i = 0; i < posts.length; i++) {
+                            var curEndtime = posts[i]._doc.endtime;
+                            var curStarttime = posts[i]._doc.starttime;
+                            var curFacilityname = posts[i]._doc.facilityname;
+                            var curRoadaddress = posts[i]._doc.roadnameaddress;
+                            var curAddress = posts[i]._doc.address;
+                            var curPeople = posts[i]._doc.people;
 
-                          <br>
-
-
-
-                          <center>
-                            <div class="tiny ui basic buttons" style="margin:0 auto;">
-                              <%
-                              if (page > 0) {
-                                %>
-                                <div class="ui icon button" onclick="listpost(0, <%=perPage %>)">
-                                  <i class="backward icon"></i>
-                                </div>
-                                <div class="ui icon button" onclick="listpost(<%=(page-1) %>, <%=perPage %>)">
-                                  <i class="left chevron icon"></i>
-                                </div>
-                                <%
-                              } else {
-                                %>
-                                <div class="ui disabled icon button">
-                                  <i class="backward icon"></i>
-                                </div>
-                                <div class="ui disabled icon button">
-                                  <i class="left chevron icon"></i>
-                                </div>
-                                <%
-                              }
-                              %>
-                              <%
-                              var initial = Math.floor(page / 10) * 10;
-                              console.log('initial : ' + initial);
-
-                              var max = pageCount - initial;
-                              if (max > 10) {
-                                max = initial + 10;
-                              } else {
-                                max = initial + max;
-                              }
-                              console.log('max : ' + max);
-
-                              for (var i = initial; i < max; i++) {
-                                if (i != page) {
-                                  %>
-                                  <div class="ui button" onclick="listpost(<%=i %>, <%=perPage %>)">
-                                    <%= i %>
-                                  </div>
-                                  <%
-                                } else {
-                                  %>
-                                  <div class="ui active basic button">
-                                    <%= i %>
-                                  </div>
-                                  <%
-                                }
-                              }
-                              %>
-                              <%
-                              if ((page+1) < pageCount) {
-                                %>
-                                <div class="ui icon button" onclick="listpost(<%=(page+1) %>, <%=perPage %>)">
-                                  <i class="right chevron icon"></i>
-                                </div>
-                                <div class="ui icon button" onclick="listpost(<%=(pageCount-1) %>, <%=perPage %>)">
-                                  <i class="forward icon"></i>
-                                </div>
-                                <%
-                              } else {
-                                %>
-                                <div class="ui disabled icon button">
-                                  <i class="right chevron icon"></i>
-                                </div>
-                                <div class="ui disabled icon button">
-                                  <i class="forward icon"></i>
-                                </div>
-                                <%
-                              }
-                              %>
-                            </div>
-
-                          </center>
-
-
-
-
+                            %>
+                            <tr>
+                              <td><a href="/user/search/<%=posts[i]._id %>"><%=curFacilityname %></a></td>
+                              <td> <%=curRoadaddress%>  <%=curAddress%> </td>
+                              <td class="hidden-xs"><%=curPeople%></td>
+                              <td><%=curStarttime%> 부터 <%=curEndtime%></td>
+                            </tr>
+                            <% } %>
+                          </table>
                         </div>
-                      </div></div>
-                    </div>
+                        <br>
+
+                        <center>
+                          <div class="tiny ui basic buttons" style="margin:0 auto;">
+                            <%
+                            if (page > 0) {
+                              %>
+                              <div class="ui icon button" onclick="listpost(0, <%=perPage %>)">
+                                <i class="backward icon"></i>
+                              </div>
+                              <div class="ui icon button" onclick="listpost(<%=(page-1) %>, <%=perPage %>)">
+                                <i class="left chevron icon"></i>
+                              </div>
+                              <%
+                            } else {
+                              %>
+                              <div class="ui disabled icon button">
+                                <i class="backward icon"></i>
+                              </div>
+                              <div class="ui disabled icon button">
+                                <i class="left chevron icon"></i>
+                              </div>
+                              <%
+                            }
+                            %>
+                            <%
+                            var initial = Math.floor(page / 10) * 10;
+                            console.log('initial : ' + initial);
+
+                            var max = pageCount - initial;
+                            if (max > 10) {
+                              max = initial + 10;
+                            } else {
+                              max = initial + max;
+                            }
+                            console.log('max : ' + max);
+
+                            for (var i = initial; i < max; i++) {
+                              if (i != page) {
+                                %>
+                                <div class="ui button" onclick="listpost(<%=i %>, <%=perPage %>)">
+                                  <%= i%>
+                                </div>
+                                <%
+                              } else {
+                                %>
+                                <div class="ui active basic button">
+                                  <%= i%>
+                                </div>
+                                <%
+                              }
+                            }
+                            %>
+                            <%
+                            if ((page+1) < pageCount) {
+                              %>
+                              <div class="ui icon button" onclick="listpost(<%=(page+1) %>, <%=perPage %>)">
+                                <i class="right chevron icon"></i>
+                              </div>
+                              <div class="ui icon button" onclick="listpost(<%=(pageCount-1) %>, <%=perPage %>)">
+                                <i class="forward icon"></i>
+                              </div>
+                              <%
+                            } else {
+                              %>
+                              <div class="ui disabled icon button">
+                                <i class="right chevron icon"></i>
+                              </div>
+                              <div class="ui disabled icon button">
+                                <i class="forward icon"></i>
+                              </div>
+                              <%
+                            }
+                            %>
+                          </div>
+                        </center>
+
+
+                      </div>
+                    </div></div>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-        </form>
+          </div>
+        </section>
+      </form>
 
 
         <div class="copyright py-4 text-center text-white">

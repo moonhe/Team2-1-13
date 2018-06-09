@@ -14,6 +14,7 @@ SchemaObj.createSchema = function (mongoose) {
   // 글 스키마 정의
 
   var ReservationSchema = mongoose.Schema({
+    date: { type: String, trim: true, 'default':''},  //날짜
     starttime: { type: String, trim: true, 'default': '' },      //시작 시간
     endtime: { type: String, trim: true, 'default': '' },            //종료시간
     facilityname: { type: String, trim: true, 'default': '' },      // 시설 이름
@@ -72,6 +73,10 @@ SchemaObj.createSchema = function (mongoose) {
       .sort({ 'created_at': -1 })
       .limit(Number(options.perPage))
       .skip(options.perPage * options.page)
+      .exec(callback);
+    },
+    loadbyemail: function (paramEmail, callback) {
+      this.find({ email: paramEmail })
       .exec(callback);
     },
     remove: function (id, callback){

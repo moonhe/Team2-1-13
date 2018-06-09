@@ -73,7 +73,7 @@
 
                   </div>
                   <div class="col-md-1m  mb-lg-0">
-                    <button type="submit" class="btn btn-secondary btn-block" >Submit</button>
+                    <button type="submit" class="btn btn-secondary btn-block">Submit</button>
                   </div>
                 </div>
 
@@ -123,10 +123,7 @@
 
                           <br>
 
-
-
                           <center>
-
                             <div class="tiny ui basic buttons" style="margin:0 auto;">
                               <%
                               if (page > 0) {
@@ -165,13 +162,13 @@
                                 if (i != page) {
                                   %>
                                   <div class="ui button" onclick="listpost(<%=i %>, <%=perPage %>)">
-                                    <%= i %>
+                                    <%= i%>
                                   </div>
                                   <%
                                 } else {
                                   %>
                                   <div class="ui active basic button">
-                                    <%= i %>
+                                    <%= i%>
                                   </div>
                                   <%
                                 }

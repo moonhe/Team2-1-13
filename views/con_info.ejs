@@ -38,7 +38,14 @@
   }
 
   </style>
+</head>
 
+<%
+var curWriter = posts._doc.writer;
+var curKind = posts._doc.kind;
+var curTitle = posts._doc.title;
+var curContent = posts._doc.content;
+%>
   <body id="page-top">
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
       <div class="container">
@@ -73,32 +80,25 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th colspan="2"><h5>개발자 문의</h5></th>
+                  <th colspan="2"><h5>문의 내역 확인</h5></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td width="200px"><h6>작성자</h6></td>
-                  <td width="600px"><input type="text" name="writer" class="form-control" value="<%=user_name%>" maxlength="50" readonly/></td>
+                  <td width="600px"><input type="text" name="writer" class="form-control" value="<%=curWriter%>" maxlength="50" readonly/></td>
                 </tr>
                 <tr>
-                  <td><h6>문의 종류</h6></td>
-                  <td><select class="selectpicker form-control" name="kind">
-                    <option>예약문의</option>
-                    <option>예약취소문의</option>
-                    <option>반납문의</option>
-                    <option>건의사항</option>
-                    <option>기타</option>
-                  </select>
-                </td>
-              </tr>
+                  <td width="200px"><h6>문의 종류</h6></td>
+                  <td width="600px"><input type="text" class="form-control" name="kind" value="<%=curKind%>" maxlength="50" readonly/></td>
+                </tr>
               <tr>
                 <td width="200px"><h6>글제목</h6></td>
-                <td width="600px"><input type="text" class="form-control" name="title" placeholder="글 제목" name="bbsTitle" maxlength="50" /></td>
+                <td width="600px"><input type="text" class="form-control" name="title" value="<%=curTitle%>" maxlength="50" readonly/></td>
               </tr>
               <tr>
                 <td></td>
-                <td><textarea class="form-control" placeholder="글 내용" name="content" maxlength="2048"></textarea></td>
+                <td><textarea class="form-control"  name="content" maxlength="2048" readonly><%=curContent%></textarea></td>
               </tr>
             </tbody>
           </table>
@@ -107,13 +107,10 @@
         <div class="row">
           <div class="col-md-2">
           </div>
-          <div class="col-md-4">
-            <input type="submit" class="btn btn-primary btn-block" value="작성하기" />
+          <div class="col-md-11 mb-5 mb-lg-0">
+            <h4 class="text-center"><a href='/admin/home'>홈으로</a></h4>
           </div>
           <div class="col-md-1">
-          </div>
-          <div class="col-md-4">
-            <input type="submit" class="btn btn-primary btn-block" value="취소하기" />
           </div>
         </div>
       </div>

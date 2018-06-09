@@ -17,16 +17,19 @@ module.exports = {
 		,{file:'./post', path:'/user/search', method:'listpost', type:'get'}
 		,{file:'./post', path:'/user/roomsearch', method:'searchroompost', type:'post'}
 		,{file:'./post', path:'/user/roomsearch', method:'searchroomget', type:'get'}
+		,{file:'./post', path:'/user/roomsearch', method:'searchroomget', type:'post'}
+		,{file:'./post', path:'/user/roomsearch', method:'searchroomget', type:'get'}
 		,{file:'./revpost', path:'/admin/revlist/:id', method:'showrevpost', type:'get'}
+		,{file:'./revpost', path:'/user/revlist/:id', method:'showrevpost', type:'get'}
 		,{file:'./revpost', path:'/admin/deleteuser/:id', method:'delrevpost', type:'get'}
 		,{file:'./revpost', path:'/admin/revlist', method:'revpost', type:'post'}
 		,{file:'./revpost', path:'/admin/revlist', method:'revpost', type:'get'}
-		,{file:'./post', path:'/user/roomsearch', method:'searchroomget', type:'post'}
-		,{file:'./post', path:'/user/roomsearch', method:'searchroomget', type:'get'}
 		,{file:'./revpost', path:'/admin/updateuser/:id', method:'updaterevget', type:'get'}
 		,{file:'./revpost', path:'/admin/updateuser', method:'updaterevpost', type:'post'}
 		,{file:'./revpost', path:'/admin/revsearch/', method:'searchrevget', type:'get'}
 		,{file:'./revpost', path:'/admin/revsearch', method:'searchrevpost', type:'post'}
+		,{file:'./contactDev', path:'/admin/contactlist', method:'contactlistpost', type:'post'}
+		,{file:'./contactDev', path:'/admin/contactlist', method:'contactlistpost', type:'get'}
+		,{file:'./contactDev', path:'/admin/contactlist/:id', method:'showcontactpost', type:'get'}
 	]
-
 }

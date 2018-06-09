@@ -37,6 +37,7 @@ module.exports = new LocalStrategy({
 			console.log('계정과 비밀번호가 일치함.');
 			session_obj = req.session;
 			req.session.auth_admin = '0';
+			session_obj.auth_email = user.email;
 			session_obj.auth__id = user._id;
 			session_obj.auth_name = user.name;
 			session_obj.auth_phone = user.phone;

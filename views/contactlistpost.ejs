@@ -45,7 +45,7 @@
     </nav>
 
     <br><br>
-    <form action="/admin/revsearch" method="post">
+    <form action="/admin/contactlistpost" method="post">
       <section class="portfolio bg-third ">
         <div class="container">
         </div>
@@ -72,20 +72,17 @@
                             <thead>
                               <tr>
                                 <!-- <th><em class="fa fa-cog"></em></th> -->
-                                <th>예약자명</th>
-                                <th>시설이름</th>
-                                <th class="hidden-xs">수용인원</th>
-                                <th>운영시간</th>
+                                <th>작성자</th>
+                                <th>글제목</th>
+                                <th>문의종류</th>
                               </tr>
                             </thead>
                             <%  var noStart = (pageCount - page) * perPage;
 
                             for (var i = 0; i < posts.length; i++) {
-                              var curUsername = posts[i]._doc.username;
-                              var curFacilityname = posts[i]._doc.facilityname;
-                              var curPeople = posts[i]._doc.people;
-                              var curEndTime = posts[i]._doc.endtime;
-                              var curStartTime = posts[i]._doc.starttime;
+                              var curWriter = posts[i]._doc.writer;
+                              var curKind = posts[i]._doc.kind;
+                              var curTitle = posts[i]._doc.title;
 
                             	console.log("하이"+ posts.length);
                               %>
@@ -93,10 +90,9 @@
 
 
                               <tr>
-                                <td><%=curUsername%></td>
-                                <td><a href="/admin/revlist/<%=posts[i]._id %>"><%=curFacilityname %></a></td>
-                                <td><a href="/admin/revlist/<%=posts[i]._id %>"><%=curPeople %></a></td>
-                                <td><a href="/admin/revlist/<%=posts[i]._id %>"><%=curStartTime %> 부터 <%=curEndTime %></a></td>
+                                <td><%=curWriter%></td>
+                                <td><a href="/admin/contactlist/<%=posts[i]._id %>"><%=curTitle%></a></td>
+                                <td><a href="/admin/contactlist/<%=posts[i]._id %>"><%=curKind%></a></td>
                               </tr>
                               <% } %>
                             </table>
@@ -146,13 +142,13 @@
                                 if (i != page) {
                                   %>
                                   <div class="ui button" onclick="listpost(<%=i %>, <%=perPage %>)">
-                                    <%= i %>
+                                    <%= i+1 %>
                                   </div>
                                   <%
                                 } else {
                                   %>
                                   <div class="ui active basic button">
-                                    <%= i %>
+                                    <%= i+1 %>
                                   </div>
                                   <%
                                 }

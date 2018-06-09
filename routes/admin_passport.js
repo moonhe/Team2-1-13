@@ -310,7 +310,6 @@ router.post('/admin/register', upload.single('uploadfile'), function(req, res) {
     var paramimagefiles = req.file.path || req.query.file.path;
   }
 
-  console.log('asdasd12121');
   var paramintro = req.body.intro || req.query.intro;
 
   console.log('요청 파라미터 : ' + paramfacilityname + ', ' + parampostcode + ', ' + paramroadnameaddress + ', ' + paramaddress + ', ' +
@@ -405,6 +404,8 @@ router.post('/admin/register', upload.single('uploadfile'), function(req, res) {
 
 router.post('/room/reserve', function(req, res){
   console.log('user_passport 모듈 안에 있는 /room/reserve호출됨.');
+  var session_obj = req.session;
+  var paramemail = session_obj.auth_email;
   var paramdate = req.body.date || req.query.date;
   var paramstarttime = req.body.starttime || req.query.starttime;
   var paramendtime = req.body.endtime || req.query.endtime;
@@ -445,6 +446,7 @@ router.post('/room/reserve', function(req, res){
 // save()로 저장
 // PostModel 인스턴스 생성
 var post = new database.ReservationModel({
+  email : paramemail,
   date : paramdate,
   starttime: paramstarttime,
   endtime: paramendtime,
@@ -470,7 +472,6 @@ post.savePost(function(err, result) {
     res.end();
     return;
   }
-
 
   console.log("예약 데이터 추가함.");
   return res.redirect('/user/reserveSuccess');
