@@ -16,6 +16,7 @@ var addpost = function(req, res) {
 	// 데이터베이스 객체가 초기화된 경우
 	if (database.db) {
 
+
 		// 1. 아이디를 이용해 사용자 검색
 		database.UserModel.findByEmail(paramWriter, function(err, results) {
 			if (err) {
@@ -235,7 +236,7 @@ var searchroomget = function(req, res) {
     // 데이터베이스 객체가 초기화된 경우
    if (database.db) {
 
-         //시설 찾기
+         //예약 삭제
           database.StudyModel.load(paramCon, function(err, results) {
                if (err) {
                       console.error('게시판 글 조회 중 에러 발생 : ' + err.stack);
@@ -338,93 +339,45 @@ var searchroompost = function(req, res) {
                    totalRecords: count,
                    size: paramPerPage
                 };
-
-								// 스터디룸 검색 조건 설정
-								var selcon = req.body.selcon;
-
                   var searchData = {
-                  n_inputcon: req.body.inputcon
+                  n_facilityname: req.body.con
                   };
-									console.log('선택된 검색 조건:' + selcon);
-									console.log('입력된 검색 조건 :' +searchData['n_inputcon']);
+                  console.log('입력된 검색 조건 : \n' +searchData['n_facilityname']);
 
-									if(selcon == "시설 이름"){
-                    // 예약자 이름으로 검색
-                    database.StudyModel.findByFacilityname(searchData, function(err, results) {
-                           var context = {
-                              title: '시설 목록',
-                              posts: results,
-                              page: parseInt(paramPage),
-                              pageCount: Math.ceil(count / paramPerPage),
-                              perPage: paramPerPage,
-                              totalRecords: count,
-                              size: paramPerPage
-                           };
-                            console.dir('시설 이름 검색 결과 출력: ');
-                            console.dir(results);
 
-                            req.app.render('user_roomsearch', context, function(err, html) {
-                               res.end(html);
-                            });
+                //예약 검색
+                 database.StudyModel.findByFacilityname(searchData, function(err, results) {
+                      if (results) {
+                        var context = {
+                           title: '글 목록',
+                           posts: results,
+                           page: parseInt(paramPage),
+                           pageCount: Math.ceil(count / paramPerPage),
+                           perPage: paramPerPage,
+                           totalRecords: count,
+                           size: paramPerPage
+                        };
+                         console.dir('검색 결과 문서들 출력: ');
+                         console.dir(results);
+                               req.app.render('user_roomsearch', context, function(err, html) {
+                                  if (err) {
+                                           console.error('응답 웹문서 생성 중 에러 발생 : ' + err.stack);
+
+                                           res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+                                           res.write('<h2>응답 웹문서 생성 중 에러 발생</h2>');
+                                           res.write('<p>' + err.stack + '</p>');
+                                           res.end();
+
+                                           return;
+                                       }
+                                  res.end(html);
+                               });
+                      } else {
+                         res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+                         res.write('<h2>글 조회  실패</h2>');
+                         res.end();
+                      }
                    });
-                 }
-                 else if(selcon == "시설 주소"){
-                   database.StudyModel.findByAddress(searchData, function(err, results) {
-                          var context = {
-                             title: '시설 목록',
-                             posts: results,
-                             page: parseInt(paramPage),
-                             pageCount: Math.ceil(count / paramPerPage),
-                             perPage: paramPerPage,
-                             totalRecords: count,
-                             size: paramPerPage
-                          };
-                           console.dir('시설 주소 검색 결과 출력: ');
-                           console.dir(results);
-
-                           req.app.render('user_roomsearch', context, function(err, html) {
-                              res.end(html);
-                           });
-                  });
-                 }
-								 else if(selcon == "수용 인원"){
-									 database.StudyModel.findByPeople(searchData, function(err, results) {
-													var context = {
-														 title: '시설 목록',
-														 posts: results,
-														 page: parseInt(paramPage),
-														 pageCount: Math.ceil(count / paramPerPage),
-														 perPage: paramPerPage,
-														 totalRecords: count,
-														 size: paramPerPage
-													};
-													 console.dir('수용 인원 검색 결과 출력: ');
-													 console.dir(results);
-
-													 req.app.render('user_roomsearch', context, function(err, html) {
-															res.end(html);
-													 });
-									});
-								 }
-								 else if(selcon == "편의 시설"){
-									 database.StudyModel.findByConve(searchData, function(err, results) {
-													var context = {
-														 title: '시설 목록',
-														 posts: results,
-														 page: parseInt(paramPage),
-														 pageCount: Math.ceil(count / paramPerPage),
-														 perPage: paramPerPage,
-														 totalRecords: count,
-														 size: paramPerPage
-													};
-													 console.dir('편의 검색 결과 출력: ');
-													 console.dir(results);
-
-													 req.app.render('user_roomsearch', context, function(err, html) {
-															res.end(html);
-													 });
-									});
-								 }
              });
 
           } else {
