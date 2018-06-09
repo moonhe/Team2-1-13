@@ -1,4 +1,4 @@
-/**
+ /**
 * 패스포트 라우팅 함수 정의
 *
 * @date 2016-11-10
@@ -67,6 +67,24 @@ module.exports = function(router, passport) {
       });
     });
 
+    //개발자 문의 화면
+    router.route('/user/contactDev').get(function(req, res) {
+      if (!req.user) {
+          console.log('사용자 인증 안된 상태임.');
+          console.log('/user/login 패스 요청됨.');
+          res.writeHead('200', {
+            'Content-Type': 'text/html;charset=utf8'
+          });
+          res.write('<script>alert("로그인이 필요합니다")</script>');
+          res.write('<script>window.location.href="/user/login"</script>');
+          res.end();
+          return;
+      } else {
+        console.log('/contactDev 패스 요청됨.');
+        res.render('user_contactDev.ejs', {message: req.flash('')});
+      }
+    });
+
     // 시설조회 화면
     router.route('/user/search').get(function(req, res) {
       var database = req.app.get('database');
@@ -103,34 +121,33 @@ module.exports = function(router, passport) {
             if (Array.isArray(req.user)) {
                 res.render('user_profile.ejs', {user: req.user[0]._doc});
             } else {
-                var database = req.app.get('database');
-                if (database.db) {
-                   database.ReservationModel.loadbyemail(req.user.email, function(err, results) {
-                        if (err) {
-                               console.error('에앾 조회 중 에러 발생 : ' + err.stack);
-                               return;
-                         }
-                        if (results) {
-                           //console.dir(results);
-                           console.log("dfnaisfnspaofnaopefnpofneop");                           //user_email = session_obj.auth_email;
-                           // 뷰 템플레이트를 이용하여 렌더링한 후 전송
-                          for(i =0; i<results.length; i++){
-                            console.dir(results[i]._doc);
-                          }
-                           var context = {
-                              user: req.user,
-                              title: '예약 조회',
-                              posts: results,
-                           };
-                           res.render('user_profile.ejs', context);
-                        } else {}
-                     });
+              var database = req.app.get('database');
+              if (database.db) {
+                 database.ReservationModel.loadbyemail(req.user.email, function(err, results) {
+                      if (err) {
+                             console.error('에앾 조회 중 에러 발생 : ' + err.stack);
+                             return;
+                       }
+                      if (results) {
+                         //console.dir(results);
+                         //user_email = session_obj.auth_email;
+                         // 뷰 템플레이트를 이용하여 렌더링한 후 전송
+                        for(i =0; i<results.length; i++){
+                          console.dir(results[i]._doc);
+                        }
+                         var context = {
+                            user: req.user,
+                            title: '예약 조회',
+                            posts: results,
+                         };
+                         res.render('user_profile.ejs', context);
+                      } else {}
+                   });
 
-                } else {
-                   //res.write('<h2>데이터베이스 연결 실패</h2>');
-                }
-                //res.render('user_profile.ejs', {user: req.user});
-
+              } else {
+                 //res.write('<h2>데이터베이스 연결 실패</h2>');
+              }
+              //res.render('user_profile.ejs', {user: req.user});
             }
         }
     });
@@ -305,42 +322,56 @@ module.exports = function(router, passport) {
           }
         });
 
-        /*
-            //개발자 문의 화면
-            router.route('/user/contactDev').get(function(req, res) {
-              if (!req.user) {
-                  console.log('사용자 인증 안된 상태임.');
-                  console.log('/user/contactDev 패스 요청됨.');
-                  res.writeHead('200', {
-                    'Content-Type': 'text/html;charset=utf8'
-                  });
-                  res.write('<script>alert("로그인이 필요합니다")</script>');
-                  res.write('<script>window.location.href="/user/login"</script>');
-                  res.end();
-                  return;
-              } else {
-                console.log('/contactDev 패스 요청됨.');
-                res.render('user_contactDev.ejs', {message: req.flash('')});
-              }
-            });
-        */
-
         //개발자 문의 화면
         router.route('/user/contactDev').get(function(req, res){
           console.log('/user/contactDev 패스 요청됨.');
           // URL 파라미터로 전달됨
-          //var paramId = req.body.id || req.query.id || req.params.id;
-          session_obj = req.session;
-          user__id = session_obj.auth__id;
-          user_name = session_obj.auth_name;
-          console.dir(req.session);
-          var context = {
-             title: '회원 이름 ',
-             //Entities: Entities,
-          user__id : user__id,
-          user_name: user_name
-          };
-          res.render('user_contactDev.ejs', context);
+          var paramId = req.body.id || req.query.id || req.params.id;
+
+          console.log('요청 파라미터 : ' + paramId);
+          var database = req.app.get('database');
+          // 데이터베이스 객체가 초기화된 경우
+         if (database.db) {
+
+           //개말자 문의
+            database.UserModel.load(paramId, function(err, results) {
+                 if (err) {
+                        console.error('사용자 수정 중 에러 발생 : ' + err.stack);
+                        return;
+                  }
+
+                 if (results) {
+                    console.dir(results);
+                    // 뷰 템플레이트를 이용하여 렌더링한 후 전송
+                    session_obj = req.session;
+                    user__id = session_obj.auth__id;
+                    user_name = session_obj.auth_name;
+                    var context = {
+                       title: '회원 이름 ',
+                       posts: results,
+                       //Entities: Entities,
+                    user__id : user__id,
+                    user_name: user_name
+                    };
+
+
+                    /*
+                    if (!req.user) {
+                        console.log('사용자 인증 안된 상태임.');
+                        res.render('user_index.ejs', {login_success:false});
+                    } else {
+                        console.log('사용자 인증된 상태임.');
+                        res.render('user_updatesignup.ejs', context, {login_success:true});
+                    }
+                    */
+                    res.render('user_contactDev.ejs', context);
+                 } else {}
+              });
+
+         } else {
+            //res.write('<h2>데이터베이스 연결 실패</h2>');
+         }
+          //res.redirect('/user/update');
         });
 
 
@@ -415,6 +446,106 @@ module.exports = function(router, passport) {
           res.end();
         }
         });
+
+
+        //회원 수정
+         database.UserModel.load(paramId, function(err, results) {
+              if (err) {
+                     console.error('사용자 수정 중 에러 발생 : ' + err.stack);
+                     return;
+               }
+
+              if (results) {
+                 console.dir(results);
+                 // 뷰 템플레이트를 이용하여 렌더링한 후 전송
+                 session_obj = req.session;
+                 user__id = session_obj.auth__id;
+                 user_name = session_obj.auth_name;
+                 user_phone = session_obj.auth_phone;
+                 user_birth = session_obj.auth_birth;
+                 user_gender = session_obj.auth_gender;
+                 user_postcode = session_obj.auth_postcode;
+                 user_roadnameaddress = session_obj.auth_roadnameaddress;
+                 user_address = session_obj.auth_address;
+                 var context = {
+                    title: '사용자 수정 ',
+                    posts: results,
+                    //Entities: Entities,
+                    user__id : user__id,
+                    user_name: user_name,
+                    user_phone: user_phone,
+                    user_birth: user_birth,
+                    user_gender: user_gender,
+                    user_postcode: user_postcode,
+                    user_roadnameaddress: user_roadnameaddress,
+                    user_address: user_address
+                 };
+
+
+                 /*
+                 if (!req.user) {
+                     console.log('사용자 인증 안된 상태임.');
+                     res.render('user_index.ejs', {login_success:false});
+                 } else {
+                     console.log('사용자 인증된 상태임.');
+                     res.render('user_updatesignup.ejs', context, {login_success:true});
+                 }
+                 */
+                 res.render('user_updatesignup.ejs', context);
+              } else {}
+           });
+
+      } else {
+         //res.write('<h2>데이터베이스 연결 실패</h2>');
+      }
+       //res.redirect('/user/update');
+     });
+
+
+     // 사용자 반납 정보 등록
+           router.route('/user/return').post(function(req, res){
+             console.log('/user/return 패스 요청됨.');
+             // URL 파라미터로 전달됨
+             //var paramId = req.body.id || req.query.id || req.params.id;
+
+             var returnData = {
+               id: req.body.id,
+               n_username: req.body.username,
+               n_returntime: req.body.returntime,
+               n_facilityname: req.body.facilityname,
+               n_imagefiles: req.body.imagefiles
+             };
+             console.log('요청 파라미터 : \n' +
+               updateData['id'] + '\n' +
+               updateData['n_username'] + '\n' +
+               updateData['n_birth'] + '\n' +
+               updateData['n_gender'] + '\n' +
+               updateData['n_phone'] + '\n' +
+               updateData['n_postcode'] + '\n' +
+               updateData['n_roadnameaddress'] + '\n' +
+               updateData['n_address'] + '\n'
+             );
+             var database = req.app.get('database');
+             // 데이터베이스 객체가 초기화된 경우
+            if (database.db) {
+
+              //회원 수정
+               database.UserModel.update(updateData, function(err, results) {
+                    if (err) {
+                           console.error('사용자 수정 중 에러 발생 : ' + err.stack);
+                           return;
+                     }
+                    if (results) {
+                         console.dir(results);
+                         req.logout();
+                         res.redirect('/user/login');
+            } else {
+               //res.write('<h2>데이터베이스 연결 실패</h2>');
+            }
+             //res.redirect('/user/update');
+           });
+         }
+       });
 
     // 로그인 인증
     router.route('/user/login').post(passport.authenticate('local-login', {

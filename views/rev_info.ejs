@@ -47,6 +47,7 @@ var curFacilityname = posts._doc.facilityname;
 var curUsername = posts._doc.username;
 var curPhone = posts._doc.phone;
 var curEmail = posts._doc.email;
+var curIsreturned = posts._doc.isreturned;
 %>
 
 <body id="page-top">
@@ -153,6 +154,17 @@ var curEmail = posts._doc.email;
                   <h6><%= curEmail %></h6>
               </div>
             </div>
+            <div class="row">
+              <div class="col-lg-3 col-sm-4">
+                <h5><center>반납 여부</center></h5>
+              </div>
+              <div class="col-lg-8 col-sm-8">
+                <h6><%= curIsreturned %></h6>
+            </div>
+            <div class="col-lg-3 col-sm-4">
+              <button type="button" class="btn btn-primary btn-block" onclick="location.href='/user/return/<%= curID %>'">반납하기</button>
+            </div>
+          </div>
                 <hr>
                 <hr>
 
