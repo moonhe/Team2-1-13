@@ -112,7 +112,7 @@ module.exports = function(router, passport) {
                          }
                         if (results) {
                            //console.dir(results);
-                           console.log("dfnaisfnspaofnaopefnpofneop");                           //user_email = session_obj.auth_email;
+                           //user_email = session_obj.auth_email;
                            // 뷰 템플레이트를 이용하여 렌더링한 후 전송
                           for(i =0; i<results.length; i++){
                             console.dir(results[i]._doc);
