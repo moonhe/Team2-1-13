@@ -59,6 +59,7 @@ module.exports = function(router, passport) {
         res.render('user_signup.ejs', {message: req.flash('signupMessage')});
     });
 
+
     //개발자 문의 성공 화면
     router.route('/user/contactSuccess').get(function(req, res) {
       console.log('/contactSuccess 패스 요청됨.');
@@ -429,5 +430,16 @@ module.exports = function(router, passport) {
         failureRedirect : '/user/signup',
         failureFlash : true
     }));
+
+
+
+
+
+        router.route('/user/roomreturn').get(function(req, res) {
+            console.log('/roomreturn 패스 요청됨.');
+            res.render('user_roomreturn.ejs', {message: req.flash('signupMessage')});
+        });
+
+        //추후삭제
 
 };
