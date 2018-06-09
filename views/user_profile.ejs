@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <link href="/public/bootstrap/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
   <link href="/public/bootstrap/css/freelancer.min.css" rel="stylesheet">
-
+	<link href="/public/semantic.min.css" rel="stylesheet" >
 
   <style>
   h6 {
@@ -74,6 +74,8 @@
               <div class="col-md-7 mb-5 mb-lg-0">
                 <hr>
                 <div class="row">
+                  <div class="col-md-1 mb-5 mb-lg-0">
+                  </div>
                   <div class="col-md-2 mb-5 mb-lg-0">
                     <h5>아이디</h5>
                   </div>
@@ -84,6 +86,8 @@
 
                 <hr>
                 <div class="row">
+                  <div class="col-md-1 mb-5 mb-lg-0">
+                  </div>
                   <div class="col-md-2 mb-5 mb-lg-0">
                     <h5>이름</h5>
                   </div>
@@ -94,22 +98,28 @@
                 <hr>
 
                 <div class="row">
+                  <div class="col-md-1 mb-5 mb-lg-0">
+                  </div>
                   <div class="col-md-2 mb-2 mb-lg-0">
                     <h5>생년월일</h5>
                   </div>
                   <div class="col-md-3 mb-2 mb-lg-0 alert1 alert1-info">
                     <%=user.birth%>
                   </div>
-                  <div class="col-md-1 mb-2 mb-lg-0 ">
+                  <div class="col-md-2 mb-2 mb-lg-0 ">
+                    <div class="col-md-1 mb-5 mb-lg-0">
+                    </div>
                     <h5>성 별</h5>
                   </div>
-                  <div class="col-md-1 mb-2 mb-lg-0 alert1 alert1-info ">
+                  <div class="col-md-2 mb-2 mb-lg-0 alert1 alert1-info ">
                     <%=user.gender%>
                   </div>
                 </div>
                 <hr>
 
                 <div class="row">
+                  <div class="col-md-1 mb-5 mb-lg-0">
+                  </div>
                   <div class="col-md-2 mb-5 mb-lg-0">
                     <h5>전화번호</h5>
                   </div>
@@ -120,6 +130,8 @@
                 <hr>
 
                 <div class="row">
+                  <div class="col-md-1 mb-5 mb-lg-0">
+                  </div>
                   <div class="col-md-2 mb-5 mb-lg-0">
                     <h5>주소</h5>
                   </div>
@@ -130,9 +142,11 @@
                 <hr>
               </div>
 
-              <div class="col-md-4 mb-5 mb-lg-0">
+              <div class="col-md-5 mb-5 mb-lg-0">
                 <hr>
                 <div class="row">
+                  <div class="col-md-1 mb-5 mb-lg-0">
+                  </div>
                   <div class="col-md-3 mb-5 mb-lg-0">
                     <h5>고객등급</h5>
                   </div>
@@ -142,6 +156,8 @@
                 </div>
                 <hr>
                 <div class="row">
+                  <div class="col-md-1 mb-5 mb-lg-0">
+                  </div>
                   <div class="col-md-3 mb-5 mb-lg-0">
                     <h5>패널티</h5>
                   </div>
@@ -154,32 +170,39 @@
 
                 <center>
                   <br>
-                  <div class="col-md-6 mb-5 mb-lg-0">
-                    <form action="/user/update" method="get">
-                      <input type="hidden" value="<%=user._id%>" name="id"/>
-                      <input type="submit" class="btn btn-primary btn-block" value="회원수정"/>
-                    </form>
-                  </div>
                   <br>
-                  <div class="col-md-6 mb-5 mb-lg-0" >
-                    <form name="deleteInfo" action="/user/delete" method="post">
-                      <input type="hidden" value="<%=user._id%>" name="id"/>
-                      <input type="button" class="btn btn-primary btn-block" onclick="con_test()"value="회원탈퇴"/>
-                    </form>
+                      <br>
+                  <div class="row">
+                    <div class="col-md-6 mb-5 mb-lg-0">
+                      <form action="/user/update" method="get">
+                        <input type="hidden" value="<%=user._id%>" name="id"/>
+                        <input type="submit" class="btn btn-primary btn-block" value="회원수정"/>
+                      </form>
+                    </div>
+                    <div class="col-md-6 mb-5 mb-lg-0" >
+                      <form name="deleteInfo" action="/user/delete" method="post">
+                        <input type="hidden" value="<%=user._id%>" name="id"/>
+                        <input type="button" class="btn btn-primary btn-block" onclick="con_test()"value="회원탈퇴"/>
+                      </form>
+                    </div>
                   </div>
+
                   <br>
-                  <div class="col-md-6 mb-5 mb-lg-0">
+                  <div class="row">
+                  <div class="col-md-12 mb-5 mb-lg-0">
                     <input type="hidden" value="<%=user._id%>" name="id"/>
                     <button type="button" class="btn btn-primary btn-block" onclick="location.href='/user/logout' ">로그아웃</button>
                     <!-- <a href="/user/logout" class="btn btn-primary btn-block">로그아웃</a> -->
                   </div>
+                      </div>
                 </center>
               </div>
             </div>
-            <hr>
 
           </div>
           <br><br><br><br><br><br>
+
+          
           <div style='width:45%; float:left'>
             <center><br><br>
               <h5>예약목록</h5>
