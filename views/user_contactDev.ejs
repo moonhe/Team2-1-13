@@ -14,8 +14,13 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <link href="/public/bootstrap/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
   <link href="/public/bootstrap/css/freelancer.min.css" rel="stylesheet">
+  <link href="/public/semantic.min.css" rel="stylesheet" >
 
   <style>
+  body {
+    background-color: #f4fff4;
+  }
+
   h5 {
     display: block;
     font-size: 1.4em;
@@ -48,94 +53,107 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login"> 로그인 및 회원가입</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search?page=0&perPage=10">스터디룸 조회 및 예약</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">마이페이지</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/contactDev">개발자 문의</a></li>
-          </ul>
+            <% if(user_name ==null){%>
+              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login"> 로그인 및 회원가입</a></li>
+              <%} else {%>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=""> <%=user_name%>님 환영합니다</a></li>
+                <%}%>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search?page=0&perPage=10">스터디룸 조회 및 예약</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">마이페이지</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/contactDev">개발자 문의</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <br><br><br><br><br><br>
+
+        <style>
+        .table {text-align:center; border: 1px solid #ddd}
+        .table th{background-color: #eee; text-align: center;}
+        .table textarea{height: 350px;}
+        </style>
+        <div class="container">
+          <img class="img-fluid mb-5 d-block mx-auto" src="/public/bootstrap/img/phone-book.png" alt="">
+          <div class="row">
+            <div class="col-md-1 mb-5 mb-lg-0">
+            </div>
+            <div class="col-md-10 mb-5 mb-lg-0">
+              </div>
+            </div>
+            <hr>
+            <br>
+            <form action="/user/contactDev" method="post">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-1">
+                  </div>
+                  <div class="col-md-10">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th colspan="2"><h5>개발자 문의</h5></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td width="200px"><h6>작성자</h6></td>
+                          <td width="600px"><input type="text" name="writer" class="form-control" value="<%=user_name%>" maxlength="50" readonly/></td>
+                        </tr>
+                        <tr>
+                          <td><h6>문의 종류</h6></td>
+                          <td><select class="selectpicker form-control" name="kind">
+                            <option>예약문의</option>
+                            <option>예약취소문의</option>
+                            <option>반납문의</option>
+                            <option>건의사항</option>
+                            <option>기타</option>
+                          </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="200px"><h6>글제목</h6></td>
+                        <td width="600px"><input type="text" class="form-control" name="title" placeholder="글 제목" name="bbsTitle" maxlength="50" /></td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><textarea class="form-control" placeholder="글 내용" name="content" maxlength="2048"></textarea></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-3">
+                  <input type="submit" class="btn btn-primary btn-block" value="작성하기" />
+                </div>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-3">
+                  <input type="submit" class="btn btn-primary btn-block" value="취소하기" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <br>
+      <div class="copyright py-4 text-center text-white">
+        <div class="container">
+          <small>Copyright &copy; Your Website 2018</small>
         </div>
       </div>
-    </nav>
-    <br><br><br><br><br><br>
 
-    <style>
-    .table {text-align:center; border: 1px solid #ddd}
-    .table th{background-color: #eee; text-align: center;}
-    .table textarea{height: 350px;}
-    </style>
+      <script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
+      <script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+      <script src="/public/bootstrap/vendor/magnifaic-popup/jquery.magnific-popup.min.js"></script>
+      <script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
+      <script src="/public/bootstrap/js/contact_me.js"></script>
+      <script src="/public/bootstrap/js/freelancer.min.js"></script>
 
-    <form action="/user/contactDev" method="post">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-1">
-          </div>
-          <div class="col-md-10">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th colspan="2"><h5>개발자 문의</h5></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td width="200px"><h6>작성자</h6></td>
-                  <td width="600px"><input type="text" name="writer" class="form-control" value="<%=user_name%>" maxlength="50" readonly/></td>
-                </tr>
-                <tr>
-                  <td><h6>문의 종류</h6></td>
-                  <td><select class="selectpicker form-control" name="kind">
-                    <option>예약문의</option>
-                    <option>예약취소문의</option>
-                    <option>반납문의</option>
-                    <option>건의사항</option>
-                    <option>기타</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td width="200px"><h6>글제목</h6></td>
-                <td width="600px"><input type="text" class="form-control" name="title" placeholder="글 제목" name="bbsTitle" maxlength="50" /></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td><textarea class="form-control" placeholder="글 내용" name="content" maxlength="2048"></textarea></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-        <div class="row">
-          <div class="col-md-2">
-          </div>
-          <div class="col-md-4">
-            <input type="submit" class="btn btn-primary btn-block" value="작성하기" />
-          </div>
-          <div class="col-md-1">
-          </div>
-          <div class="col-md-4">
-            <input type="submit" class="btn btn-primary btn-block" value="취소하기" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
+    </body>
 
-
-  <br>
-  <div class="copyright py-4 text-center text-white">
-    <div class="container">
-      <small>Copyright &copy; Your Website 2018</small>
-    </div>
-  </div>
-
-  <script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
-  <script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="/public/bootstrap/vendor/magnifaic-popup/jquery.magnific-popup.min.js"></script>
-  <script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
-  <script src="/public/bootstrap/js/contact_me.js"></script>
-  <script src="/public/bootstrap/js/freelancer.min.js"></script>
-
-</body>
-
-</html>
+    </html>

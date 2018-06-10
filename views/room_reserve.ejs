@@ -44,7 +44,11 @@ var curPhone = posts._doc.phone;
 %>
 
 <body id="page-top">
-
+  <style>
+         *{
+             box-sizing:	content-box;
+         }
+         </style>
 
 
   <!-- Navigation -->
@@ -57,7 +61,11 @@ var curPhone = posts._doc.phone;
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login"> 로그인 및 회원가입</a></li>
+          <% if(user_name ==null){%>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login"> 로그인 및 회원가입</a></li>
+          <%} else {%>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=""> <%=user_name%>님 환영합니다</a></li>
+          <%}%>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search?page=0&perPage=10">스터디룸 조회 및 예약</a></li>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">마이페이지</a></li>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/contactDev.jsp">개발자 문의</a></li>
@@ -77,7 +85,7 @@ var curPhone = posts._doc.phone;
           <div class="col-md-1 mb-5 mb-lg-0">
           </div>
 
-          <div class="col-md-10 mb-5 mb-lg-0">
+          <div class="col-md-9 mb-5 mb-lg-0">
             <h2 class="text-uppercase mb-0 text-center">스터디룸 예약</h1>
               <hr>
 
@@ -145,7 +153,7 @@ var curPhone = posts._doc.phone;
                 <div class="col-lg-2 col-sm-2">
                   <input type="text" class='timepicker form-control' name="starttime" placeholder="ex) 7:00">
                 </div>
-                <div class="col-lg-2 col-sm-1">
+                <div class="col-lg-1 col-sm-1">
                   <h5><center>
                     부터
                   </center></h5>
@@ -162,8 +170,6 @@ var curPhone = posts._doc.phone;
                 </div>
                 <div class="col-lg-2 col-sm4">
                   <input type="text" class="form-control" name="username" value="<%=user_name%>" readonly>
-                </div>
-                <div class="col-lg-1 col-sm-4">
                 </div>
                 <div class="col-lg-3 col-sm-4">
                   <h5 class="text-uppercase mb-2 text-center">예약자 전화번호</h5>
@@ -185,7 +191,7 @@ var curPhone = posts._doc.phone;
               <hr>
 
               <div class="row">
-                <div class="col-lg-3 col-sm-2">
+                <div class="col-lg-2 col-sm-2">
                   <h5 class="text-uppercase mb-2 text-center"></h5>
                 </div>
                 <div class="col-lg-3 col-sm-4">
@@ -194,7 +200,7 @@ var curPhone = posts._doc.phone;
                 <div class="col-lg-3 col-sm-4">
                   <button type="button" class="btn btn-primary btn-block" >돌아 가기</button>
                 </div>
-                <div class="col-lg-3 col-sm-2">
+                <div class="col-lg-2 col-sm-2">
                   <h5 class="text-uppercase mb-2 text-center"></h5>
                 </div>
               </div>

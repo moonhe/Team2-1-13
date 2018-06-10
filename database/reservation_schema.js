@@ -21,7 +21,7 @@ SchemaObj.createSchema = function (mongoose) {
     username: { type: String, trim: true, 'default': '' },      // 예약자 이름
     phone: { type: String, trim: true, 'default': '' },      // 예약자 전화번호
     email: { type: String, trim: true, 'default': '' }, // 예약자 이메일 정보 저장
-    isreturned: { type: String, trim: true, 'default': "N" }
+  	return: { type: String, trim: true, 'default': 'No' }			//소개
   });
 
   // 필수 속성에 대한 'required' validation
