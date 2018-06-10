@@ -74,7 +74,7 @@
       </nav>
 
       <br><br>
-      <form action="/user/roomreturn" method="post">
+      <form action="/user/roomreturn" method="post" enctype="multipart/form-data">
         <section class="portfolio bg-third ">
           <div class="container">
           </div>
@@ -203,7 +203,7 @@
                         <h5 class="text-uppercase mb-2 text-center">건의사항 / 한줄 평</h5>
                       </div>
                       <div class="col-lg-8 col-sm-2">
-                        <input type="text" class="form-control" namd = "comment" >
+                        <input type="text" class="form-control" name = "comment" >
                       </div>
                     </div>
                     <hr>
@@ -221,7 +221,7 @@
                         <h5 class="text-uppercase mb-2 text-center">반납시간</h5>
                       </div>
                       <div class="col-lg-3 col-sm-2">
-                        <p id="demo"  class="form-control" name = "returntime"></p>
+                        <p id="demo" name = "returntime" class="form-control"></p>
                         <script>
                         var d = new Date();
                         var year = d.getFullYear();
@@ -284,7 +284,7 @@
                       </div>
                       <div class="col-lg-3 col-sm-4">
                         <input type="file" name="uploadfile" id="exampleInputFile" onchange="previewImage(this,'View_area')">
-                      </div>
+                  </div>
                       <div class="col-lg-3 col-sm-4">
                         <h5><center>
                           반납 이미지 예시

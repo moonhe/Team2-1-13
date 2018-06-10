@@ -6,6 +6,20 @@
 */
 
 
+var multer = require('multer');
+
+var _storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function(req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+
+var upload = multer({
+  storage: _storage
+});
 
 module.exports = function(router, passport) {
     console.log('user_passport 호출됨.');
@@ -430,6 +444,77 @@ module.exports = function(router, passport) {
           res.end();
         }
         });
+
+
+                   //사용자 반납 정보 등록
+                   router.post('/user/roomreturn',upload.single('uploadfile'),function(req, res) {
+                     console.log('/user/roomreturn post 패스 요청됨.');
+                     // URL 파라미터로 전달됨
+                  //   var paramId = req.body.id || req.query.id || req.params.id;
+                  //   console.log('요청 파라미터 : ' +paramID );
+
+
+                     // 반납 정보 등록
+
+                     var paramcomment = req.body.comment || req.query.comment;
+                     var paramremark = req.body.remark || req.query.remark;
+                     var paramreturntime;
+                     console.log('요청 파라미터 : ' + paramcomment + ', ' + paramremark + ', ' + paramreturntime );
+
+                     console.log(req.uploadfile);
+                     if (req.file.path != "" || req.query.file.path != "") {
+                       var paramimagefiles = req.file.path || req.query.file.path;
+                     }
+                     console.log("여기 1");
+                     var paramnumber = req.body.number || req.query.number;
+
+                     console.log('요청 파라미터 : ' + paramcomment + ', ' + paramremark + ', ' + paramreturntime + ', ' + paramimagefiles);
+
+                     var database = req.app.get('database');
+                     // 데이터베이스 객체가 초기화된 경우
+                     if (database.db) {
+
+                       // 1. 아이디를 이용해 사용자 검색
+                       database.ReturnModel.load(paramnumber, function(err, results) {
+
+                         // PostModel 인스턴스 생성
+                         var post = new database.ReturnModel({
+                           comment: paramcomment,
+                           remark: paramremark,
+                           number: paramnumber,
+                           imagefiles: paramimagefiles,
+                         });
+
+                         post.savePost(function(err, result) {
+
+
+                           if (err) {
+                             console.error('응답 웹문서 생성 중 에러 발생 : ' + err.stack);
+                             res.writeHead('200', {
+                               'Content-Type': 'text/html;charset=utf8'
+                             });
+                             res.write('<script>alert("모든 값을 입력해주세요")</script>');
+                             res.write('<script>window.location.href="/admin/register"</script>');
+                             res.end();
+                             return;
+                           } else if (!req.file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+                             res.writeHead('200', {
+                               'Content-Type': 'text/html;charset=utf8'
+                             });
+                             res.write('<<script>alert("jpg png gif 파일만 가능합니다")</script>');
+                             res.write('<script>window.location.href="/admin/register"</script>');
+                             res.end();
+                             return;
+                           }
+
+
+                           console.log("반납 데이터 추가함.");
+                           res.redirect('/user/DeleteSuccess');
+                         });
+                       });
+
+                     }
+                   });
 
     // 로그인 인증
     router.route('/user/login').post(passport.authenticate('local-login', {

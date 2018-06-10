@@ -40,17 +40,14 @@
 
 <%
 var curID = posts._doc._id;
+var curDate = posts._doc.date;
+var curStarttime = posts._doc.starttime;
+var curEndtime = posts._doc.endtime;
 var curFacilityname = posts._doc.facilityname;
-var curAddress = posts._doc.address;
-var curPeople = posts._doc.people;
-var curImagedir = posts._doc.imagefiles;
-var curPostcode = posts._doc.postcode;
-var curRoadaddress = posts._doc.roadnameaddress;
-var curNumber = posts._doc.number;
-var curConve = posts._doc.conve;
-var curStartTime = posts._doc.starttime;
-var curEndTime = posts._doc.endtime;
-var curIntro = posts._doc.intro;
+var curUsername = posts._doc.username;
+var curPhone = posts._doc.phone;
+var curEmail = posts._doc.email;
+var curStatus = posts._doc.return;
 %>
 
 <body id="page-top">
@@ -80,6 +77,7 @@ var curIntro = posts._doc.intro;
     </div>
   </nav>
 
+
     <br><br>
     <form action="/admin/register" method="post" enctype="multipart/form-data">
       <section class="PORTZFOLIO bg-third ">
@@ -91,40 +89,34 @@ var curIntro = posts._doc.intro;
             <div class="col-md-1 mb-5 mb-lg-0">
             </div>
             <div class="col-md-10 mb-5 mb-lg-0">
-              <h2 class="text-uppercase mb-0 text-center">스터디룸 정보</h1>
+              <h2 class="text-uppercase mb-0 text-center">예약현황</h1>
                 <hr>
                 <div class="row">
-                  <div class=" col-lg-4 col-sm-4">
-                    <br><br>
-                    <img id="prev_View_area" src="/<%=curImagedir%>" style='position:relative; width: 200px; height: 200px; color: black;  border: 0px solid green ; dispaly: inline; '>
-                  </div>
                   <div class="col-lg-8 col-sm-8">
                     <div class ="row">
-                      <div class="col-lg-4 col-sm-4">
-                        <h5><center>스터디룸 이름</center></h5>
+                      <div class="col-lg-3 col-sm-4">
+                        <h5>스터디룸 이름</h5>
                       </div>
-                      <div class="alert1 alert1-success col-lg-6 col-sm-4">
+                      <div class=" alert1 alert1-info col-lg-6 col-sm-4">
                         <h6><%= curFacilityname %></h6>
                       </div>
                     </div>
                     <hr>
                     <div class ="row">
-                      <div class="col-lg-4 col-sm-4">
-                        <h5><center>스터디룸 위치</center></h5>
+                      <div class="col-lg-3 col-sm-4">
+                        <h5>사용자명</h5>
                       </div>
-                      <div class="alert1 alert1-success col-lg-6 col-sm-4">
-                        <h6><%= curPostcode %></h6>
-                        <h6><%= curRoadaddress %></h6>
-                        <h6><%= curAddress %></h6>
+                      <div class=" alert1 alert1-info  col-lg-6 col-sm-4">
+                        <h6><%= curUsername %></h6>
                       </div>
                     </div>
                     <hr>
                     <div class ="row">
-                      <div class="col-lg-4 col-sm-4">
-                        <h5><center>전화 번호</center></h5>
+                      <div class="col-lg-3 col-sm-4">
+                        <h5>전화번호</h5>
                       </div>
-                      <div class="alert1 alert1-success col-lg-6 col-sm-4">
-                        <h6><%= curNumber %></h6>
+                      <div class="alert1 alert1-info  col-lg-6 col-sm-4">
+                        <h6><%= curPhone %></h6>
                       </div>
                     </div>
 
@@ -132,50 +124,53 @@ var curIntro = posts._doc.intro;
                 </div>
                 <hr>
 
-
-
                 <div class="row">
-                  <div class="col-lg-3 col-sm-4">
-                    <h5><center>개방시간</center></h5>
+                  <div class="col-lg-2 col-sm-4">
+                    <h5>날짜</h5>
                   </div>
-                  <div class="alert1 alert1-success col-lg-2 col-sm-2">
-                    <h6><center><%= curStartTime %></center></h6>
+                  <div class="alert1 alert1-info  col-lg-8 col-sm-8">
+                    <h6><%=curDate%></h6>
                   </div>
-                  <div class="col-lg-3 col-sm-4">
-                    <h5><center>부터</center></h5>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-2 col-sm-4">
+                    <h5>시작시간</h5>
                   </div>
-                  <div class="alert1 alert1-success col-lg-3 col-sm-2">
-                    <h6><center><%= curEndTime %></center></h6>
+                  <div class="alert1 alert1-info  col-lg-2 col-sm-2">
+                    <h6><%= curStarttime %></h6>
+                  </div>
+                  <div class="col-lg-2 col-sm-2">
+                  </div>
+                  <div class="col-lg-2 col-sm-4">
+                    <h5>종료시간</h5>
+                  </div>
+                  <div class="alert1 alert1-info  col-lg-2 col-sm-2">
+                    <h6><%= curEndtime %></h6>
                   </div>
                 </div>
                 <hr>
 
                 <div class="row">
-                  <div class="col-lg-3 col-sm-4">
-                    <h5><center>시설 소개</center></h5>
+                  <div class="col-lg-2 col-sm-4">
+                    <h5>이메일</h5>
                   </div>
-                  <div class="alert1 alert1-success col-lg-8 col-sm-8">
-                    <h6><%= curIntro %></h6>
-                  </div>
-                </div>
-                <hr>
-
-                <div class="row">
-                  <div class="col-lg-3 col-sm-4">
-                    <h5><center>편의 시설</center></h5>
-                  </div>
-                  <div class="alert1 alert1-success col-lg-8 col-sm-8">
-                    <h6><center><%= curConve %></center></h6>
+                  <div class="alert1 alert1-info  col-lg-8 col-sm-8">
+                    <h6><%= curEmail %></h6>
                   </div>
                 </div>
                 <hr>
-
                 <div class="row">
-                  <div class="col-lg-3 col-sm-4">
-                    <h5><center>최대 인원</center></h5>
+                  <div class="col-lg-2 col-sm-4">
+                    <h5>반납 여부</h5>
                   </div>
-                  <div class="alert1 alert1-success col-lg-8 col-sm-2">
-                    <h6><center><%= curPeople %></center></h6>
+                  <div class="alert1 alert1-info  col-lg-3 col-sm-8">
+                    <h6><%=curStatus%></h6>
+                  </div>
+                    <div class="col-lg-2 col-sm-4">
+                    </div>
+                  <div class="col-lg-3 col-sm-4">
+                    <button type="button" class="btn btn-primary btn-block" onclick="location.href='/user/roomreturn/<%=curID%>'">반납하기</button>
                   </div>
                 </div>
                 <hr>
@@ -188,13 +183,12 @@ var curIntro = posts._doc.intro;
                     <h5 class="text-uppercase mb-2 text-center"></h5>
                   </div>
                   <div class="col-lg-3 col-sm-4">
-                    <button type="button" class="btn btn-primary btn-block" onclick="location.href='/room/reserve/<%=curID%>'">예약 하기</button>
+                    <button type="button" class="btn btn-primary btn-block" onclick="location.href='/admin/deleteuser/<%= curID %>'">예약 삭제</button>
                   </div>
                   <div class="col-lg-3 col-sm-4">
-                    <button type="button" class="btn btn-primary btn-block"onclick="location.href='/user/search?page=0&perPage=10'" >돌아 가기</button>
+                    <button type="button" class="btn btn-primary btn-block" onclick="location.href='/admin/updateuser/<%= curID %>'">예약 수정</button>
                   </div>
                   <div class="col-lg-3 col-sm-2">
-                    <h5 class="text-uppercase mb-2 text-center"></h5>
                   </div>
                 </div>
               </div>
