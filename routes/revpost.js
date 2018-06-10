@@ -156,6 +156,8 @@ var revpost = function(req, res) {
 };
 
 
+
+
 var showrevpost = function(req, res) {
    console.log('post 모듈 안에 있는 showpost 호출됨.');
 
@@ -385,7 +387,7 @@ var updaterevget = function(req, res) {
     // 데이터베이스 객체가 초기화된 경우
    if (database.db) {
 
-         //예약 삭제
+         //정보 수정
           database.ReservationModel.load(paramId, function(err, results) {
                if (err) {
                       console.error('게시판 글 조회 중 에러 발생 : ' + err.stack);
@@ -725,6 +727,38 @@ var searchrevpost = function(req, res) {
 
 };
 
+var returnget = function(req, res) {
+  console.log('/user/return get 패스 요청됨.');
+
+  var paramId = req.body.curFacilityname|| req.query.curFacilityname || req.params.curFacilityname;
+
+  console.log(paramID);
+
+  var database = req.app.get('database');
+  if (database.db) {
+    database.ReservationModel.load(paramId, function(err, results) {
+        if (err) {
+          console.error('에앾 조회 중 에러 발생 : ' + err.stack);
+          return;
+        }
+        if (results) {
+          //console.dir(results);
+          //user_email = session_obj.auth_email;
+          // 뷰 템플레이트를 이용하여 렌더링한 후 전송
+
+          var context = {
+            user: req.user,
+            title: '예약 조회',
+            posts: results,
+          }
+          res.render('user_return.ejs', context);
+        }
+      });
+
+    }
+};
+
+
 
 module.exports.revpost = revpost;
 module.exports.addpost = addpost;
@@ -735,3 +769,4 @@ module.exports.updaterevget = updaterevget;
 module.exports.updaterevpost = updaterevpost;
 module.exports.searchrevget = searchrevget;
 module.exports.searchrevpost = searchrevpost;
+module.exports.returnget = returnget;

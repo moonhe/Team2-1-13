@@ -1,15 +1,16 @@
 // Express 기본 모듈 불러오기
-var express = require('express'),
-  http = require('http'),
-  path = require('path');
+var express = require('express')
+  , http = require('http')
+  , path = require('path');
 
 // Express의 미들웨어 불러오기
-var bodyParser = require('body-parser'),
-  cookieParser = require('cookie-parser'),
-  static = require('serve-static'),
-  errorHandler = require('errorhandler');
-// 에러 핸들러 모듈 사용r
+var bodyParser = require('body-parser')
+  , cookieParser = require('cookie-parser')
+  , static = require('serve-static')
+  , errorHandler = require('errorhandler');
+// 에러 핸들러 모듈 사용
 var expressErrorHandler = require('express-error-handler');
+// dasdf
 // Session 미들웨어 불러오기
 var expressSession = require('express-session');
 
@@ -62,9 +63,7 @@ app.set('port', process.env.PORT || 3000);
 
 
 // body-parser를 이용해 application/x-www-form-urlencoded 파싱
-app.use(bodyParser.urlencoded({
-  extended: false
-}))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // body-parser를 이용해 application/json 파싱
 app.use(bodyParser.json())
@@ -77,9 +76,9 @@ app.use(cookieParser());
 
 // 세션 설정
 app.use(expressSession({
-  secret: 'my key',
-  resave: true,
-  saveUninitialized: true
+   secret:'my key',
+   resave:true,
+   saveUninitialized:true
 }));
 
 
@@ -110,43 +109,43 @@ adminPassport(router, passport);
 
 //===== 404 에러 페이지 처리 =====//
 var errorHandler = expressErrorHandler({
-  static: {
-    '404': './public/404.html'
-  }
+ static: {
+   '404': './public/404.html'
+ }
 });
 
-app.use(expressErrorHandler.httpError(404));
-app.use(errorHandler);
+app.use( expressErrorHandler.httpError(404) );
+app.use( errorHandler );
 
 
 //===== 서버 시작 =====//
 
 //확인되지 않은 예외 처리 - 서버 프로세스 종료하지 않고 유지함
-process.on('uncaughtException', function(err) {
-  console.log('uncaughtException 발생함 : ' + err);
-  console.log('서버 프로세스 종료하지 않고 유지함.');
+process.on('uncaughtException', function (err) {
+   console.log('uncaughtException 발생함 : ' + err);
+   console.log('서버 프로세스 종료하지 않고 유지함.');
 
-  console.log(err.stack);
+   console.log(err.stack);
 });
 
 // 프로세스 종료 시에 데이터베이스 연결 해제
-process.on('SIGTERM', function() {
-  console.log("프로세스가 종료됩니다.");
-  app.close();
+process.on('SIGTERM', function () {
+    console.log("프로세스가 종료됩니다.");
+    app.close();
 });
 
-app.on('close', function() {
-  console.log("Express 서버 객체가 종료됩니다.");
-  if (database.db) {
-    database.db.close();
-  }
+app.on('close', function () {
+   console.log("Express 서버 객체가 종료됩니다.");
+   if (database.db) {
+      database.db.close();
+   }
 });
 
 // 시작된 서버 객체를 리턴받도록 합니다.
-var server = http.createServer(app).listen(app.get('port'), function() {
-  console.log('서버가 시작되었습니다. 포트 : ' + app.get('port'));
+var server = http.createServer(app).listen(app.get('port'), function(){
+   console.log('서버가 시작되었습니다. 포트 : ' + app.get('port'));
 
-  // 데이터베이스 초기화
-  database.init(app, config);
+   // 데이터베이스 초기화
+   database.init(app, config);
 
 });

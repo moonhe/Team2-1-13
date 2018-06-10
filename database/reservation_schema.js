@@ -21,7 +21,18 @@ SchemaObj.createSchema = function (mongoose) {
     username: { type: String, trim: true, 'default': '' },      // 예약자 이름
     phone: { type: String, trim: true, 'default': '' },      // 예약자 전화번호
     email: { type: String, trim: true, 'default': '' }, // 예약자 이메일 정보 저장
-  	return: { type: String, trim: true, 'default': 'No' }			//소개
+  	return: { type: String, trim: true, 'default': 'No' },			//소개
+    returntime : { // 반납 시간 = 현재 시간 저장
+       type : Date,
+       default : Date.now
+     },
+    //starttime: { type: String, trim: true, 'default': '' },      //시작 시간
+    //endtime: { type: String, trim: true, 'default': '' },            //종료시간
+    email: { type: String, trim: true, 'default': '' },
+    comment: { type: String, trim: true, 'default': '' },      // 시설 이름
+    remark: { type: String, trim: true, 'default': '' },      // 예약자 이름
+    imagefiles: { type: String, trim: true, 'default': '' },		// 반납 이미지
+    number: { type: String, trim: true, 'default': '' }
   });
 
   // 필수 속성에 대한 'required' validation
@@ -80,6 +91,15 @@ SchemaObj.createSchema = function (mongoose) {
       this.find({ email: paramEmail })
       .exec(callback);
     },
+    loadbyemailTime: function (paramEmail, callback) {
+      this.find({ email: paramEmail })
+      .where('returntime').ne(null)
+      .exec(callback);
+    },
+    loadbyid: function (paramId, callback) {
+      this.find({ _id: paramId })
+      .exec(callback);
+    },
     remove: function (id, callback){
       this.deleteOne({ _id: id })
       .exec(callback);
@@ -92,6 +112,17 @@ SchemaObj.createSchema = function (mongoose) {
         starttime: updateData['n_starttime'],
         endtime: updateData['n_endtime'],
         phone: updateData['n_phone']
+      }}).exec(callback);
+    },
+    addreturn: function (returnData, callback){
+      this.updateOne({_id: returnData['id']}, {
+        $set:
+        {comment: returnData['comment'],
+        remark: returnData['remark'],
+        number: returnData['number'],
+        imagefiles: returnData['imagefiles'],
+        return: returnData['return'],
+        returntime: returnData['returntime']
       }}).exec(callback);
     },
     findByUsername: function (paramUsername, callback) { //find? findOne?
