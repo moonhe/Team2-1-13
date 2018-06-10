@@ -481,8 +481,8 @@ module.exports = function(router, passport) {
                            remark: paramremark,
                            number: paramnumber,
                            imagefiles: paramimagefiles,
+                           returntime: paramreturntime,
                            return : 'Yes'
-
                          }
                          //회원 수정
                           database.ReservationModel.addreturn(returnData, function(err, results) {
@@ -506,7 +506,7 @@ module.exports = function(router, passport) {
                         //res.redirect('/user/update');
                       });
                     }
-                       });
+                 });
 
 
     // 로그인 인증

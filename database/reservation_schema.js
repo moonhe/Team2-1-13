@@ -24,7 +24,7 @@ SchemaObj.createSchema = function (mongoose) {
   	return: { type: String, trim: true, 'default': 'No' },			//소개
     returntime : { // 반납 시간 = 현재 시간 저장
        type : Date,
-       default : ''
+       default : Date.now
      },
     //starttime: { type: String, trim: true, 'default': '' },      //시작 시간
     //endtime: { type: String, trim: true, 'default': '' },            //종료시간
@@ -120,8 +120,9 @@ SchemaObj.createSchema = function (mongoose) {
         {comment: returnData['comment'],
         remark: returnData['remark'],
         number: returnData['number'],
-        imagefiles: returnData['paramimagefiles'],
-        return: returnData['return']
+        imagefiles: returnData['imagefiles'],
+        return: returnData['return'],
+        returntime: returnData['returntime']
       }}).exec(callback);
     },
     findByUsername: function (paramUsername, callback) { //find? findOne?

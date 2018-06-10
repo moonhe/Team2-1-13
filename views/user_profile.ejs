@@ -254,10 +254,10 @@
 
               <tbody>
                 <% for(i=0; i<posts.length; i++) { %>
-                <% if(posts[i]._doc.returntime != ''){ %>
+                <% if(posts[i]._doc.return == 'Yes'){ %>
                 <tr>
                   <th scope="row"><center><%=i+1%></center></th>
-                  <td><a href="/user/revlist/<%=posts[i]._id %>"><center><%=posts[i]._doc.facilityname%></center></a></td>
+                  <td><a href="/user/return/<%=posts[i]._id %>"><center><%=posts[i]._doc.facilityname%></center></a></td>
                   <td><center><%=posts[i]._doc.returntime%></center></td>
                   <td><center><%=posts[i]._doc._id %></center></td>
                 </tr>
