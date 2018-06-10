@@ -24,7 +24,7 @@ SchemaObj.createSchema = function (mongoose) {
 		endtime: { type: String, trim: true, 'default': '' },				//시간
 		starttime: { type: String, trim: true, 'default': '' },				//시간
 		imagefiles: { type: String, trim: true, 'default': '' },		//이미지
-		intro: { type: String, trim: true, 'default': '' }			//소개
+		intro: { type: String, trim: true, 'default': '' }  		//소개
 	});
 
 	// 필수 속성에 대한 'required' validation

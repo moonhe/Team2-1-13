@@ -27,12 +27,12 @@ module.exports = function(router, passport) {
   console.log('admin_passport 호출됨.');
 
 //관리자 검색
-  router.route('/admin/revsearch').get(function(req, res) {
-    console.log('/admin/revsearch 패스 요청됨.');
-    res.render('admin_revsearch.ejs', {
-      message: req.flash('registerMessage')
-    });
-  });
+  // router.route('/admin/revsearch').get(function(req, res) {
+  //   console.log('/admin/revsearch 패스 요청됨.');
+  //   res.render('admin_revsearch.ejs', {
+  //     message: req.flash('registerMessage')
+  //   });
+  // });
 
   // 관리자 홈 화면
   router.route('/admin/home').get(function(req, res) {
@@ -216,6 +216,26 @@ else{
       console.dir(req.user);
 
       res.render('admin_register.ejs', {
+        message: req.flash('registerMessage')
+      })
+    }
+  });
+
+
+  //관리자 시설 등록 화면
+  router.route('/admin/returncheck').get(function(req, res) {
+    console.log('/returncheck 패스 요청됨.');
+    if (!req.user || req.session.auth_admin != "1") {
+      console.log('사용자 인증 안된 상태임.');
+      res.render('admin_login.ejs', {
+        message: req.flash('loginMessage')
+      });
+    } else {
+      console.log('사용자 인증된 상태임.');
+      console.log('/returncheck 패스 요청됨.');
+      console.dir(req.user);
+
+      res.render('admin_returncheck.ejs', {
         message: req.flash('registerMessage')
       })
     }

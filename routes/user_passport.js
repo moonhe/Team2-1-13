@@ -13,7 +13,8 @@ module.exports = function(router, passport) {
     // 홈 화면
     router.route('/').get(function(req, res) {
         console.log('/ 패스 요청됨.');
-
+        session_obj = req.session;
+        user_name = session_obj.auth_name;
         console.log('req.user의 정보');
         console.dir(req.user);
 
@@ -32,6 +33,8 @@ module.exports = function(router, passport) {
          if (!req.user) {
              console.log('사용자 인증 안된 상태임.');
              console.log('/user/login 패스 요청됨.');
+             session_obj = req.session;
+             user_name = session_obj.auth_name;
              res.render('user_login.ejs', {message: req.flash('loginMessage')});
          } else {
              console.log('사용자 인증된 상태임.');
@@ -81,6 +84,8 @@ module.exports = function(router, passport) {
     // 프로필 화면
     router.route('/user/profile').get(function(req, res) {
         console.log('/user/profile 패스 요청됨.');
+        session_obj = req.session;
+        user_name = session_obj.auth_name;
 
         // 인증된 경우, req.user 객체에 사용자 정보 있으며, 인증안된 경우 req.user는 false값임
         console.log('req.user 객체의 값');
@@ -139,7 +144,9 @@ module.exports = function(router, passport) {
     // 로그아웃
     router.route('/user/logout').get(function(req, res) {
         console.log('/user/logout 패스 요청됨.');
+        req.session.destroy();
         req.logout();
+
         res.redirect('/');
     });
 
@@ -220,6 +227,7 @@ module.exports = function(router, passport) {
                   user_phone = session_obj.auth_phone;
                   user_birth = session_obj.auth_birth;
                   user_gender = session_obj.auth_gender;
+                  user_email = session_obj.auth_email;
                   user_postcode = session_obj.auth_postcode;
                   user_roadnameaddress = session_obj.auth_roadnameaddress;
                   user_address = session_obj.auth_address;
@@ -267,6 +275,7 @@ module.exports = function(router, passport) {
               var updateData = {
                 id: req.body.id,
                 n_username: req.body.username,
+                n_useremail:req.body.email,
                 n_birth: req.body.birth,
                 n_gender: req.body.gender,
                 n_phone: req.body.phone,
@@ -276,7 +285,7 @@ module.exports = function(router, passport) {
               };
               console.log('요청 파라미터 : \n' +
                 updateData['id'] + '\n' +
-                updateData['n_username'] + '\n' +
+                updateData['n_useremail'] + '\n'+
                 updateData['n_birth'] + '\n' +
                 updateData['n_gender'] + '\n' +
                 updateData['n_phone'] + '\n' +
@@ -296,8 +305,14 @@ module.exports = function(router, passport) {
                       }
                      if (results) {
                           console.dir(results);
-                          req.logout();
-                          res.redirect('/user/login');
+                          res.writeHead('200', {
+                            'Content-Type': 'text/html;charset=utf8'
+                          });
+                          res.write('<script>alert("수정완료! 다시 로그인 해주세요")</script>');
+                          req.session.destroy();
+                          res.write('<script>window.location.href="/user/login"</script>');
+                          res.end();
+                          return;
              } else {
                 //res.write('<h2>데이터베이스 연결 실패</h2>');
              }
@@ -323,7 +338,6 @@ module.exports = function(router, passport) {
                 console.log('/contactDev 패스 요청됨.');
                 res.render('user_contactDev.ejs', {message: req.flash('')});
               }
-            });
         */
 
         //개발자 문의 화면

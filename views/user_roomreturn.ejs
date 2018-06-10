@@ -40,8 +40,16 @@
 
 <body id="page-top">
 
-
-
+  <%
+  var curID = posts._doc._id;
+  var curDate = posts._doc.date;
+  var curStarttime = posts._doc.starttime;
+  var curEndtime = posts._doc.endtime;
+  var curFacilityname = posts._doc.facilityname;
+  var curUsername = posts._doc.username;
+  var curPhone = posts._doc.phone;
+  var curEmail = posts._doc.email;
+  %>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
     <div class="container">
@@ -52,333 +60,355 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login"> 로그인 및 회원가입</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search?page=0&perPage=10">스터디룸 조회 및 예약</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">마이페이지</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/contactDev.jsp">개발자 문의</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <br><br>
-  <form action="/room/reserve" method="post">
-    <section class="portfolio bg-third ">
-      <div class="container">
-      </div>
-      <div class="container">
-        <img class="img-fluid mb-5 d-block mx-auto" src="/public/bootstrap/img/profile.png" alt="">
-        <div class="row">
-          <div class="col-md-1 mb-5 mb-lg-0">
+          <% if(user_name ==null){%>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login"> 로그인 및 회원가입</a></li>
+            <%} else {%>
+              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=""> <%=user_name%>님 환영합니다</a></li>
+              <%}%>
+              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search?page=0&perPage=10">스터디룸 조회 및 예약</a></li>
+              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">마이페이지</a></li>
+              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/contactDev.jsp">개발자 문의</a></li>
+            </ul>
           </div>
+        </div>
+      </nav>
 
-          <div class="col-md-10 mb-5 mb-lg-0">
-            <h2 class="text-uppercase mb-0 text-center">스터디룸 반납</h1>
-
-
-
-
-              <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-              <script src="//code.jquery.com/jquery.min.js"></script>
-              <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
-              <link rel="stylesheet" href="//cdn.rawgit.com/fgelinas/timepicker/master/jquery.ui.timepicker.css">
-              <script src='//cdn.rawgit.com/fgelinas/timepicker/master/jquery.ui.timepicker.js'></script>
-              <script>
-              $(function() {
-                $('.timepicker').timepicker();
-              });
-              </script>
-
-
-
-
-
-
-
-
-
-
-              <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-              <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-              <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-
-              <script>
-              $(function() {
-                $("#datepicker1, #datepicker2").datepicker({
-                  dateFormat: 'yy.mm.dd'
-                });
-              });
-
-              </script>
-
-
-
-
-
-              <br>
-              <br>
-
-              <div class ="alert1 alert1-info">
-                <h1 style="color:GREEN">예약정보</h1>
-                <hr>
-
-                <div class="row">
-                  <div class="col-lg-3 col-sm-4">
-                    <h5 class="text-uppercase mb-2 text-center">스터디룸 이름</h5>
-                  </div>
-                  <div class="col-lg-8 col-sm-8">
-                    <input type="text" class="form-control" name="facilityname"  >
-                  </div>
-                </div>
-
-                <hr>
-
-
-
-                <div class="row">
-                  <div class="col-lg-3 col-sm-4">
-                    <h5 class="text-uppercase mb-2 text-center">예약 시간</h5>
-                  </div>
-                  <div class="col-lg-2 col-sm-2">
-                    <input type="text" class="form-control" name="date" id="datepicker1">
-                  </div>
-                  <div class="col-lg-2 col-sm-2">
-                    <input type="text" class='timepicker form-control' name="starttime" placeholder="ex) 7:00">
-                  </div>
-                  <div class="col-lg-2 col-sm-1">
-                    <h5><center>
-                      부터
-                    </center></h5>
-                  </div>
-                  <div class="col-lg-2 col-sm-2">
-                    <input type="text" class='timepicker form-control' name="endtime" placeholder="ex) 10:00">
-                  </div>
-                </div>
-                <hr>
-
-                <div class="row">
-                  <div class="col-lg-3 col-sm-4">
-                    <h5 class="text-uppercase mb-2 text-center">예약자 이름</h5>
-                  </div>
-                  <div class="col-lg-2 col-sm4">
-                    <input type="text" class="form-control" name="username" >
-                  </div>
-                  <div class="col-lg-1 col-sm-4">
-                  </div>
-                  <div class="col-lg-3 col-sm-4">
-                    <h5 class="text-uppercase mb-2 text-center">예약자 전화번호</h5>
-                  </div>
-                  <div class="col-lg-2 col-sm4">
-                    <input type="text" class="form-control" name="phone" >
-                  </div>
-                </div>
-                <hr>
-                <br>
-
-
+      <br><br>
+      <form action="/room/reserve" method="post">
+        <section class="portfolio bg-third ">
+          <div class="container">
+          </div>
+          <div class="container">
+            <img class="img-fluid mb-5 d-block mx-auto" src="/public/bootstrap/img/profile.png" alt="">
+            <div class="row">
+              <div class="col-md-1 mb-5 mb-lg-0">
               </div>
 
-              <br><br>
-
-              <div class ="alert1 alert1-success">
-                <h1 style="color:GREEN">반납정보</h1>
-                <hr>
-
-
-                <div class="row">
-                  <div class="col-lg-3 col-sm-4">
-                    <h5 class="text-uppercase mb-2 text-center">건의사항 / 한줄 평</h5>
-                  </div>
-                  <div class="col-lg-8 col-sm-2">
-                    <input type="text" class="form-control" >
-                  </div>
-                </div>
-                <hr>
-
-
-                <div class="row">
-                  <div class="col-lg-3 col-sm-4">
-                    <h5 class="text-uppercase mb-2 text-center">특이사항</h5>
-                  </div>
-                  <div class="col-lg-4 col-sm-4">
-                    <input type="textarea" class="form-control" placeholder="분실 / 고장 / 기타">
-                  </div>
-                  <div class="col-lg-2 col-sm-4">
-                    <h5 class="text-uppercase mb-2 text-center">반납시간</h5>
-                  </div>
-                  <div class="col-lg-2 col-sm-2">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-
-                <hr>
+              <div class="col-md-10 mb-5 mb-lg-0">
+                <h2 class="text-uppercase mb-0 text-center">스터디룸 반납</h1>
 
 
 
 
-                <div class="row">
-                  <div class="col-lg-3 col-sm-4">
-                    <h5 class="text-uppercase mb-2 text-center">이미지 등록</h5>
-                  </div>
-                  <div class="col-lg-3 col-sm-3">
-                    <div id='View_area' style='position:relative; width: 170px; height: 170px; color: black;  border: 0px solid green ; dispaly: inline; '>
-                      <img id="prev_View_area" src="/public/bootstrap/img/image.png" style='position:relative; width: 170px; height: 170px; color: black;  border: 0px solid green ; dispaly: inline; '>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-sm-3">
-                    <div id='View_area' style='position:relative; width: 170px; height: 170px; color: black;  border: 0px solid green ; dispaly: inline; '>
-                      <img id="prev_View_area" src="/public/bootstrap/img/image.png" style='position:relative; width: 170px; height: 170px; color: black;  border: 0px solid green ; dispaly: inline; '>
-                    </div>
-                  </div>
+                  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+                  <script src="//code.jquery.com/jquery.min.js"></script>
+                  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
-                  <div class="col-lg-3 col-sm-4">
+                  <link rel="stylesheet" href="//cdn.rawgit.com/fgelinas/timepicker/master/jquery.ui.timepicker.css">
+                  <script src='//cdn.rawgit.com/fgelinas/timepicker/master/jquery.ui.timepicker.js'></script>
+                  <script>
+                  $(function() {
+                    $('.timepicker').timepicker();
+                  });
+                  </script>
+
+
+
+
+
+
+
+
+
+
+                  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+                  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+                  <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
+                  <script>
+                  $(function() {
+                    $("#datepicker1, #datepicker2").datepicker({
+                      dateFormat: 'yy.mm.dd'
+                    });
+                  });
+
+                  </script>
+
+
+
+
+
+                  <br>
+                  <br>
+
+                  <div class ="alert1 alert1-info">
+                    <h1 style="color:GREEN">예약정보</h1>
+                    <hr>
+
                     <div class="row">
-                      <h5 style="color:GREEN"><center>
-                        <이미지 등록시 유의사항>
-                      </center></h5>
+                      <div class="col-lg-3 col-sm-4">
+                        <h5 class="text-uppercase mb-2 text-center">스터디룸 이름</h5>
+                      </div>
+                      <div class="col-lg-8 col-sm-8">
+                        <input type="text" class="form-control" name="facilityname" value="<%=curFacilityname%>"readonly>
+                      </div>
+                    </div>
+
+                    <hr>
+
+
+
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-4">
+                        <h5 class="text-uppercase mb-2 text-center">예약 시간</h5>
+                      </div>
+                      <div class="col-lg-2 col-sm-2">
+                        <input type="text" class="form-control" value="<%=curDate%>" readonly>
+                      </div>
+                      <div class="col-lg-2 col-sm-2">
+                        <input type="text" class=' form-control'value="<%=curStarttime%>" readonly>
+                      </div>
+                      <div class="col-lg-2 col-sm-1">
+                        <h5><center>
+                          부터
+                        </center></h5>
+                      </div>
+                      <div class="col-lg-2 col-sm-2">
+                        <input type="text" class=' form-control' value="<%=curEndtime%>" readonly>
+                      </div>
+                    </div>
+                    <hr>
+
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-4">
+                        <h5 class="text-uppercase mb-2 text-center">예약자 이름</h5>
+                      </div>
+                      <div class="col-lg-2 col-sm4">
+                        <input type="text" class="form-control" value="<%=curUsername%>" readonly >
+                      </div>
+                      <div class="col-lg-1 col-sm-4">
+                      </div>
+                      <div class="col-lg-3 col-sm-4">
+                        <h5 class="text-uppercase mb-2 text-center">예약자 전화번호</h5>
+                      </div>
+                      <div class="col-lg-2 col-sm4">
+                        <input type="text" class="form-control" value="<%=curPhone%>" readonly>
+                      </div>
+                    </div>
+                    <hr>
+                    <br>
+
+
+                  </div>
+
+                  <br><br>
+
+                  <div class ="alert1 alert1-success">
+                    <h1 style="color:GREEN">반납정보</h1>
+                    <hr>
+
+
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-4">
+                        <h5 class="text-uppercase mb-2 text-center">건의사항 / 한줄 평</h5>
+                      </div>
+                      <div class="col-lg-8 col-sm-2">
+                        <input type="text" class="form-control" >
+                      </div>
+                    </div>
+                    <hr>
+
+
+
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-4">
+                        <h5 class="text-uppercase mb-2 text-center">특이사항</h5>
+                      </div>
+                      <div class="col-lg-3 col-sm-4">
+                        <input type="textarea" class="form-control" placeholder="분실 / 고장 / 기타">
+                      </div>
+                      <div class="col-lg-2 col-sm-4">
+                        <h5 class="text-uppercase mb-2 text-center">반납시간</h5>
+                      </div>
+                      <div class="col-lg-3 col-sm-2">
+                        <p id="demo"  class="form-control"></p>
+                        <script>
+                        var d = new Date();
+                        var year = d.getFullYear();
+                        var month = d.getMonth();
+                        var date = d.getDate();
+                        var hours = d.getHours();
+                        var minutes = d.getMinutes();
+                        document.getElementById("demo").innerHTML = year+"."+month+"."+date+" "+hours+":"+minutes;
+
+                        </script>
+                      </div>
+                    </div>
+
+                    <hr>
+                    <!-- var d = new Date();
+                    var year = d.getYear();
+                    var month = d.getMonth();
+                    var date = d.getDate();
+                    var time = d.getTime();
+                    var minute = d.getMinute();
+                    var curTime = year+"."+month+"."+date+"."+"  "+time+":"+minute;
+                    document.getElementById("demo").innerHTML = date; -->
+
+
+
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-4">
+                        <h5 class="text-uppercase mb-2 text-center">이미지 등록</h5>
+                      </div>
+                      <div class="col-lg-3 col-sm-3">
+                        <div id='View_area' style='position:relative; width: 170px; height: 170px; color: black;  border: 0px solid green ; dispaly: inline; '>
+                          <img id="prev_View_area" src="/public/bootstrap/img/image.png" style='position:relative; width: 170px; height: 170px; color: black;  border: 0px solid green ; dispaly: inline; '>
+                        </div>
+                      </div>
+                      <div class="col-lg-3 col-sm-3">
+                        <div id='View_area' style='position:relative; width: 170px; height: 170px; color: black;  border: 0px solid green ; dispaly: inline; '>
+                          <img id="prev_View_area" src="/public/bootstrap/img/image.png" style='position:relative; width: 170px; height: 170px; color: black;  border: 0px solid green ; dispaly: inline; '>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-3 col-sm-4">
+                        <div class="row">
+                          <h5 style="color:GREEN"><center>
+                            <이미지 등록시 유의사항>
+                          </center></h5>
+                        </div>
+                        <br>
+                        <div class="row">
+                          <h6 style="color:BLACK">- 예시 이미지와 동일한 구도로 촬영해주세요</h6>
+                          <h6 style="color:BLACK">- 형식은 jpeg, jpg, png만 가능합니다</h6>
+                          <h6 style="color:BLACK">- 한번 제출되면 수정이 불가합니다</h6>
+                          <h6 style="color:BLACK">- 이미지에 따라 패널티가 부과될 수 있습니다</h6>
+                        </div>
+                      </div>
                     </div>
                     <br>
                     <div class="row">
-                      <h6 style="color:BLACK">- 예시 이미지와 동일한 구도로 촬영해주세요</h6>
-                      <h6 style="color:BLACK">- 형식은 jpeg, jpg, png만 가능합니다</h6>
-                      <h6 style="color:BLACK">- 한번 제출되면 수정이 불가합니다</h6>
-                      <h6 style="color:BLACK">- 이미지에 따라 패널티가 부과될 수 있습니다</h6>
+                      <div class="col-lg-3 col-sm-4">
+                      </div>
+                      <div class="col-lg-3 col-sm-4">
+                        <input type="file" name="uploadfile" id="exampleInputFile" onchange="previewImage(this,'View_area')">
+                      </div>
+                      <div class="col-lg-3 col-sm-4">
+                        <h5><center>
+                          반납 이미지 예시
+                        </center></h5>
+                      </div>
+
+                    </div>
+                    <hr>
+
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-4">
+                        <h5 class="text-uppercase mb-2 text-center">반납 체크리스트</h5>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="checkbox checkbox-info checkbox-circle">
+                          <input id="checkbox1" type="checkbox" name="conve"  checked="checked" readonly >
+                          <label><h6>편의 시설을 사용하고 제자리에 두었습니다</h6></label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-4">
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="checkbox checkbox-info checkbox-circle">
+                          <input id="checkbox1" type="checkbox" name="conve"  checked="checked" readonly>
+                          <label><h6>편의 시설을 사용하고 제자리에 두었습니다</h6></label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-4">
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="checkbox checkbox-info checkbox-circle">
+                          <input id="checkbox1" type="checkbox" name="conve"  checked="checked" readonly>
+                          <label><h6>편의 시설을 사용하고 제자리에 두었습니다</h6></label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-4">
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="checkbox checkbox-info checkbox-circle">
+                          <input id="checkbox1" type="checkbox" name="conve" checked="checked" readonly>
+                          <label><h6>편의 시설을 사용하고 제자리에 두었습니다</h6></label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-4">
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="checkbox checkbox-info checkbox-circle">
+                          <input id="checkbox4" type="checkbox" name="conve" value="화이트보드" >
+                          <label for="checkbox4"><h6>위의 정보들이 사실임을 증명하고, 문제 발생시 그에 따른 불이익에 대해 책임질 것을 동의합니다.  </h6></label>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <br>
+
+
+                  </div>
+
+
+
+
+
+
+
+
+                  <div class="row">
+                    <div class="col-lg-3 col-sm-2">
+                      <h5 class="text-uppercase mb-2 text-center"></h5>
+                    </div>
+                    <div class="col-lg-3 col-sm-4">
+                      <button type="submit" class="btn btn-primary btn-block">반납하기</button>
+                    </div>
+                    <div class="col-lg-3 col-sm-4">
+                      <button type="button" class="btn btn-primary btn-block" >돌아 가기</button>
+                    </div>
+                    <div class="col-lg-3 col-sm-2">
+                      <h5 class="text-uppercase mb-2 text-center"></h5>
                     </div>
                   </div>
-                </div>
-                <br>
-                <div class="row">
-                  <div class="col-lg-3 col-sm-4">
-                  </div>
-                  <div class="col-lg-3 col-sm-4">
-                    <input type="file" name="uploadfile" id="exampleInputFile" onchange="previewImage(this,'View_area')">
-                  </div>
-                  <div class="col-lg-3 col-sm-4">
-                    <h5><center>
-                      반납 이미지 예시
-                    </center></h5>
-                  </div>
-
-                </div>
-                <hr>
-
-                <div class="row">
-                  <div class="col-lg-3 col-sm-4">
-                    <h5 class="text-uppercase mb-2 text-center">반납 체크리스트</h5>
-                  </div>
-                  <div class="col-xs-7">
-                    <div class="checkbox checkbox-info checkbox-circle">
-                      <input id="checkbox1" type="checkbox" name="conve"  checked="checked" readonly >
-                      <label><h6>편의 시설을 사용하고 제자리에 두었습니다</h6></label>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-sm-4">
-                  </div>
-                  <div class="col-xs-7">
-                    <div class="checkbox checkbox-info checkbox-circle">
-                      <input id="checkbox1" type="checkbox" name="conve"  checked="checked" readonly>
-                      <label><h6>편의 시설을 사용하고 제자리에 두었습니다</h6></label>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-sm-4">
-                  </div>
-                  <div class="col-xs-7">
-                    <div class="checkbox checkbox-info checkbox-circle">
-                      <input id="checkbox1" type="checkbox" name="conve"  checked="checked" readonly>
-                      <label><h6>편의 시설을 사용하고 제자리에 두었습니다</h6></label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-sm-4">
-                  </div>
-                  <div class="col-xs-7">
-                    <div class="checkbox checkbox-info checkbox-circle">
-                      <input id="checkbox1" type="checkbox" name="conve" checked="checked" readonly>
-                      <label><h6>편의 시설을 사용하고 제자리에 두었습니다</h6></label>
-                    </div>
-                  </div>
-                </div>
-
-                <hr>
-
-                <div class="row">
-                  <div class="col-lg-3 col-sm-4">
-                  </div>
-                  <div class="col-xs-7">
-                    <div class="checkbox checkbox-info checkbox-circle">
-                      <input id="checkbox4" type="checkbox" name="conve" value="화이트보드" >
-                      <label for="checkbox4"><h6>위의 정보들이 사실임을 증명하고, 문제 발생시 그에 따른 불이익을 책임질 것을 동의합니다.  </h6></label>
-                    </div>
-                  </div>
-                </div>
-                <hr>
-                <br>
 
 
+
+                </div>
+
+
+
+                <div class="col-md-1 mb-5 mb-lg-0">
+                </div>
               </div>
+            </section>
+          </form>
 
-
-
-
-
-
-
-
-              <div class="row">
-                <div class="col-lg-3 col-sm-2">
-                  <h5 class="text-uppercase mb-2 text-center"></h5>
-                </div>
-                <div class="col-lg-3 col-sm-4">
-                  <button type="submit" class="btn btn-primary btn-block">반납하기</button>
-                </div>
-                <div class="col-lg-3 col-sm-4">
-                  <button type="button" class="btn btn-primary btn-block" >돌아 가기</button>
-                </div>
-                <div class="col-lg-3 col-sm-2">
-                  <h5 class="text-uppercase mb-2 text-center"></h5>
-                </div>
-              </div>
-
-
-
-            </div>
-
-
-
-            <div class="col-md-1 mb-5 mb-lg-0">
+          <div class="copyright py-4 text-center text-white">
+            <div class="container">
+              <small>Copyright &copy; Your Website 2018</small>
             </div>
           </div>
-        </section>
-      </form>
 
-      <div class="copyright py-4 text-center text-white">
-        <div class="container">
-          <small>Copyright &copy; Your Website 2018</small>
-        </div>
-      </div>
+          <script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
+          <script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+          <script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+          <script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
+          <script src="/public/bootstrap/js/contact_me.js"></script>
+          <script src="/public/bootstrap/js/imageUpload.js"></script>
+          <script src="/public/bootstrap/js/freelancer.min.js"></script>
+          <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+          <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+          <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+          <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+          <link rel="stylesheet" href="//cdn.rawgit.com/fgelinas/timepicker/master/jquery.ui.timepicker.css">
+          <script src='//cdn.rawgit.com/fgelinas/timepicker/master/jquery.ui.timepicker.js'></script>
+          <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 
-      <script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
-      <script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-      <script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
-      <script src="/public/bootstrap/js/contact_me.js"></script>
-      <script src="/public/bootstrap/js/imageUpload.js"></script>
-      <script src="/public/bootstrap/js/freelancer.min.js"></script>
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-      <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-      <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-      <link rel="stylesheet" href="//cdn.rawgit.com/fgelinas/timepicker/master/jquery.ui.timepicker.css">
-      <script src='//cdn.rawgit.com/fgelinas/timepicker/master/jquery.ui.timepicker.js'></script>
-      <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+        </body>
 
-    </body>
-
-    </html>
+        </html>
