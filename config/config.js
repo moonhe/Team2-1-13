@@ -20,10 +20,11 @@ module.exports = {
 		,{file:'./post', path:'/user/roomsearch', method:'searchroomget', type:'get'}
 		,{file:'./post', path:'/user/roomsearch', method:'searchroomget', type:'post'}
 		,{file:'./post', path:'/user/roomsearch', method:'searchroomget', type:'get'}
-		,{file:'./post', path:'/user/return', method:'returnpost', type:'post'}
-	  ,{file:'./post', path:'/user/return', method:'returnget', type:'get'}
+		// ,{file:'./post', path:'/user/return', method:'returnpost', type:'post'}
+	  // ,{file:'./post', path:'/user/return', method:'returnget', type:'get'}
 		,{file:'./revpost', path:'/admin/revlist/:id', method:'showrevpost', type:'get'}
 		,{file:'./revpost', path:'/user/revlist/:id', method:'showrevpost', type:'get'}
+		,{file:'./revpost', path:'/user/return/:id', method:'returnget', type:'get'}
 		,{file:'./revpost', path:'/admin/deleteuser/:id', method:'delrevpost', type:'get'}
 		,{file:'./revpost', path:'/admin/revlist', method:'revpost', type:'post'}
 		,{file:'./revpost', path:'/admin/revlist', method:'revpost', type:'get'}

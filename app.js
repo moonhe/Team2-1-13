@@ -8,7 +8,7 @@ var bodyParser = require('body-parser'),
   cookieParser = require('cookie-parser'),
   static = require('serve-static'),
   errorHandler = require('errorhandler');
-// 에러 핸들러 모듈 사용r
+// 에러 핸들러 모듈 사용r®
 var expressErrorHandler = require('express-error-handler');
 // Session 미들웨어 불러오기
 var expressSession = require('express-session');

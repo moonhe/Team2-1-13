@@ -80,6 +80,10 @@ SchemaObj.createSchema = function (mongoose) {
       this.find({ email: paramEmail })
       .exec(callback);
     },
+    loadbyid: function (paramId, callback) {
+      this.find({ _id: paramId })
+      .exec(callback);
+    },
     remove: function (id, callback){
       this.deleteOne({ _id: id })
       .exec(callback);
