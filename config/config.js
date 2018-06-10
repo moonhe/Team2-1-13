@@ -22,9 +22,7 @@ module.exports = {
 		,{file:'./post', path:'/user/roomsearch', method:'searchroomget', type:'get'}
 		,{file:'./revpost', path:'/admin/revlist/:id', method:'showrevpost', type:'get'}
 		,{file:'./revpost', path:'/user/revlist/:id', method:'showrevpost', type:'get'}
-
 		,{file:'./revpost', path:'/user/roomreturn/:id', method:'showroomreturn', type:'get'}
-
 		,{file:'./revpost', path:'/admin/deleteuser/:id', method:'delrevpost', type:'get'}
 		,{file:'./revpost', path:'/admin/revlist', method:'revpost', type:'post'}
 		,{file:'./revpost', path:'/admin/revlist', method:'revpost', type:'get'}
@@ -35,5 +33,10 @@ module.exports = {
 		,{file:'./contactDev', path:'/admin/contactlist', method:'contactlistpost', type:'post'}
 		,{file:'./contactDev', path:'/admin/contactlist', method:'contactlistpost', type:'get'}
 		,{file:'./contactDev', path:'/admin/contactlist/:id', method:'showcontactpost', type:'get'}
+		,{file:'./roompost', path:'/admin/roomlist', method:'roomlistpost', type:'get'}
+		,{file:'./roompost', path:'/admin/roomlist', method:'roomlistpost', type:'post'}
+		,{file:'./roompost', path:'/admin/roomlist/:id', method:'showroompost', type:'get'}
+		,{file:'./roompost', path:'/admin/deleteroom/:id', method:'delroompost', type:'get'}
+		,{file:'./roompost', path:'/admin/updateroom/:id', method:'updateroomget', type:'get'}
 	]
 }
