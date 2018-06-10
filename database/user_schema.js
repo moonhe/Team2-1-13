@@ -27,6 +27,8 @@ Schema.createSchema = function(mongoose) {
 	    , updated_at: {type: Date, index: {unique: false}, 'default': Date.now}
 	    , provider: {type: String, 'default':''}
 	    , authToken: {type: String, 'default':''}
+			, level: {type: String, 'default':'일반회원'}
+			, penalty: {type: String, 'default':'0'}
 	    , linkedin: {}
 
 	});

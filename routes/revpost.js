@@ -339,7 +339,7 @@ var delrevpost = function(req, res) {
                      Entities: Entities
                   };
 
-                  req.app.render('admin_index', context, function(err, html) {
+                  req.app.render('rev_deleteSuccess', context, function(err, html) {
                      if (err) {
                               console.error('응답 웹문서 생성 중 에러 발생 : ' + err.stack);
 

@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <link href="/public/bootstrap/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
   <link href="/public/bootstrap/css/freelancer.css" rel="stylesheet">
-	<link href="/public/semantic.min.css" rel="stylesheet" >
+  <link href="/public/semantic.min.css" rel="stylesheet" >
 
   <style>
   h6 {
@@ -47,74 +47,76 @@
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="/">BILLY SHARE!</a>
       <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-    Menu <i class="fa fa-bars"></i>
-  </button>
+        Menu <i class="fa fa-bars"></i>
+      </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <% if(user_name ==null){%>
             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login"> 로그인 및 회원가입</a></li>
-          <%} else {%>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=""> <%=user_name%>님 환영합니다</a></li>
-          <%}%>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search?page=0&perPage=10">스터디룸 조회 및 예약</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">마이페이지</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/contactDev">개발자 문의</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <br><br>
-  <section class="portfolio bg-third ">
-    <div class="container">
-    </div>
-    <div class="container">
-      <img class="img-fluid mb-5 d-block mx-auto" src="/public/bootstrap/img/checked.png" alt="">
-      <div class="row">
-        <div class="col-md-1 mb-5 mb-lg-0">
+            <%} else {%>
+              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=""> <%=user_name%>님 환영합니다</a></li>
+              <%}%>
+              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search?page=0&perPage=10">스터디룸 조회 및 예약</a></li>
+              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">마이페이지</a></li>
+              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/contactDev">개발자 문의</a></li>
+            </ul>
+          </div>
         </div>
-        <div class="col-md-10 mb-5 mb-lg-0">
-          <h2 class="text-uppercase mb-0 text-center">문의내용이 작성되었습니다</h1>
-            <hr>
-            <br>
-            <div class="row">
-              <div class="col-md-12 mb-5 mb-lg-0">
-                <h3 class="text-center"><a href="/">홈으로</a></h3>
-              </div>
+      </nav>
+
+      <br><br>
+      <section class="portfolio bg-third ">
+        <div class="container">
+        </div>
+        <div class="container">
+          <img class="img-fluid mb-5 d-block mx-auto" src="/public/bootstrap/img/checked.png" alt="">
+          <div class="row">
+            <div class="col-md-1 mb-5 mb-lg-0">
             </div>
+            <div class="col-md-10 mb-5 mb-lg-0">
+              <h2 class="text-uppercase mb-0 text-center">문의내용이 작성되었습니다</h1>
+                <hr>
                 <br>
-            <div class="row">
-              <div class="col-md-12 mb-5 mb-lg-0">
-                <h3 class="text-center"><a href='/user/contactDev'>추가 문의하기</a></h3>
+                <div class="row">
+                  <div class="col-md-12 mb-5 mb-lg-0">
+                    <h3 class="text-center"><a href="/">홈으로</a></h3>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-12 mb-5 mb-lg-0">
+                    <h3 class="text-center"><a href='/user/contactDev'>추가 문의하기</a></h3>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <br><br><br><br><br><br><br><br><br><br>
+  </section>
+
+
+
+  <div class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; Your Website 2018</small>
+    </div>
   </div>
-</div>
-</section>
-<br><br><br><br>
-
-<div class="copyright py-4 text-center text-white">
-  <div class="container">
-    <small>Copyright &copy; Your Website 2018</small>
-  </div>
-</div>
 
 
-<script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
-<script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-<script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
-<script src="/public/bootstrap/js/contact_me.js"></script>
-<script src="/public/bootstrap/js/imageUpload.js"></script>
-<script src="/public/bootstrap/js/freelancer.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+  <script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
+  <script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/public/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+  <script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
+  <script src="/public/bootstrap/js/contact_me.js"></script>
+  <script src="/public/bootstrap/js/imageUpload.js"></script>
+  <script src="/public/bootstrap/js/freelancer.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+  <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 
 </body>
 
