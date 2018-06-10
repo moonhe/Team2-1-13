@@ -32,6 +32,7 @@ SchemaObj.createSchema = function (mongoose) {
     comment: { type: String, trim: true, 'default': '' },      // 시설 이름
     remark: { type: String, trim: true, 'default': '' },      // 예약자 이름
     imagefiles: { type: String, trim: true, 'default': '' },		// 반납 이미지
+    number: { type: String, trim: true, 'default': '' }
   });
 
   // 필수 속성에 대한 'required' validation
@@ -111,6 +112,16 @@ SchemaObj.createSchema = function (mongoose) {
         starttime: updateData['n_starttime'],
         endtime: updateData['n_endtime'],
         phone: updateData['n_phone']
+      }}).exec(callback);
+    },
+    addreturn: function (returnData, callback){
+      this.updateOne({_id: returnData['id']}, {
+        $set:
+        {comment: returnData['comment'],
+        remark: returnData['remark'],
+        number: returnData['number'],
+        imagefiles: returnData['paramimagefiles'],
+        return: returnData['return']
       }}).exec(callback);
     },
     findByUsername: function (paramUsername, callback) { //find? findOne?

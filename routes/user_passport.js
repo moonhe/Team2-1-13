@@ -446,6 +446,7 @@ module.exports = function(router, passport) {
         });
 
 
+
                    //사용자 반납 정보 등록
                    router.post('/user/roomreturn',upload.single('uploadfile'),function(req, res) {
                      console.log('/user/roomreturn post 패스 요청됨.');
@@ -455,17 +456,16 @@ module.exports = function(router, passport) {
 
 
                      // 반납 정보 등록
-
+                     var paramId = req.body.id;
                      var paramcomment = req.body.comment || req.query.comment;
                      var paramremark = req.body.remark || req.query.remark;
-                     var paramreturntime;
-                     console.log('요청 파라미터 : ' + paramcomment + ', ' + paramremark + ', ' + paramreturntime );
+                     var paramreturntime= new Date();
+                     console.log('요청 파라미터 : '+ paramId+', '+ paramcomment + ', ' + paramremark + ', ' + paramreturntime );
 
                      console.log(req.uploadfile);
                      if (req.file.path != "" || req.query.file.path != "") {
                        var paramimagefiles = req.file.path || req.query.file.path;
                      }
-                     console.log("여기 1");
                      var paramnumber = req.body.number || req.query.number;
 
                      console.log('요청 파라미터 : ' + paramcomment + ', ' + paramremark + ', ' + paramreturntime + ', ' + paramimagefiles);
@@ -474,47 +474,40 @@ module.exports = function(router, passport) {
                      // 데이터베이스 객체가 초기화된 경우
                      if (database.db) {
 
-                       // 1. 아이디를 이용해 사용자 검색
-                       database.ReturnModel.load(paramnumber, function(err, results) {
-
-                         // PostModel 인스턴스 생성
-                         var post = new database.ReturnModel({
+                      // PostModel 인스턴스 생성
+                         var returnData = {
+                           id: paramId,
                            comment: paramcomment,
                            remark: paramremark,
                            number: paramnumber,
                            imagefiles: paramimagefiles,
-                         });
+                           return : 'Yes'
 
-                         post.savePost(function(err, result) {
-
-
-                           if (err) {
-                             console.error('응답 웹문서 생성 중 에러 발생 : ' + err.stack);
-                             res.writeHead('200', {
-                               'Content-Type': 'text/html;charset=utf8'
-                             });
-                             res.write('<script>alert("모든 값을 입력해주세요")</script>');
-                             res.write('<script>window.location.href="/admin/register"</script>');
-                             res.end();
-                             return;
-                           } else if (!req.file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
-                             res.writeHead('200', {
-                               'Content-Type': 'text/html;charset=utf8'
-                             });
-                             res.write('<<script>alert("jpg png gif 파일만 가능합니다")</script>');
-                             res.write('<script>window.location.href="/admin/register"</script>');
-                             res.end();
-                             return;
-                           }
-
-
-                           console.log("반납 데이터 추가함.");
-                           res.redirect('/user/DeleteSuccess');
-                         });
+                         }
+                         //회원 수정
+                          database.ReservationModel.addreturn(returnData, function(err, results) {
+                               if (err) {
+                                      console.error('사용자 수정 중 에러 발생 : ' + err.stack);
+                                      return;
+                                }
+                               if (results) {
+                                    console.dir(results);
+                                    res.writeHead('200', {
+                                      'Content-Type': 'text/html;charset=utf8'
+                                    });
+                                    res.write('<script>alert("반납 완료!")</script>');
+                                    req.session.destroy();
+                                    res.write('<script>window.location.href="/user/login"</script>');
+                                    res.end();
+                                    return;
+                       } else {
+                          //res.write('<h2>데이터베이스 연결 실패</h2>');
+                       }
+                        //res.redirect('/user/update');
+                      });
+                    }
                        });
 
-                     }
-                   });
 
     // 로그인 인증
     router.route('/user/login').post(passport.authenticate('local-login', {
