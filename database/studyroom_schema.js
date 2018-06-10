@@ -28,9 +28,9 @@ SchemaObj.createSchema = function (mongoose) {
 	});
 
 	// 필수 속성에 대한 'required' validation
-	StudySchema.path('facilityname').required(true, '글 제목을 입력하셔야 합니다.');
-	StudySchema.path('number').required(true, '글 제목을 입력하셔야 합니다.');
-	StudySchema.path('imagefiles').required(true, '글 제목을 입력하셔야 합니다.');
+	//StudySchema.path('facilityname').required(true, '글 제목을 입력하셔야 합니다.');
+	//StudySchema.path('number').required(true, '글 제목을 입력하셔야 합니다.');
+	//StudySchema.path('imagefiles').required(true, '글 제목을 입력하셔야 합니다.');
 	// 스키마에 인스턴스 메소드 추가
 	StudySchema.methods = {
 		savePost: function (callback) {		// 글 저장
@@ -97,6 +97,22 @@ SchemaObj.createSchema = function (mongoose) {
 		remove: function (id, callback){
 			this.deleteOne({ _id: id })
 			.exec(callback);
+		},
+		update: function (updateData, callback){
+			this.updateOne({_id: updateData['id']}, {
+				$set:
+				{facilityname: updateData['n_facilityname'],
+				postcode: updateData['n_postcode'],
+				roadnameaddress: updateData['n_roadnameaddress'],
+				address: updateData['n_address'],
+				number: updateData['n_number'],
+				people: updateData['n_people'],
+				conve: updateData['n_conve'],
+				endtime: updateData['n_endtime'],
+				starttime: updateData['n_starttime'],
+				imagefiles: updateData['n_imagefiles'],
+				intro: updateData['n_intro']
+			}}).exec(callback);
 		},
 		findByFacilityname: function (paramFacilityname, callback) { //find? findOne?
 			this.find({ facilityname: {$regex : paramFacilityname['n_inputcon']} })

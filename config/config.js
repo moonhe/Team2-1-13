@@ -38,5 +38,6 @@ module.exports = {
 		,{file:'./roompost', path:'/admin/roomlist/:id', method:'showroompost', type:'get'}
 		,{file:'./roompost', path:'/admin/deleteroom/:id', method:'delroompost', type:'get'}
 		,{file:'./roompost', path:'/admin/updateroom/:id', method:'updateroomget', type:'get'}
+		,{file:'./roompost', path:'/admin/updateroom', method:'updateroompost', type:'post'}
 	]
 }

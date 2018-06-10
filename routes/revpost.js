@@ -387,7 +387,7 @@ var updaterevget = function(req, res) {
     // 데이터베이스 객체가 초기화된 경우
    if (database.db) {
 
-         //예약 삭제
+         //정보 수정
           database.ReservationModel.load(paramId, function(err, results) {
                if (err) {
                       console.error('게시판 글 조회 중 에러 발생 : ' + err.stack);
