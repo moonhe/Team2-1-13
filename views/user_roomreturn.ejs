@@ -74,7 +74,7 @@
       </nav>
 
       <br><br>
-      <form action="/room/reserve" method="post">
+      <form action="/user/roomreturn" method="post">
         <section class="portfolio bg-third ">
           <div class="container">
           </div>
@@ -203,7 +203,7 @@
                         <h5 class="text-uppercase mb-2 text-center">건의사항 / 한줄 평</h5>
                       </div>
                       <div class="col-lg-8 col-sm-2">
-                        <input type="text" class="form-control" >
+                        <input type="text" class="form-control" namd = "comment" >
                       </div>
                     </div>
                     <hr>
@@ -215,13 +215,13 @@
                         <h5 class="text-uppercase mb-2 text-center">특이사항</h5>
                       </div>
                       <div class="col-lg-3 col-sm-4">
-                        <input type="textarea" class="form-control" placeholder="분실 / 고장 / 기타">
+                        <input type="textarea" class="form-control" name = "remark" placeholder="분실 / 고장 / 기타">
                       </div>
                       <div class="col-lg-2 col-sm-4">
                         <h5 class="text-uppercase mb-2 text-center">반납시간</h5>
                       </div>
                       <div class="col-lg-3 col-sm-2">
-                        <p id="demo"  class="form-control"></p>
+                        <p id="demo"  class="form-control" name = "returntime"></p>
                         <script>
                         var d = new Date();
                         var year = d.getFullYear();
@@ -233,6 +233,7 @@
 
                         </script>
                       </div>
+
                     </div>
 
                     <hr>
