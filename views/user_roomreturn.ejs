@@ -74,7 +74,7 @@
       </nav>
 
       <br><br>
-      <form action="/user/roomreturn" method="post">
+      <form action="/user/roomreturn" method="post" enctype="multipart/form-data">
         <section class="portfolio bg-third ">
           <div class="container">
           </div>
@@ -153,10 +153,10 @@
                         <h5 class="text-uppercase mb-2 text-center">예약 시간</h5>
                       </div>
                       <div class="col-lg-2 col-sm-2">
-                        <input type="text" class="form-control" value="<%=curDate%>" readonly>
+                        <input type="text" class="form-control" name="date" value="<%=curDate%>" readonly>
                       </div>
                       <div class="col-lg-2 col-sm-2">
-                        <input type="text" class=' form-control'value="<%=curStarttime%>" readonly>
+                        <input type="text" class=' form-control' name="starttime" value="<%=curStarttime%>" readonly>
                       </div>
                       <div class="col-lg-2 col-sm-1">
                         <h5><center>
@@ -164,7 +164,7 @@
                         </center></h5>
                       </div>
                       <div class="col-lg-2 col-sm-2">
-                        <input type="text" class=' form-control' value="<%=curEndtime%>" readonly>
+                        <input type="text" class=' form-control' name="endtime" value="<%=curEndtime%>" readonly>
                       </div>
                     </div>
                     <hr>
@@ -174,7 +174,7 @@
                         <h5 class="text-uppercase mb-2 text-center">예약자 이름</h5>
                       </div>
                       <div class="col-lg-2 col-sm4">
-                        <input type="text" class="form-control" value="<%=curUsername%>" readonly >
+                        <input type="text" class="form-control" name="username" value="<%=curUsername%>" readonly >
                       </div>
                       <div class="col-lg-1 col-sm-4">
                       </div>
@@ -182,7 +182,7 @@
                         <h5 class="text-uppercase mb-2 text-center">예약자 전화번호</h5>
                       </div>
                       <div class="col-lg-2 col-sm4">
-                        <input type="text" class="form-control" value="<%=curPhone%>" readonly>
+                        <input type="text" class="form-control" name="phone" value="<%=curPhone%>" readonly>
                       </div>
                     </div>
                     <hr>
@@ -203,7 +203,7 @@
                         <h5 class="text-uppercase mb-2 text-center">건의사항 / 한줄 평</h5>
                       </div>
                       <div class="col-lg-8 col-sm-2">
-                        <input type="text" class="form-control" namd = "comment" >
+                        <input type="text" class="form-control" name = "comment" >
                       </div>
                     </div>
                     <hr>

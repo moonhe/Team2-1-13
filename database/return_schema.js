@@ -18,12 +18,13 @@ SchemaObj.createSchema = function (mongoose) {
   var ReturnSchema = mongoose.Schema({
     returntime : { // 반납 시간 = 현재 시간 저장
        type : Date,
-       default : Date.now
+       default : ''
      },
     //starttime: { type: String, trim: true, 'default': '' },      //시작 시간
     //endtime: { type: String, trim: true, 'default': '' },            //종료시간
-    facilityname: { type: String, trim: true, 'default': '' },      // 시설 이름
-    username: { type: String, trim: true, 'default': '' },      // 예약자 이름
+    email: { type: String, trim: true, 'default': '' },
+    comment: { type: String, trim: true, 'default': '' },      // 시설 이름
+    remark: { type: String, trim: true, 'default': '' },      // 예약자 이름
     imagefiles: { type: String, trim: true, 'default': '' },		// 반납 이미지
   });
 

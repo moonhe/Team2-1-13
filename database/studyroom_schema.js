@@ -94,6 +94,10 @@ SchemaObj.createSchema = function (mongoose) {
 				.skip(options.perPage * options.page)
 				.exec(callback);
 		},
+		remove: function (id, callback){
+			this.deleteOne({ _id: id })
+			.exec(callback);
+		},
 		findByFacilityname: function (paramFacilityname, callback) { //find? findOne?
 			this.find({ facilityname: {$regex : paramFacilityname['n_inputcon']} })
 				.populate('writer', 'name provider email')
