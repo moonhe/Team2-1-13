@@ -91,7 +91,9 @@
                             <thead>
                               <tr>
                                 <!-- <th><em class="fa fa-cog"></em></th> -->
-                                <th>예약자명</th>
+                                <th><center>
+                                  예약자명
+                                </center></th>
                                 <th>시설이름</th>
                                 <th class="hidden-xs">수용인원</th>
                                 <th>운영시간</th>
@@ -105,14 +107,13 @@
                               var curPeople = posts[i]._doc.people;
                               var curEndTime = posts[i]._doc.endtime;
                               var curStartTime = posts[i]._doc.starttime;
-
                             	console.log("하이"+ posts.length);
                               %>
 
 
 
                               <tr>
-                                <td><%=curUsername%></td>
+                                <td><center><%=curUsername%></center></td>
                                 <td><a href="/admin/revlist/<%=posts[i]._id %>"><%=curFacilityname %></a></td>
                                 <td><a href="/admin/revlist/<%=posts[i]._id %>"><%=curPeople %></a></td>
                                 <td><a href="/admin/revlist/<%=posts[i]._id %>"><%=curStartTime %> 부터 <%=curEndTime %></a></td>
