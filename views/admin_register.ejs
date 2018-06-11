@@ -40,6 +40,12 @@
 
 <body id="page-top">
 
+  <style>
+         *{
+             box-sizing:	content-box;
+         }
+         </style>
+
 
 
   <!-- Navigation -->
@@ -62,6 +68,7 @@
       </div>
     </div>
   </nav>
+
   <br><br>
   <form action="/admin/register" method="post" enctype="multipart/form-data">
     <section class="PORTZFOLIO bg-third ">
@@ -73,7 +80,7 @@
           <div class="col-md-1 mb-5 mb-lg-0">
           </div>
 
-          <div class="col-md-11 mb-5 mb-lg-0">
+          <div class="col-md-9 mb-5 mb-lg-0">
             <div class="row">
               <div class="col-md-2 mb-3 mb-lg-0">
               </div>
@@ -101,7 +108,7 @@
               <div class="col-lg-4 col-sm-2 mb-4">
                 <input type="text" name="postcode" class="form-control postcodify_postcode5" value="" / placeholder="ex) 우편번호">
               </div>
-              <div class="col-lg-3 col-sm-3">
+              <div class="col-lg-2 col-sm-3">
                 <button type="button" class ="btn btn-primary btn-block" name="postcode "id="postcodify_search_button">주소 검색</button><br />
               </div>
             </div>
@@ -185,8 +192,6 @@
               <div class="col-lg-3 col-sm-4">
                 <center><strong><h6>시작 시간</h6></strong></center>
                 <input type="text" class='timepicker form-control' name="starttime">
-              </div>
-              <div class="col-lg-1 col-sm-4">
               </div>
               <div class="col-lg-3 col-sm-4">
                 <center><strong><h6>종료 시간</h6></strong></center>

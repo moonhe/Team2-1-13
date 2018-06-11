@@ -226,7 +226,7 @@ module.exports = function(router, passport) {
   });
 
 
-  //관리자 시설 등록 화면
+  //관리자 시설 반납
   router.route('/admin/returncheck').get(function(req, res) {
     console.log('/returncheck 패스 요청됨.');
     if (!req.user || req.session.auth_admin != "1") {
@@ -239,7 +239,7 @@ module.exports = function(router, passport) {
       console.log('/returncheck 패스 요청됨.');
       console.dir(req.user);
 
-      res.render('admin_returncheck.ejs', {
+      res.render('admin_registSuccessk.ejs', {
         message: req.flash('registerMessage')
       })
     }

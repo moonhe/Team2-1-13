@@ -44,6 +44,7 @@
       </div>
     </nav>
 
+
   <br><br>
   <form action="/user/roomsearch" method="post">
     <section class="portfolio bg-third ">
@@ -98,7 +99,6 @@
                             </tr>
                           </thead>
                           <%  var noStart = (pageCount - page) * perPage;
-
                           for (var i = 0; i < posts.length; i++) {
                             var curEndtime = posts[i]._doc.endtime;
                             var curStarttime = posts[i]._doc.starttime;
