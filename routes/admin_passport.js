@@ -458,13 +458,16 @@ router.post('/room/reserve', function(req, res){
     });
 
     var start = paramstarttime.substring(0,2)+paramstarttime.substring(3,5);
-    var end = paramendtime.substring(0.2)+ paramendtime.substring(3,5);
+    var end = paramendtime.substring(0,2)+paramendtime.substring(3,5);
+
+
     var fStart = ST.substring(0,2)+ST.substring(3,5);
     var fEnd = ET.substring(0,2)+ET.substring(3,5);
     var intStart = parseInt(start);
     var intEnd = parseInt(end);
     var intfStart = parseInt(fStart);
     var intfEnd = parseInt(fEnd);
+
 
     if((intStart - intEnd)>0){
       res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});

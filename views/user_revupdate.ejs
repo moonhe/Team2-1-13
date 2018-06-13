@@ -14,7 +14,6 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <link href="/public/bootstrap/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
   <link href="/public/bootstrap/css/freelancer.css" rel="stylesheet">
-	<link href="/public/semantic.min.css" rel="stylesheet" >
   <style>
   h6 {
     display: block;
@@ -49,29 +48,35 @@ var curStarttime = posts._doc.starttime;
 
 <body id="page-top">
 
+  <style>
+         *{
+             box-sizing:	content-box;
+         }
+         </style>
 
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="/admin/home">BILLY SHARE!</a>
+      <a class="navbar-brand js-scroll-trigger" href="/">BILLY SHARE!</a>
       <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-    Menu <i class="fa fa-bars"></i>
-  </button>
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/register"> 스터디룸 등록 </a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/roomlist?page=0&perpage=10"> 스터디룸 목록 </a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/revlist?page=0&perPage=10">예약현황 확인</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/returncheck">반납목록 확인</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">예약통계 확인</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/contactlist?page=0&perPage=10">문의내용 확인</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/logout">로그아웃</a></li>
-        </ul>
-        </ul>
-      </div>
-    </div>
-  </nav>
+          <% if(user_name ==null){%>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login"> 로그인 및 회원가입</a></li>
+            <%} else {%>
+              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=""> <%=user_name%>님 환영합니다</a></li>
+              <%}%>
+              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search?page=0&perPage=10">스터디룸 조회 및 예약</a></li>
+              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">마이페이지</a></li>
+              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/contactDev">개발자 문의</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
 
   <br><br>
@@ -129,7 +134,7 @@ var curStarttime = posts._doc.starttime;
                 <h5 class="text-uppercase mb-2 text-center">스터디룸 이름</h5>
               </div>
               <div class="col-lg-8 col-sm-8">
-                <input type="text" class="form-control" name="facilityname" value="<%= curFacilityname%>">
+                <input type="text" class="form-control" name="facilityname" value="<%= curFacilityname%>" readonly> 
               </div>
             </div>
 
@@ -190,7 +195,7 @@ var curStarttime = posts._doc.starttime;
               </div>
               <div class="col-lg-3 col-sm-4">
                 <!-- <button type="submit" class="btn btn-primary btn-block" onclick="location.href='/admin/updateuser/<%= curID %>'">예약 수정</button> -->
-                <input type="submit" class="btn btn-primary btn-block" value="진짜 예약 수정"/>
+                <input type="submit" class="btn btn-primary btn-block" value="예약 수정"/>
 
               </div>
               <div class="col-lg-3 col-sm-4">

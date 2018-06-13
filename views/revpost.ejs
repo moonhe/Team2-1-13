@@ -95,8 +95,8 @@
                                   예약자명
                                 </center></th>
                                 <th>시설이름</th>
-                                <th class="hidden-xs">수용인원</th>
-                                <th>운영시간</th>
+                                <th>예약시간</th>
+                                <th class="hidden-xs">반납여부  </th>
                               </tr>
                             </thead>
                             <%  var noStart = (pageCount - page) * perPage;
@@ -107,6 +107,7 @@
                               var curPeople = posts[i]._doc.people;
                               var curEndTime = posts[i]._doc.endtime;
                               var curStartTime = posts[i]._doc.starttime;
+                              var curReturn = posts[i]._doc.return;
                             	console.log("하이"+ posts.length);
                               %>
 
@@ -115,8 +116,8 @@
                               <tr>
                                 <td><center><%=curUsername%></center></td>
                                 <td><a href="/admin/revlist/<%=posts[i]._id %>"><%=curFacilityname %></a></td>
-                                <td><a href="/admin/revlist/<%=posts[i]._id %>"><%=curPeople %></a></td>
                                 <td><a href="/admin/revlist/<%=posts[i]._id %>"><%=curStartTime %> 부터 <%=curEndTime %></a></td>
+                                <td><a href="/admin/revlist/<%=posts[i]._id %>"><%=curReturn%></a></td>
                               </tr>
                               <% } %>
                             </table>

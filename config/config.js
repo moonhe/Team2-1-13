@@ -38,7 +38,7 @@ module.exports = {
 		,{file:'./roompost', path:'/admin/deleteroom/:id', method:'delroompost', type:'get'}
 		,{file:'./roompost', path:'/admin/updateroom/:id', method:'updateroomget', type:'get'}
 		,{file:'./roompost', path:'/admin/updateroom', method:'updateroompost', type:'post'}
-		,{file:'./returnpost', path:'/user/return/:id', method:'showreturnstatus', type:'get'}
+		,{file:'./returnpost', path:'/user/return/:id', method:'usershowreturnstatus', type:'get'}
 		,{file:'./returnpost', path:'/admin/returnlist', method:'returnlistpost', type:'post'}
 		,{file:'./returnpost', path:'/admin/returnlist', method:'returnlistpost', type:'get'}
 		,{file:'./returnpost', path:'/admin/returnlist/:id', method:'showreturnstatus', type:'get'}
