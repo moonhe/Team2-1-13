@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <link href="/public/bootstrap/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
   <link href="/public/bootstrap/css/freelancer.css" rel="stylesheet">
-
+  <link href="/public/semantic.min.css" rel="stylesheet" >
   <style>
   h6 {
     display: block;
@@ -40,6 +40,12 @@
 
 <body id="page-top">
 
+  <style>
+         *{
+             box-sizing:	content-box;
+         }
+         </style>
+
 
 
   <!-- Navigation -->
@@ -47,17 +53,17 @@
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="/admin/home">BILLY SHARE!</a>
       <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fa fa-bars"></i>
-      </button>
+    Menu <i class="fa fa-bars"></i>
+  </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/register"> 스터디룸 등록 </a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/roomlist?page=0&perpage=10"> 스터디룸 목록 </a></li>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/revlist?page=0&perPage=10">예약현황 확인</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/profile">반납목록 확인</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/statistics">예약통계 확인</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/contactDev.jsp">문의내용 확인</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/returnlist?page=0&perpage=10">반납목록 확인</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/Statistics">예약통계 확인</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/contactlist?page=0&perPage=10">문의내용 확인</a></li>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/logout">로그아웃</a></li>
+        </ul>
         </ul>
       </div>
     </div>
@@ -71,13 +77,12 @@
       <div class="container">
         <img class="img-fluid mb-5 d-block mx-auto" src="/public/bootstrap/img/file.png" alt="">
         <div class="row">
-          <div class="col-md-2 mb-5 mb-lg-0">
+          <div class="col-md-1 mb-5 mb-lg-0">
           </div>
 
-          <div class="col-md-7 mb-5 mb-lg-0">
+          <div class="col-md-9 mb-5 mb-lg-0">
             <div class="row">
               <div class="col-md-2 mb-3 mb-lg-0">
-                <h5><a href="/"> 스터디룸 조회 </a> </h5>
               </div>
               <div class="col-md-7 mb-3 mb-lg-0">
                 <h2 class="text-uppercase mb-0 text-center">스터디룸 등록</h2>
@@ -100,10 +105,10 @@
               <div class="col-lg-3 col-sm-2">
                 <h5 class="text-uppercase mb-2 text-center">스터디룸 위치</h5>
               </div>
-              <div class="col-lg-3 col-sm-2 mb-4">
+              <div class="col-lg-4 col-sm-2 mb-4">
                 <input type="text" name="postcode" class="form-control postcodify_postcode5" value="" / placeholder="ex) 우편번호">
               </div>
-              <div class="col-lg-3 col-sm-3">
+              <div class="col-lg-2 col-sm-3">
                 <button type="button" class ="btn btn-primary btn-block" name="postcode "id="postcodify_search_button">주소 검색</button><br />
               </div>
             </div>
@@ -186,11 +191,11 @@
               </div>
               <div class="col-lg-3 col-sm-4">
                 <center><strong><h6>시작 시간</h6></strong></center>
-                        <input type="text" class='timepicker form-control' name="starttime">
+                <input type="text" class='timepicker form-control' name="starttime">
               </div>
               <div class="col-lg-3 col-sm-4">
                 <center><strong><h6>종료 시간</h6></strong></center>
-                  <input type="text" class='timepicker form-control' name='endtime'>
+                <input type="text" class='timepicker form-control' name='endtime'>
               </div>
             </div>
             <hr>
@@ -271,39 +276,34 @@
             </div>
 
 
-            <div class ="row">
-              <div class="col-lg-12 col-sm-12">
-                <a href="/room/info" >스터디룸 정보</button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
-    </section>
-  </form>
-
-  <div class="copyright py-4 text-center text-white">
-    <div class="container">
-      <small>Copyright &copy; Your Website 2018</small>
     </div>
-  </div>
+  </section>
+</form>
 
-  <script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
-  <script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-  <script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
-  <script src="/public/bootstrap/js/contact_me.js"></script>
-  <script src="/public/bootstrap/js/imageUpload.js"></script>
-  <script src="/public/bootstrap/js/freelancer.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-  <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="//cdn.rawgit.com/fgelinas/timepicker/master/jquery.ui.timepicker.css">
-  <script src='//cdn.rawgit.com/fgelinas/timepicker/master/jquery.ui.timepicker.js'></script>
-  <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
-  <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+<div class="copyright py-4 text-center text-white">
+  <div class="container">
+    <small>Copyright &copy; Your Website 2018</small>
+  </div>
+</div>
+
+<script src="/public/bootstrap/vendor/jquery/jquery.min.js"></script>
+<script src="/public/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/public/bootstrap/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/public/bootstrap/js/jqBootstrapValidation.js"></script>
+<script src="/public/bootstrap/js/contact_me.js"></script>
+<script src="/public/bootstrap/js/imageUpload.js"></script>
+<script src="/public/bootstrap/js/freelancer.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="//cdn.rawgit.com/fgelinas/timepicker/master/jquery.ui.timepicker.css">
+<script src='//cdn.rawgit.com/fgelinas/timepicker/master/jquery.ui.timepicker.js'></script>
+<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 </body>
 
 </html>

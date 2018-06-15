@@ -155,7 +155,8 @@
                     <h5>고객등급</h5>
                   </div>
                   <div class="col-md-5 mb-5 mb-lg-0  alert1 alert1-info">
-                    하아앗
+
+                    <%=user.level%>
                   </div>
                 </div>
                 <hr>
@@ -163,10 +164,10 @@
                   <div class="col-md-1 mb-5 mb-lg-0">
                   </div>
                   <div class="col-md-3 mb-5 mb-lg-0">
-                    <h5>패널티</h5>
+                    <h5>벌점</h5>
                   </div>
                   <div class="col-md-5 mb-5 mb-lg-0  alert1 alert1-info">
-                    하아앗
+                  <%=user.penalty%>
                   </div>
                 </div>
                 <hr>
@@ -242,13 +243,14 @@
             <center><br><br>
               <h5>반납목록</h5>
             </center>
+            <br>
             <table style='width:100%' class="table table-hover" >
               <thead>
                 <tr>
-                  <th scope="col"><center>번호</center></th>
-                  <th scope="col"><center>시설명</center></th>
-                  <th scope="col"><center>반납시간</center></th>
-                  <th scope="col"><center>반납여부</center></th>
+                  <th style='width:10%;' scope="col"><center>번호</center></th>
+                  <th style='width:40%;' scope="col"><center>시설명</center></th>
+                  <th style='width:30%;' scope="col"><center>반납시간</center></th>
+                  <th style='width:20%;' scope="col"><center>반납처리</center></th>
                 </tr>
               </thead>
 
@@ -256,10 +258,10 @@
                 <% for(i=0; i<posts.length; i++) { %>
                 <% if(posts[i]._doc.return == 'Yes'){ %>
                 <tr>
-                  <th scope="row"><center><%=i+1%></center></th>
+                  <th scope="row"><center>1</center></th>
                   <td><a href="/user/return/<%=posts[i]._id %>"><center><%=posts[i]._doc.facilityname%></center></a></td>
-                  <td><center><%=posts[i]._doc.returntime%></center></td>
-                  <td><center><%=posts[i]._doc._id %></center></td>
+                  <td><center>2018.6.4 23:30</center></td>
+                  <td><center>YES</center></td>
                 </tr>
                 <% } %>
                 <% } %>

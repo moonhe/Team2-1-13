@@ -20,6 +20,10 @@ SchemaObj.createSchema = function (mongoose) {
     content: { type: String, trim: true, 'default': '' }
   });
 
+  ContactDevSchema.path('writer').required(true, '글 제목을 입력하셔야 합니다.');
+	ContactDevSchema.path('kind').required(true, '글 제목을 입력하셔야 합니다.');
+	ContactDevSchema.path('title').required(true, '글 제목을 입력하셔야 합니다.');
+  ContactDevSchema.path('content').required(true, '글 제목을 입력하셔야 합니다.');
   // 필수 속성에 대한 'required' validation
   // ReservationSchema.path('username').required(true, '예약자 이름을 입력하셔야 합니다.');
   // ReservationSchema.path('reservedate').required(true, '예약 날짜를 입력하셔야 합니다.');

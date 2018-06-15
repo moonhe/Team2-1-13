@@ -39,30 +39,45 @@
 
 
 <body id="page-top">
-
-
+  <%
+  var curID = posts._doc._id;
+  var curDate = posts._doc.date;
+  var curStarttime = posts._doc.starttime;
+  var curEndtime = posts._doc.endtime;
+  var curFacilityname = posts._doc.facilityname;
+  var curUsername = posts._doc.username;
+  var curPhone = posts._doc.phone;
+  var curEmail = posts._doc.email;
+  var curComment = posts._doc.comment;
+  var curRemark = posts._doc.remark;
+  var curImagefiles = posts._doc.imagefiles;
+  var curReturntime = posts._doc.returntime;
+  %>
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="/">BILLY SHARE!</a>
+      <a class="navbar-brand js-scroll-trigger" href="/admin/home">BILLY SHARE!</a>
       <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fa fa-bars"></i>
-      </button>
+    Menu <i class="fa fa-bars"></i>
+  </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login"> 로그인 및 회원가입</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/search?page=0&perPage=10">스터디룸 조회 및 예약</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/profile">마이페이지</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="jsp/contactDev.jsp">개발자 문의</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/roomlist?page=0&perpage=10"> 스터디룸 목록 </a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/revlist?page=0&perPage=10">예약현황 확인</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/returnlist?page=0&perpage=10">반납목록 확인</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/Statistics">예약통계 확인</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/contactlist?page=0&perPage=10">문의내용 확인</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/logout">로그아웃</a></li>
+        </ul>
         </ul>
       </div>
     </div>
   </nav>
 
+
   <br><br>
-  <form action="/room/reserve" method="post">
+  <form action="/admin/returncheck" method="post">
     <section class="portfolio bg-third ">
       <div class="container">
       </div>
@@ -128,7 +143,7 @@
                     <h5 class="text-uppercase mb-2 text-center">스터디룸 이름</h5>
                   </div>
                   <div class="col-lg-8 col-sm-8">
-                    <input type="text" class="form-control" name="facilityname"  >
+                    <input type="text" class="form-control" name="facilityname" value="<%=curFacilityname%>" readonly>
                   </div>
                 </div>
 
@@ -141,10 +156,10 @@
                     <h5 class="text-uppercase mb-2 text-center">예약 시간</h5>
                   </div>
                   <div class="col-lg-2 col-sm-2">
-                    <input type="text" class="form-control" name="date" id="datepicker1">
+                    <input type="text" class="form-control" name="date" id="datepicker1" value="<%=curDate%>" readonly>
                   </div>
                   <div class="col-lg-2 col-sm-2">
-                    <input type="text" class='timepicker form-control' name="starttime" placeholder="ex) 7:00">
+                    <input type="text" class='timepicker form-control' name="starttime" value="<%=curStarttime%>" readonly>
                   </div>
                   <div class="col-lg-2 col-sm-1">
                     <h5><center>
@@ -152,7 +167,7 @@
                     </center></h5>
                   </div>
                   <div class="col-lg-2 col-sm-2">
-                    <input type="text" class='timepicker form-control' name="endtime" placeholder="ex) 10:00">
+                    <input type="text" class='timepicker form-control' name="endtime" value="<%=curEndtime%>" readonly>
                   </div>
                 </div>
                 <hr>
@@ -162,7 +177,7 @@
                     <h5 class="text-uppercase mb-2 text-center">예약자 이름</h5>
                   </div>
                   <div class="col-lg-2 col-sm4">
-                    <input type="text" class="form-control" name="username" >
+                    <input type="text" class="form-control" name="username" value="<%=curUsername%>" readonly>
                   </div>
                   <div class="col-lg-1 col-sm-4">
                   </div>
@@ -170,7 +185,7 @@
                     <h5 class="text-uppercase mb-2 text-center">예약자 전화번호</h5>
                   </div>
                   <div class="col-lg-2 col-sm4">
-                    <input type="text" class="form-control" name="phone" >
+                    <input type="text" class="form-control" name="phone" value="<%=curPhone%>" readonly>
                   </div>
                 </div>
                 <hr>
@@ -184,7 +199,7 @@
                     <h5 class="text-uppercase mb-2 text-center">건의사항 / 한줄 평</h5>
                   </div>
                   <div class="col-lg-8 col-sm-2">
-                    <input type="text" class="form-control" >
+                    <input type="text" class="form-control" value="<%= curComment%>" readonly>
                   </div>
                 </div>
                 <hr>
@@ -195,13 +210,13 @@
                     <h5 class="text-uppercase mb-2 text-center">특이사항</h5>
                   </div>
                   <div class="col-lg-4 col-sm-4">
-                    <input type="textarea" class="form-control" placeholder="분실 / 고장 / 기타">
+                    <input type="textarea" class="form-control" value="<%=curRemark%>" readonly>
                   </div>
                   <div class="col-lg-2 col-sm-4">
                     <h5 class="text-uppercase mb-2 text-center">반납시간</h5>
                   </div>
                   <div class="col-lg-2 col-sm-2">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" value="<%=curReturntime%>" readonly>
                   </div>
                 </div>
 
@@ -216,7 +231,7 @@
                   </div>
                   <div class="col-lg-3 col-sm-3">
                     <div id='View_area' style='position:relative; width: 170px; height: 170px; color: black;  border: 0px solid green ; dispaly: inline; '>
-                      <img id="prev_View_area" src="/public/bootstrap/img/image.png" style='position:relative; width: 170px; height: 170px; color: black;  border: 0px solid green ; dispaly: inline; '>
+                      <img id="prev_View_area" src="/<%=curImagefiles%>" style='position:relative; width: 170px; height: 170px; color: black;  border: 0px solid green ; dispaly: inline; '>
                     </div>
                   </div>
                   <div class="col-lg-3 col-sm-3">
@@ -240,7 +255,6 @@
                   <div class="col-lg-3 col-sm-4">
                   </div>
                   <div class="col-lg-3 col-sm-4">
-                    <input type="file" name="uploadfile" id="exampleInputFile" onchange="previewImage(this,'View_area')">
                   </div>
                   <div class="col-lg-3 col-sm-4">
                     <h5><center>
