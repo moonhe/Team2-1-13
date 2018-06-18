@@ -32,10 +32,10 @@
     </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/roomlist?page=0&perpage=10"> 스터디룸 목록 </a></li>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/roomlist?page=0&perPage=10"> 스터디룸 목록 </a></li>
             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/revlist?page=0&perPage=10">예약현황 확인</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/returnlist?page=0&perpage=10">반납목록 확인</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/Statistics">예약통계 확인</a></li>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/returnlist?page=0&perPage=10">반납목록 확인</a></li>
+            <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/Statistics">예약통계 확인</a></li> -->
             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/contactlist?page=0&perPage=10">문의내용 확인</a></li>
             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/admin/logout">로그아웃</a></li>
           </ul>
@@ -127,10 +127,10 @@
                             <%
                             if (page > 0) {
                               %>
-                              <div class="ui icon button" onclick="listpost(0, <%=perPage %>)">
+                              <div class="ui icon button" onclick="roomlist(0, <%=perPage %>)">
                                 <i class="backward icon"></i>
                               </div>
-                              <div class="ui icon button" onclick="listpost(<%=(page-1) %>, <%=perPage %>)">
+                              <div class="ui icon button" onclick="roomlist(<%=(page-1) %>, <%=perPage %>)">
                                 <i class="left chevron icon"></i>
                               </div>
                               <%
@@ -160,7 +160,7 @@
                             for (var i = initial; i < max; i++) {
                               if (i != page) {
                                 %>
-                                <div class="ui button" onclick="listpost(<%=i %>, <%=perPage %>)">
+                                <div class="ui button" onclick="roomlist(<%=i %>, <%=perPage %>)">
                                   <%= i %>
                                 </div>
                                 <%
@@ -176,10 +176,10 @@
                             <%
                             if ((page+1) < pageCount) {
                               %>
-                              <div class="ui icon button" onclick="listpost(<%=(page+1) %>, <%=perPage %>)">
+                              <div class="ui icon button" onclick="roomlist(<%=(page+1) %>, <%=perPage %>)">
                                 <i class="right chevron icon"></i>
                               </div>
-                              <div class="ui icon button" onclick="listpost(<%=(pageCount-1) %>, <%=perPage %>)">
+                              <div class="ui icon button" onclick="roomlist(<%=(pageCount-1) %>, <%=perPage %>)">
                                 <i class="forward icon"></i>
                               </div>
                               <%
